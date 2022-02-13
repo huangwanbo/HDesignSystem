@@ -1,0 +1,17 @@
+@import "foundation/all";
+
+@each $size, $value in $spacing {
+    .ds-width-#{$size} {
+        width: $value;
+    }
+
+    .ds-height-#{$size} {
+        height: $value;
+    }
+}
+
+@each $size, $value in $fontSize {
+    .ds-font-size-#{$size} {
+        font-size: $value;
+    }
+}

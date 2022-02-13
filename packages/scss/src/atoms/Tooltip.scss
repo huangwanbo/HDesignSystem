@@ -1,0 +1,24 @@
+@import "foundation/all";
+.ds-tooltip {
+  &-inner {
+    padding: 8px 12px;
+    background-color: $dark;
+    font-size: 14px;
+    border-radius: 4px;
+    color: #fff;
+    line-height: 1.5715;
+    //box-shadow: 0 4px 10px $dark-light;
+  }
+  &-arrow {
+    background-color: $dark;
+    content: "";
+    height: 8px;
+    width: 8px;
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    margin-left: 50%;
+    transform: translateX(-81%) rotate(45deg) translateY(-67%);
+    z-index: -1;
+  }
+}

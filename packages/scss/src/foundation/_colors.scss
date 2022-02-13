@@ -1,0 +1,41 @@
+/*=============================================
+=            Foundation - colors              =
+=============================================*/
+
+/**
+ * This file defines the actual colors that will be used for styling. They will default to the
+ * we defined in the _variable.scss file. This is our default palette, and devs can override this
+ * with their own variables.
+ */
+
+/*=============================================
+ =            Global text colors               =
+ =============================================*/
+$body-text-color: var(--ds-body-text-color, $dark) !default;
+$body-bg-color: var(--ds-body-bg-color, $white) !default;
+$white-color: var(--ds-white-color, $white) !default;
+
+/*=============================================
+=                    Buttons                  =
+=============================================*/
+$btn-primary-color: var(--ds-btn-primary-color, $white) !default;
+$btn-primary-bg: var(--ds-btn-primary-bg, $blue) !default;
+$btn-primary-bg-hover: var(--ds-btn-primary-bg-hover, $blue-light) !default;
+$btn-success-color: var(--ds-btn-success-color, $white) !default;
+$btn-success-bg: var(--ds-btn-success-bg, $green) !default;
+$btn-success-bg-hover: var(--ds-btn-success-bg-hover, $green-light) !default;
+$btn-error-color: var(--ds-btn-error-color, $white) !default;
+$btn-error-bg: var(--ds-btn-error-bg, $red) !default;
+$btn-error-bg-hover: var(--ds-btn-error-bg-hover, $red-light) !default;
+$btn-warning-color: var(--ds-btn-warning-color, $white) !default;
+$btn-warning-bg: var(--ds-btn-warning-bg, $yellow) !default;
+$btn-warning-bg-hover: var(--ds-btn-warning-bg-hover, $yellow-light) !default;
+
+/*=============================================
+=                  Forms                      =
+=============================================*/
+$form-color: var(--ds-form-color, $dark) !default;
+$form-bg: var(--ds-form-bg, $dark) !default;
+$form-error-color: var(--ds-form-error-color, $red) !default;
+$form-error-border: var(--ds-form-error-border, $red) !default;
+$form-border-focus-color: var(--ds-form-border-focus-color, $green) !default;

@@ -1,0 +1,8 @@
+@import "foundation/all";
+@each $key,$val in $IconSize{
+    .ds-icon-size-#{$key}{
+        font-size: $val;
+        display: inline-block;
+        text-align: center;
+    }
+}

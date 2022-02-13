@@ -1,0 +1,21 @@
+@import "foundation/all";
+.ds-image__container{
+    position: relative;
+    display: inline-block;
+    transition: all 0.5s;
+    &-default{
+        width: 200px;
+        height: 200px;
+        background-color: $gray-light;
+        @include flex();
+    }
+    &-show{
+        opacity: 1;
+        height: 100%;
+        width: 100%;
+    }
+    &-hide{
+        opacity: 0;
+        height: 0px !important;
+    }
+}

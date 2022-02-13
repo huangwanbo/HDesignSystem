@@ -1,0 +1,222 @@
+/* ======================================
+    #Variables
+====================================== */
+/**
+* TABLE OF CONTENTS
+*
+* COLORS
+* Brand colors .................... These ar the main brand colors. They will be used the most
+* Neutral colors .................. White and black, gray scale, secondary colors.
+* Utility colors .................. Other colors to represent states: info, warning, success, etc.
+*
+* TYPOGRAPHY
+* Font families ................... The fonts used in the design system.
+* Font weights .................... Font weights
+* Sizes ........................... Font sizing for body text, paragraphs, inputs
+* Heading sizes ................... Font sizing for page headings
+*
+* BREAKPOINTS
+* Breakpoints .................... Global responsive breakpoints definitions.
+*      
+* SPACING
+* Spacing ......................... Global fixed set of spacing variables.
+**/
+/*=============================================
+=                   colors                    =
+=============================================*/
+/* Brand Colors */
+/* Neutral Colors */
+/* Utility colors */
+/*=====  End of Color  ======*/
+/*=============================================
+=            Typography                       =
+=============================================*/
+/**
+ * 1) The playfair font. We'll use the for headings mostly.
+ *      https://fonts.google.com/specimen/Playfair+Display
+ * 
+ * 2) The raleway font. We'll use ths for the body text.
+ *      https://fonts.goole.com/specimen/Raleway
+*/
+/* Font families */
+/* 1 */
+/* 2 */
+/* Font sizes */
+/* Heading font sizes */
+/* Font weights */
+/*=====  End of Typography  ======*/
+/*=============================================
+=            Breakpoints                      =
+=============================================*/
+/*=====  End of Breakpoints  ======*/
+/*=============================================
+=            Spacing                          =
+=============================================*/
+/*=============================================
+=            IconSize                         =
+=============================================*/
+/*=====  End of IconSize               ======*/
+/*=============================================
+=            Foundation - colors              =
+=============================================*/
+/**
+ * This file defines the actual colors that will be used for styling. They will default to the
+ * we defined in the _variable.scss file. This is our default palette, and devs can override this
+ * with their own variables.
+ */
+/*=============================================
+ =            Global text colors               =
+ =============================================*/
+/*=============================================
+=                    Buttons                  =
+=============================================*/
+/*=============================================
+=                  Forms                      =
+=============================================*/
+/*=============================================
+=            Minxins                         =
+=============================================*/
+/**
+ * 
+ * helpful reusable function-like things that will be used to implement the
+ * styles for components.
+ * 
+*/
+.body {
+  font-size: 12px;
+}
+
+@media (min-width: 48rem) {
+  .body {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 64rem) {
+  .body {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: null) {
+  .body {
+    font-size: 18px;
+  }
+}
+
+/*=============================================
+=            Foundation - typeography         =
+=============================================*/
+/**
+ * This file defines the actual colors that will be used for styling. They will default to the
+ * we defined in the _variable.scss file. This is our default palette, and devs can override this
+ * with their own variables.
+ */
+/*=============================================
+ =            Body text sizes                  =
+ =============================================*/
+/*=============================================
+ =            Heading text sizes               =
+ =============================================*/
+/*=============================================
+ =            Head font weights                =
+ =============================================*/
+.ds-width-none {
+  width: 0rem;
+}
+
+.ds-height-none {
+  height: 0rem;
+}
+
+.ds-width-xxxs {
+  width: 0.25rem;
+}
+
+.ds-height-xxxs {
+  height: 0.25rem;
+}
+
+.ds-width-xxs {
+  width: 0.5rem;
+}
+
+.ds-height-xxs {
+  height: 0.5rem;
+}
+
+.ds-width-xs {
+  width: 0.75rem;
+}
+
+.ds-height-xs {
+  height: 0.75rem;
+}
+
+.ds-width-sm {
+  width: 1rem;
+}
+
+.ds-height-sm {
+  height: 1rem;
+}
+
+.ds-width-md {
+  width: 1.5rem;
+}
+
+.ds-height-md {
+  height: 1.5rem;
+}
+
+.ds-width-lg {
+  width: 2rem;
+}
+
+.ds-height-lg {
+  height: 2rem;
+}
+
+.ds-width-xl {
+  width: 3rem;
+}
+
+.ds-height-xl {
+  height: 3rem;
+}
+
+.ds-width-xxl {
+  width: 4.5rem;
+}
+
+.ds-height-xxl {
+  height: 4.5rem;
+}
+
+.ds-width-xxxl {
+  width: 6rem;
+}
+
+.ds-height-xxxl {
+  height: 6rem;
+}
+
+.ds-font-size-xs {
+  font-size: 0.75rem;
+}
+
+.ds-font-size-sm {
+  font-size: 0.875rem;
+}
+
+.ds-font-size-base {
+  font-size: 1rem;
+}
+
+.ds-font-size-lg {
+  font-size: 1.125rem;
+}
+
+.ds-font-size-xl {
+  font-size: 1.5rem;
+}

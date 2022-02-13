@@ -1,0 +1,40 @@
+:root {
+  --ds-body-text-color: #{$dark};
+  --ds-body-bg-color: #{$white};
+
+  --ds-btn-primary-color: #{$white};
+  --ds-btn-primary-bg: #{$blue};
+  --ds-btn-primary-bg-hover: #{$blue-light};
+  --ds-btn-error-color: #{$white};
+  --ds-btn-error-bg: #{$red};
+  --ds-btn-error-bg-hover: #{$red-light};
+  --ds-btn-success-color: #{$white};
+  --ds-btn-success-bg: #{$green};
+  --ds-btn-success-bg-hover: #{$green-light};
+  --ds-btn-warning-color: #{$white};
+  --ds-btn-warning-bg: #{$yellow};
+  --ds-btn-warning-bg-hover: #{$yellow-light};
+
+  --ds-form-color: #{$dark};
+  --ds-form-bg: #{$dark};
+  --ds-form-error-color: #{$red};
+  --ds-form-error-border: #{$red};
+  --ds-form-border-focus-color: #{$blue};
+
+  --ds-body-font-size: #{fs-sm};
+  --ds-body-font-weight: #{$fw-normal};
+
+  --ds-h1-font-size: #{$h-1};
+  --ds-h2-font-size: #{$h-2};
+  --ds-h3-font-size: #{$h-3};
+  --ds-h4-font-size: #{$h-4};
+  --ds-h5-font-size: #{$h-5};
+  --ds-h6-font-size: #{$h-6};
+
+  --ds-h1-text-weight: #{$fw-light};
+  --ds-h2-text-weight: #{$fw-normal};
+  --ds-h3-text-weight: #{$fw-medium};
+  --ds-h4-text-weight: #{$fw-semibold};
+  --ds-h5-text-weight: #{$fw-extrabold};
+  --ds-h6-text-weight: #{$fw-bold};
+}

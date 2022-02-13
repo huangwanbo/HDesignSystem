@@ -1,0 +1,341 @@
+/* ======================================
+    #Variables
+====================================== */
+/**
+* TABLE OF CONTENTS
+*
+* COLORS
+* Brand colors .................... These ar the main brand colors. They will be used the most
+* Neutral colors .................. White and black, gray scale, secondary colors.
+* Utility colors .................. Other colors to represent states: info, warning, success, etc.
+*
+* TYPOGRAPHY
+* Font families ................... The fonts used in the design system.
+* Font weights .................... Font weights
+* Sizes ........................... Font sizing for body text, paragraphs, inputs
+* Heading sizes ................... Font sizing for page headings
+*
+* BREAKPOINTS
+* Breakpoints .................... Global responsive breakpoints definitions.
+*      
+* SPACING
+* Spacing ......................... Global fixed set of spacing variables.
+**/
+/*=============================================
+=                   colors                    =
+=============================================*/
+/* Brand Colors */
+/* Neutral Colors */
+/* Utility colors */
+/*=====  End of Color  ======*/
+/*=============================================
+=            Typography                       =
+=============================================*/
+/**
+ * 1) The playfair font. We'll use the for headings mostly.
+ *      https://fonts.google.com/specimen/Playfair+Display
+ * 
+ * 2) The raleway font. We'll use ths for the body text.
+ *      https://fonts.goole.com/specimen/Raleway
+*/
+/* Font families */
+/* 1 */
+/* 2 */
+/* Font sizes */
+/* Heading font sizes */
+/* Font weights */
+/*=====  End of Typography  ======*/
+/*=============================================
+=            Breakpoints                      =
+=============================================*/
+/*=====  End of Breakpoints  ======*/
+/*=============================================
+=            Spacing                          =
+=============================================*/
+/*=============================================
+=            IconSize                         =
+=============================================*/
+/*=====  End of IconSize               ======*/
+/*=============================================
+=            Foundation - colors              =
+=============================================*/
+/**
+ * This file defines the actual colors that will be used for styling. They will default to the
+ * we defined in the _variable.scss file. This is our default palette, and devs can override this
+ * with their own variables.
+ */
+/*=============================================
+ =            Global text colors               =
+ =============================================*/
+/*=============================================
+=                    Buttons                  =
+=============================================*/
+/*=============================================
+=                  Forms                      =
+=============================================*/
+/*=============================================
+=            Minxins                         =
+=============================================*/
+/**
+ * 
+ * helpful reusable function-like things that will be used to implement the
+ * styles for components.
+ * 
+*/
+.body {
+  font-size: 12px;
+}
+
+@media (min-width: 48rem) {
+  .body {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 64rem) {
+  .body {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: null) {
+  .body {
+    font-size: 18px;
+  }
+}
+
+/*=============================================
+=            Foundation - typeography         =
+=============================================*/
+/**
+ * This file defines the actual colors that will be used for styling. They will default to the
+ * we defined in the _variable.scss file. This is our default palette, and devs can override this
+ * with their own variables.
+ */
+/*=============================================
+ =            Body text sizes                  =
+ =============================================*/
+/*=============================================
+ =            Heading text sizes               =
+ =============================================*/
+/*=============================================
+ =            Head font weights                =
+ =============================================*/
+.ds-button__container {
+  line-height: 1.5715;
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  border: 1px solid transparent;
+  box-shadow: 0 2px #00000004;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  height: 32px;
+  padding: 4px 15px;
+  font-size: 14px;
+  border-radius: 2px;
+  color: #000000d9;
+  border-color: #d9d9d9;
+  background: #fff;
+}
+
+.ds-button__container-primary {
+  background: var(--ds-btn-primary-bg, #0f62fe);
+  color: var(--ds-btn-primary-color, #fff);
+  border: 1px solid var(--ds-btn-primary-bg, #0f62fe);
+}
+
+.ds-button__container-primary:hover {
+  background: var(--ds-btn-primary-bg-hover, #78a9ff);
+  color: var(--ds-btn-primary-color, #fff);
+  border: 1px solid var(--ds-btn-primary-bg-hover, #78a9ff);
+}
+
+.ds-button__container-primary-tertiary {
+  background: #fff;
+  color: var(--ds-btn-primary-bg, #0f62fe);
+  border: 1px solid var(--ds-btn-primary-bg, #0f62fe);
+}
+
+.ds-button__container-primary-tertiary:hover {
+  background: var(--ds-btn-primary-bg, #0f62fe);
+  color: var(--ds-btn-primary-color, #fff);
+  border: 1px solid var(--ds-btn-primary-bg, #0f62fe);
+}
+
+.ds-button_container-ghost {
+  background: #fff;
+  color: var(--ds-btn-primary-bg, #0f62fe);
+  border: none;
+}
+
+.ds-button_container-primary-ghost:hover {
+  background: #bebfc4;
+  color: var(--ds-btn-primary-bg, #0f62fe);
+  border: 1px solid #bebfc4;
+}
+
+.ds-button_container-primary-disabled {
+  background: #bebfc4;
+  color: #a3a5ad;
+  border: 1px solid #bebfc4;
+  cursor: not-allowed;
+}
+
+.ds-button__container-success {
+  background: var(--ds-btn-success-bg, #198038);
+  color: var(--ds-btn-success-color, #fff);
+  border: 1px solid var(--ds-btn-success-bg, #198038);
+}
+
+.ds-button__container-success:hover {
+  background: var(--ds-btn-success-bg-hover, #42be65);
+  color: var(--ds-btn-success-color, #fff);
+  border: 1px solid var(--ds-btn-success-bg-hover, #42be65);
+}
+
+.ds-button__container-success-tertiary {
+  background: #fff;
+  color: var(--ds-btn-success-bg, #198038);
+  border: 1px solid var(--ds-btn-success-bg, #198038);
+}
+
+.ds-button__container-success-tertiary:hover {
+  background: var(--ds-btn-success-bg, #198038);
+  color: var(--ds-btn-success-color, #fff);
+  border: 1px solid var(--ds-btn-success-bg, #198038);
+}
+
+.ds-button_container-ghost {
+  background: #fff;
+  color: var(--ds-btn-success-bg, #198038);
+  border: none;
+}
+
+.ds-button_container-success-ghost:hover {
+  background: #bebfc4;
+  color: var(--ds-btn-success-bg, #198038);
+  border: 1px solid #bebfc4;
+}
+
+.ds-button_container-success-disabled {
+  background: #bebfc4;
+  color: #a3a5ad;
+  border: 1px solid #bebfc4;
+  cursor: not-allowed;
+}
+
+.ds-button__container-error {
+  background: var(--ds-btn-error-bg, #da1e28);
+  color: var(--ds-btn-error-color, #fff);
+  border: 1px solid var(--ds-btn-error-bg, #da1e28);
+}
+
+.ds-button__container-error:hover {
+  background: var(--ds-btn-error-bg-hover, #fa4d56);
+  color: var(--ds-btn-error-color, #fff);
+  border: 1px solid var(--ds-btn-error-bg-hover, #fa4d56);
+}
+
+.ds-button__container-error-tertiary {
+  background: #fff;
+  color: var(--ds-btn-error-bg, #da1e28);
+  border: 1px solid var(--ds-btn-error-bg, #da1e28);
+}
+
+.ds-button__container-error-tertiary:hover {
+  background: var(--ds-btn-error-bg, #da1e28);
+  color: var(--ds-btn-error-color, #fff);
+  border: 1px solid var(--ds-btn-error-bg, #da1e28);
+}
+
+.ds-button_container-ghost {
+  background: #fff;
+  color: var(--ds-btn-error-bg, #da1e28);
+  border: none;
+}
+
+.ds-button_container-error-ghost:hover {
+  background: #bebfc4;
+  color: var(--ds-btn-error-bg, #da1e28);
+  border: 1px solid #bebfc4;
+}
+
+.ds-button_container-error-disabled {
+  background: #bebfc4;
+  color: #a3a5ad;
+  border: 1px solid #bebfc4;
+  cursor: not-allowed;
+}
+
+.ds-button__container-warning {
+  background: var(--ds-btn-warning-bg, #f1c21b);
+  color: var(--ds-btn-warning-color, #fff);
+  border: 1px solid var(--ds-btn-warning-bg, #f1c21b);
+}
+
+.ds-button__container-warning:hover {
+  background: var(--ds-btn-warning-bg-hover, #f1c21b);
+  color: var(--ds-btn-warning-color, #fff);
+  border: 1px solid var(--ds-btn-warning-bg-hover, #f1c21b);
+}
+
+.ds-button__container-warning-tertiary {
+  background: #fff;
+  color: var(--ds-btn-warning-bg, #f1c21b);
+  border: 1px solid var(--ds-btn-warning-bg, #f1c21b);
+}
+
+.ds-button__container-warning-tertiary:hover {
+  background: var(--ds-btn-warning-bg, #f1c21b);
+  color: var(--ds-btn-warning-color, #fff);
+  border: 1px solid var(--ds-btn-warning-bg, #f1c21b);
+}
+
+.ds-button_container-ghost {
+  background: #fff;
+  color: var(--ds-btn-warning-bg, #f1c21b);
+  border: none;
+}
+
+.ds-button_container-warning-ghost:hover {
+  background: #bebfc4;
+  color: var(--ds-btn-warning-bg, #f1c21b);
+  border: 1px solid #bebfc4;
+}
+
+.ds-button_container-warning-disabled {
+  background: #bebfc4;
+  color: #a3a5ad;
+  border: 1px solid #bebfc4;
+  cursor: not-allowed;
+}
+
+.ds-button__container-sm {
+  height: 1.5rem;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 0.5rem;
+}
+
+.ds-button__container-base {
+  height: 2rem;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 0.5rem;
+}
+
+.ds-button__container-lg {
+  height: 2.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 0.5rem;
+}
