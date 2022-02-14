@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { PortalWrapper } from "../Portal";
+import cls from "classNames";
 const prefixCls = "ds-tooltip";
 type positionType = "top" | "left" | "right" | "bottom";
 type TooltipProps = {
@@ -19,7 +20,7 @@ type rect = {
 };
 
 const Tooltip = React.forwardRef<any, TooltipProps>((props, ref) => {
-  const { children, title } = props;
+  const { children, title, position = "top" } = props;
   const [visible, setVisible] = useState<boolean>(false);
   const [transform, setTransform] = useState<rect>({
     left: 0,
@@ -37,6 +38,30 @@ const Tooltip = React.forwardRef<any, TooltipProps>((props, ref) => {
   const hide = () => {
     // setVisible(false);
   };
+  const popupStyle = {
+    top: {
+      left: `${transform.left}px`,
+      top: `${transform.top - transform.height - 15}px`,
+      transformOrigin: `${transform.width}px 0px 0px`,
+    },
+    bottom: {
+      left: `${transform.left}px`,
+      top: `${transform.top + 25}px`,
+      transformOrigin: `${transform.width}px 0px 0px`,
+    },
+    left: {
+      left: `${transform.left - transform.width - 15}px`,
+      top: `${transform.top}px`,
+      transformOrigin: `${transform.width}px 0px 0px`,
+    },
+    right: {
+      left: `${transform.left + transform.width + 15}px`,
+      top: `${transform.top - transform.height / 2}px`,
+      transformOrigin: `${transform.width}px 0px 0px`,
+    },
+  };
+  console.log(popupStyle[position], position);
+
   const tooltipDOM = (
     <PortalWrapper visible={visible} ref={portalRef}>
       <div
@@ -53,15 +78,18 @@ const Tooltip = React.forwardRef<any, TooltipProps>((props, ref) => {
         <div
           style={{
             position: "absolute",
-            left: `${transform.left}px`,
-            top: `${transform.top - transform.height - 15}px`,
-            transformOrigin: `${transform.width}px 0px 0px`,
+            ...popupStyle[position],
           }}
           onMouseEnter={show}
           onMouseLeave={hide}
         >
           <div className={`${prefixCls}-inner`}>{title}</div>
-          <div className={`${prefixCls}-arrow`} />
+          <div
+            className={cls(
+              `${prefixCls}-arrow`,
+              `${prefixCls}-arrow-${position}`
+            )}
+          />
         </div>
       </div>
     </PortalWrapper>
@@ -70,6 +98,15 @@ const Tooltip = React.forwardRef<any, TooltipProps>((props, ref) => {
     const { left, top, bottom, right, height, width } = (
       e.target as HTMLElement
     ).getBoundingClientRect();
+    console.log({
+      left,
+      top,
+      bottom,
+      right,
+      height,
+      width,
+    });
+
     setTransform({
       left,
       top,
