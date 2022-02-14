@@ -36,7 +36,7 @@ const Tooltip = React.forwardRef<any, TooltipProps>((props, ref) => {
     setVisible(true);
   };
   const hide = () => {
-    // setVisible(false);
+    setVisible(false);
   };
   const popupStyle = {
     top: {
@@ -60,7 +60,6 @@ const Tooltip = React.forwardRef<any, TooltipProps>((props, ref) => {
       transformOrigin: `${transform.width}px 0px 0px`,
     },
   };
-  console.log(popupStyle[position], position);
 
   const tooltipDOM = (
     <PortalWrapper visible={visible} ref={portalRef}>
@@ -98,15 +97,6 @@ const Tooltip = React.forwardRef<any, TooltipProps>((props, ref) => {
     const { left, top, bottom, right, height, width } = (
       e.target as HTMLElement
     ).getBoundingClientRect();
-    console.log({
-      left,
-      top,
-      bottom,
-      right,
-      height,
-      width,
-    });
-
     setTransform({
       left,
       top,
