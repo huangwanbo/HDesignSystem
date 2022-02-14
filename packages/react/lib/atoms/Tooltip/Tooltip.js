@@ -21,7 +21,7 @@ const Tooltip = React.forwardRef((props, ref) => {
         setVisible(true);
     };
     const hide = () => {
-        // setVisible(false);
+        setVisible(false);
     };
     const popupStyle = {
         top: {
@@ -45,7 +45,6 @@ const Tooltip = React.forwardRef((props, ref) => {
             transformOrigin: `${transform.width}px 0px 0px`,
         },
     };
-    console.log(popupStyle[position], position);
     const tooltipDOM = (React.createElement(PortalWrapper, { visible: visible, ref: portalRef },
         React.createElement("div", { ref: ref, role: "tooltip", className: `${prefixCls}-container`, style: {
                 width: "100%",
@@ -61,14 +60,6 @@ const Tooltip = React.forwardRef((props, ref) => {
                 React.createElement("div", { className: cls(`${prefixCls}-arrow`, `${prefixCls}-arrow-${position}`) })))));
     const onMouseEnter = (e) => {
         const { left, top, bottom, right, height, width } = e.target.getBoundingClientRect();
-        console.log({
-            left,
-            top,
-            bottom,
-            right,
-            height,
-            width,
-        });
         setTransform({
             left,
             top,
@@ -80,6 +71,7 @@ const Tooltip = React.forwardRef((props, ref) => {
         show();
     };
     const onMouseLeave = () => {
+        hide();
     };
     const child = React.cloneElement(children, {
         onMouseEnter: onMouseEnter,
