@@ -138,7 +138,27 @@
   position: absolute;
   display: block;
   box-sizing: border-box;
+  z-index: -1;
+}
+
+.ds-tooltip-arrow-top {
   margin-left: 50%;
   transform: translateX(-81%) rotate(45deg) translateY(-67%);
-  z-index: -1;
+}
+
+.ds-tooltip-arrow-bottom {
+  margin-left: 50%;
+  margin-top: -60%;
+  transform: translateX(-50%) rotate(45deg) translateY(0%);
+}
+
+.ds-tooltip-arrow-right {
+  margin-top: -30%;
+  transform: translateX(-50%) rotate(45deg) translateY(0%);
+}
+
+.ds-tooltip-arrow-left {
+  margin-top: -30%;
+  margin-left: 100%;
+  transform: translateX(-50%) rotate(45deg) translateY(0%);
 }

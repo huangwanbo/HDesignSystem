@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
 import 'react-dom';
 import PortalWrapper from '../Portal/PortalWrapper.js';
+import cls from 'classNames';
 
 const prefixCls = "ds-tooltip";
 const Tooltip = React.forwardRef((props, ref) => {
-    const { children, title } = props;
+    const { children, title, position = "top" } = props;
     const [visible, setVisible] = useState(false);
     const [transform, setTransform] = useState({
         left: 0,
@@ -22,6 +23,29 @@ const Tooltip = React.forwardRef((props, ref) => {
     const hide = () => {
         // setVisible(false);
     };
+    const popupStyle = {
+        top: {
+            left: `${transform.left}px`,
+            top: `${transform.top - transform.height - 15}px`,
+            transformOrigin: `${transform.width}px 0px 0px`,
+        },
+        bottom: {
+            left: `${transform.left}px`,
+            top: `${transform.top + 25}px`,
+            transformOrigin: `${transform.width}px 0px 0px`,
+        },
+        left: {
+            left: `${transform.left - transform.width - 15}px`,
+            top: `${transform.top}px`,
+            transformOrigin: `${transform.width}px 0px 0px`,
+        },
+        right: {
+            left: `${transform.left + transform.width + 15}px`,
+            top: `${transform.top - transform.height / 2}px`,
+            transformOrigin: `${transform.width}px 0px 0px`,
+        },
+    };
+    console.log(popupStyle[position], position);
     const tooltipDOM = (React.createElement(PortalWrapper, { visible: visible, ref: portalRef },
         React.createElement("div", { ref: ref, role: "tooltip", className: `${prefixCls}-container`, style: {
                 width: "100%",
@@ -31,14 +55,20 @@ const Tooltip = React.forwardRef((props, ref) => {
             } },
             React.createElement("div", { style: {
                     position: "absolute",
-                    left: `${transform.left}px`,
-                    top: `${transform.top - transform.height - 15}px`,
-                    transformOrigin: `${transform.width}px 0px 0px`,
+                    ...popupStyle[position],
                 }, onMouseEnter: show, onMouseLeave: hide },
                 React.createElement("div", { className: `${prefixCls}-inner` }, title),
-                React.createElement("div", { className: `${prefixCls}-arrow` })))));
+                React.createElement("div", { className: cls(`${prefixCls}-arrow`, `${prefixCls}-arrow-${position}`) })))));
     const onMouseEnter = (e) => {
         const { left, top, bottom, right, height, width } = e.target.getBoundingClientRect();
+        console.log({
+            left,
+            top,
+            bottom,
+            right,
+            height,
+            width,
+        });
         setTransform({
             left,
             top,

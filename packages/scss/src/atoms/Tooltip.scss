@@ -17,8 +17,24 @@
     position: absolute;
     display: block;
     box-sizing: border-box;
-    margin-left: 50%;
-    transform: translateX(-81%) rotate(45deg) translateY(-67%);
     z-index: -1;
+    &-top {
+      margin-left: 50%;
+      transform: translateX(-81%) rotate(45deg) translateY(-67%);
+    }
+    &-bottom {
+      margin-left: 50%;
+      margin-top: -60%;
+      transform: translateX(-50%) rotate(45deg) translateY(0%);
+    }
+    &-right {
+      margin-top: -30%;
+      transform: translateX(-50%) rotate(45deg) translateY(-0%);
+    }
+    &-left {
+      margin-top: -30%;
+      margin-left: 100%;
+      transform: translateX(-50%) rotate(45deg) translateY(-0%);
+    }
   }
 }
