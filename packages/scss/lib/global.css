@@ -67,6 +67,10 @@
 =============================================*/
 /*=====  End of IconSize               ======*/
 /*=============================================
+=            border-radius                    =
+=============================================*/
+/*=====  End of border-radius          ======*/
+/*=============================================
 =            Foundation - colors              =
 =============================================*/
 /**
@@ -630,4 +634,7 @@ template {
   --ds-h4-text-weight: 600;
   --ds-h5-text-weight: 800;
   --ds-h6-text-weight: 900;
+  --ds-border-radius-sm: 2px;
+  --ds-border-radius-base: 2px;
+  --ds-border-radius-lg: 8px;
 }

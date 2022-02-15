@@ -54,7 +54,6 @@ $green-light: #42be65;
 $yellow: #f1c21b;
 $yellow-light: #f1c21b;
 
-
 /*=====  End of Color  ======*/
 
 /*=============================================
@@ -76,13 +75,17 @@ $raleway: "Raleway", "HelveticaNeue", "Helvetica", "Arial", sans-serif; /* 2 */
 
 /* Font sizes */
 $fontSize: (
-  xs: 0.75rem,  //12px
-  sm: 0.875rem, //14px
-  base: 1rem, //16px
-  lg: 1.125rem, //18px
-  xl: 1.5rem //24px
+  xs: 0.75rem,
+  //12px
+  sm: 0.875rem,
+  //14px
+  base: 1rem,
+  //16px
+  lg: 1.125rem,
+  //18px
+  xl: 1.5rem //24px,
 );
-  
+
 $fs-xs: 0.75rem; //12px
 $fs-sm: 0.875rem; //14px
 $fs-base: 1rem; //16px
@@ -128,7 +131,6 @@ $breakpoints: (
 
 $spacing: (
   none: 0rem,
-  
   xxxs: 0.25rem,
   //4px
   xxs: 0.5rem,
@@ -149,8 +151,6 @@ $spacing: (
   //96px
 ) !default;
 
-
-
 /*=============================================
 =            IconSize                         =
 =============================================*/
@@ -158,11 +158,19 @@ $spacing: (
 $IconSize: (
   sm: 1rem,
   base: 2rem,
-  lg: 4rem
-)
+  lg: 4rem,
+);
 
 /*=====  End of IconSize               ======*/
 
+/*=============================================
+=            border-radius                    =
+=============================================*/
 
+$border-radius: (
+  sm: 2px,
+  base: 4px,
+  lg: 8px,
+);
 
-
+/*=====  End of border-radius          ======*/
