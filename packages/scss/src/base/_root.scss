@@ -37,4 +37,8 @@
   --ds-h4-text-weight: #{$fw-semibold};
   --ds-h5-text-weight: #{$fw-extrabold};
   --ds-h6-text-weight: #{$fw-bold};
+
+  --ds-border-radius-sm: #{map-get($border-radius, "sm")};
+  --ds-border-radius-base: #{map-get($border-radius, "sm")};
+  --ds-border-radius-lg: #{map-get($border-radius, "lg")};
 }

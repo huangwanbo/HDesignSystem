@@ -19,5 +19,7 @@
   "scripts": {
     "build": "yarn lerna run build",
     "dev": "yarn lerna run dev"
-  }
+  },
+  "repository": "git@github.com:huangwanbo/HDesignSystem.git",
+  "author": "未生 <weisheng.hwb@dtyunxi.com>"
 }

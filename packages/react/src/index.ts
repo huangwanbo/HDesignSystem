@@ -7,6 +7,7 @@ import Icon from "./atoms/Icon";
 import { Portal, PortalWrapper } from "./atoms/Portal";
 import Spin from "./atoms/Spin";
 import Tooltip from "./atoms/Tooltip";
+import Tag from "./atoms/Tag";
 export {
     /** export */
     Button,
@@ -19,5 +20,6 @@ export {
     Portal,
     PortalWrapper,
     Spin,
-    Tooltip
+    Tooltip,
+    Tag
 };

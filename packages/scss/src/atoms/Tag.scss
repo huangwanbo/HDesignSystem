@@ -1,0 +1,46 @@
+@import "foundation/all";
+
+.ds-tag {
+  display: inline-flex;
+  height: 24px;
+  line-height: 22px;
+  padding: 0 8px;
+  border-radius: var(--ds-border-radius-sm);
+  color: $dark;
+  font-size: 12px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  font-weight: 500;
+  vertical-align: middle;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  &-checked,
+  &-checkable:hover {
+    background-color: $white-light;
+  }
+  &-size {
+    @each $key, $val in $fontSize {
+      @if $key == xs {
+        &-samll {
+          height: 20px;
+          line-height: 18px;
+          font-size: $val;
+        }
+      } @else if $key == sm {
+        &-base {
+          height: 24px;
+          line-height: 22px;
+          font-size: 14px;
+        }
+      } @else if $key == base {
+        &-large {
+          height: 32px;
+          line-height: 30px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
