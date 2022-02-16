@@ -1,49 +1,73 @@
-function a(a, b, c) {
-    return b in a ? Object.defineProperty(a, b, {
-        value: c,
-        enumerable: !0,
-        configurable: !0,
-        writable: !0
-    }) : a[b] = c, a;
+function _defineProperty(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
 }
-function b() {
-    return (b = Object.assign || function(a) {
-        for(var c = 1; c < arguments.length; c++){
-            var d = arguments[c];
-            for(var b in d)Object.prototype.hasOwnProperty.call(d, b) && (a[b] = d[b]);
+function _extends() {
+    _extends = Object.assign || function(target) {
+        for(var i = 1; i < arguments.length; i++){
+            var source = arguments[i];
+            for(var key in source){
+                if (Object.prototype.hasOwnProperty.call(source, key)) {
+                    target[key] = source[key];
+                }
+            }
         }
-        return a;
-    }).apply(this, arguments);
+        return target;
+    };
+    return _extends.apply(this, arguments);
 }
-import c, { useContext as d } from "react";
-var e = "ds-icon", f = c.forwardRef(function(f, g) {
-    var h = f.spin, i = f.className, j = function(a) {
-        for(var c = 1; c < arguments.length; c++){
-            var d = null != arguments[c] ? arguments[c] : {}, h = Object.keys(d);
-            "function" == typeof Object.getOwnPropertySymbols && (h = h.concat(Object.getOwnPropertySymbols(d).filter(function(a) {
-                return Object.getOwnPropertyDescriptor(d, a).enumerable;
-            }))), h.forEach(function(b) {
-                a(a, b, d[b]);
-            });
+function _objectSpread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
         }
-        return a;
-    }({
-        ref: g
-    }, f, {
-        className: "".concat(i ? i + " " : "").concat(e, " ").concat(e, "-h6")
+        ownKeys.forEach(function(key) {
+            _defineProperty(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import React, { useContext } from 'react';
+var prefixCls = 'ds-icon';
+function IconH6Component(iconProps, ref) {
+    var spin = iconProps.spin, className = iconProps.className;
+    var props = _objectSpread({
+        ref: ref
+    }, iconProps, {
+        className: "".concat(className ? className + ' ' : '').concat(prefixCls, " ").concat(prefixCls, "-h6")
     });
-    return h && (j.className = "".concat(j.className, " ").concat(e, "-loading")), delete j.spin, delete j.isIcon, c.createElement("svg", b({
+    if (spin) {
+        props.className = "".concat(props.className, " ").concat(prefixCls, "-loading");
+    }
+    delete props.spin;
+    delete props.isIcon;
+    return(/*#__PURE__*/ React.createElement("svg", _extends({
         fill: "none",
         stroke: "currentColor",
         strokeWidth: "4",
         viewBox: "0 0 48 48",
         width: "1em",
         height: "1em"
-    }, j), c.createElement("path", {
+    }, props), /*#__PURE__*/ React.createElement("path", {
         d: "M6 6v18m0 0v18m0-18h20m0 0V6m0 18v18M32 34.5c0 3.038 2.239 5.5 5 5.5s5-2.462 5-5.5-2.239-5.5-5-5.5-5 2.462-5 5.5Zm0 0v-5.73c0-4.444 3.867-7.677 8-7.263.437.044.736.08.952.115"
-    }));
-});
-f.defaultProps = {
-    isIcon: !0
-}, f.displayName = "IconH6";
-export default f;
+    })));
+}
+var IconH6 = /*#__PURE__*/ React.forwardRef(IconH6Component);
+IconH6.defaultProps = {
+    isIcon: true
+};
+IconH6.displayName = 'IconH6';
+export default IconH6;

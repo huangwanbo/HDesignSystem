@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import cls from "classNames";
+import { IconClose, IconLoading } from "@DS/Icon";
 // const COLORS = [
 //   "red",
 //   "orangered",
@@ -45,11 +46,17 @@ const Component = (props: Partial<TagProps>, ref: any) => {
     defaultChecked = false,
     checkable,
     onCheck,
+    icon,
+    closable,
+    closeIcon,
+    onClose,
     ...rest
   } = props;
   const otherProps = {
     ...rest,
   };
+  const [isDestroy, setDestroy] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [checked, setChecked] = useState<boolean>(
     "checked" in props ? (props.checked as boolean) : defaultChecked
   );
@@ -58,8 +65,6 @@ const Component = (props: Partial<TagProps>, ref: any) => {
   const mergeStyle: CSSProperties = {
     ...style,
   };
-  console.log(checkable);
-
   const classNames = cls(
     `${prefixCls}`,
     {
@@ -70,19 +75,48 @@ const Component = (props: Partial<TagProps>, ref: any) => {
     className
   );
   function onHandleCheck() {
-    console.log(mergeChecked);
-
     if (!("checked" in props)) {
       setChecked(!mergeChecked);
     }
     onCheck && onCheck(!mergeChecked);
   }
+  function onHandleClose(e: React.MouseEvent<Element, MouseEvent>) {
+    const rest = onClose && onClose(e);
+    if (rest && rest.then) {
+      setLoading(true);
+      rest
+        .then(() => {
+          setLoading(false);
+          setDestroy(true);
+        })
+        .catch(() => {
+          setLoading(false);
+        });
+    } else {
+      setDestroy(true);
+    }
+  }
   if (checkable) {
     otherProps.onClick = onHandleCheck;
   }
+  if (closable && isDestroy) {
+    return null;
+  }
   return (
     <div ref={ref} style={mergeStyle} className={classNames} {...otherProps}>
+      <span className={cls(`${prefixCls}-icon`)}>{icon}</span>
       {children}
+      {closable && (
+        <span className={cls(`${prefixCls}-close`)} onClick={onHandleClose}>
+          {loading ? (
+            <IconLoading className={`ds-spin-loading`} />
+          ) : closeIcon ? (
+            closeIcon
+          ) : (
+            <IconClose />
+          )}
+        </span>
+      )}
     </div>
   );
 };

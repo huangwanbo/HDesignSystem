@@ -148,12 +148,6 @@ const config = {
                         "syntax": "ecmascript",
                         "jsx": true,
                      },
-                     minify: {
-                       compress: {
-                         unused: true
-                       },
-                       mangle: true
-                     },
                      target: "es5"
                      
                    }

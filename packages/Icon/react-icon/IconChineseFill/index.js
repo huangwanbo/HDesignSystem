@@ -1,57 +1,81 @@
-function a(a, b, c) {
-    return b in a ? Object.defineProperty(a, b, {
-        value: c,
-        enumerable: !0,
-        configurable: !0,
-        writable: !0
-    }) : a[b] = c, a;
+function _defineProperty(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
 }
-function b() {
-    return (b = Object.assign || function(a) {
-        for(var c = 1; c < arguments.length; c++){
-            var d = arguments[c];
-            for(var b in d)Object.prototype.hasOwnProperty.call(d, b) && (a[b] = d[b]);
+function _extends() {
+    _extends = Object.assign || function(target) {
+        for(var i = 1; i < arguments.length; i++){
+            var source = arguments[i];
+            for(var key in source){
+                if (Object.prototype.hasOwnProperty.call(source, key)) {
+                    target[key] = source[key];
+                }
+            }
         }
-        return a;
-    }).apply(this, arguments);
+        return target;
+    };
+    return _extends.apply(this, arguments);
 }
-import c, { useContext as d } from "react";
-var e = "ds-icon", f = c.forwardRef(function(f, g) {
-    var h = f.spin, i = f.className, j = function(a) {
-        for(var c = 1; c < arguments.length; c++){
-            var d = null != arguments[c] ? arguments[c] : {}, h = Object.keys(d);
-            "function" == typeof Object.getOwnPropertySymbols && (h = h.concat(Object.getOwnPropertySymbols(d).filter(function(a) {
-                return Object.getOwnPropertyDescriptor(d, a).enumerable;
-            }))), h.forEach(function(b) {
-                a(a, b, d[b]);
-            });
+function _objectSpread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
         }
-        return a;
-    }({
-        ref: g
-    }, f, {
-        className: "".concat(i ? i + " " : "").concat(e, " ").concat(e, "-chinese-fill")
+        ownKeys.forEach(function(key) {
+            _defineProperty(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import React, { useContext } from 'react';
+var prefixCls = 'ds-icon';
+function IconChineseFillComponent(iconProps, ref) {
+    var spin = iconProps.spin, className = iconProps.className;
+    var props = _objectSpread({
+        ref: ref
+    }, iconProps, {
+        className: "".concat(className ? className + ' ' : '').concat(prefixCls, " ").concat(prefixCls, "-chinese-fill")
     });
-    return h && (j.className = "".concat(j.className, " ").concat(e, "-loading")), delete j.spin, delete j.isIcon, c.createElement("svg", b({
+    if (spin) {
+        props.className = "".concat(props.className, " ").concat(prefixCls, "-loading");
+    }
+    delete props.spin;
+    delete props.isIcon;
+    return(/*#__PURE__*/ React.createElement("svg", _extends({
         fill: "none",
         stroke: "currentColor",
         strokeWidth: "4",
         viewBox: "0 0 48 48",
         width: "1em",
         height: "1em"
-    }, j), c.createElement("path", {
+    }, props), /*#__PURE__*/ React.createElement("path", {
         fill: "currentColor",
         stroke: "none",
         d: "M22 21h-5v4.094h5V21ZM26 25.094V21h5v4.094h-5Z"
-    }), c.createElement("path", {
+    }), /*#__PURE__*/ React.createElement("path", {
         fill: "currentColor",
         fillRule: "evenodd",
         stroke: "none",
         d: "M24 4C12.954 4 4 12.954 4 24s8.954 20 20 20 20-8.954 20-20S35.046 4 24 4Zm2 13v-5h-4v5h-6.5a2.5 2.5 0 0 0-2.5 2.5v7.094a2.5 2.5 0 0 0 2.5 2.5H22V36h4v-6.906h6.5a2.5 2.5 0 0 0 2.5-2.5V19.5a2.5 2.5 0 0 0-2.5-2.5H26Z",
         clipRule: "evenodd"
-    }));
-});
-f.defaultProps = {
-    isIcon: !0
-}, f.displayName = "IconChineseFill";
-export default f;
+    })));
+}
+var IconChineseFill = /*#__PURE__*/ React.forwardRef(IconChineseFillComponent);
+IconChineseFill.defaultProps = {
+    isIcon: true
+};
+IconChineseFill.displayName = 'IconChineseFill';
+export default IconChineseFill;

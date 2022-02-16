@@ -1,49 +1,73 @@
-function a(a, b, c) {
-    return b in a ? Object.defineProperty(a, b, {
-        value: c,
-        enumerable: !0,
-        configurable: !0,
-        writable: !0
-    }) : a[b] = c, a;
+function _defineProperty(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
 }
-function b() {
-    return (b = Object.assign || function(a) {
-        for(var c = 1; c < arguments.length; c++){
-            var d = arguments[c];
-            for(var b in d)Object.prototype.hasOwnProperty.call(d, b) && (a[b] = d[b]);
+function _extends() {
+    _extends = Object.assign || function(target) {
+        for(var i = 1; i < arguments.length; i++){
+            var source = arguments[i];
+            for(var key in source){
+                if (Object.prototype.hasOwnProperty.call(source, key)) {
+                    target[key] = source[key];
+                }
+            }
         }
-        return a;
-    }).apply(this, arguments);
+        return target;
+    };
+    return _extends.apply(this, arguments);
 }
-import c, { useContext as d } from "react";
-var e = "ds-icon", f = c.forwardRef(function(f, g) {
-    var h = f.spin, i = f.className, j = function(a) {
-        for(var c = 1; c < arguments.length; c++){
-            var d = null != arguments[c] ? arguments[c] : {}, h = Object.keys(d);
-            "function" == typeof Object.getOwnPropertySymbols && (h = h.concat(Object.getOwnPropertySymbols(d).filter(function(a) {
-                return Object.getOwnPropertyDescriptor(d, a).enumerable;
-            }))), h.forEach(function(b) {
-                a(a, b, d[b]);
-            });
+function _objectSpread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
         }
-        return a;
-    }({
-        ref: g
-    }, f, {
-        className: "".concat(i ? i + " " : "").concat(e, " ").concat(e, "-fire")
+        ownKeys.forEach(function(key) {
+            _defineProperty(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import React, { useContext } from 'react';
+var prefixCls = 'ds-icon';
+function IconFireComponent(iconProps, ref) {
+    var spin = iconProps.spin, className = iconProps.className;
+    var props = _objectSpread({
+        ref: ref
+    }, iconProps, {
+        className: "".concat(className ? className + ' ' : '').concat(prefixCls, " ").concat(prefixCls, "-fire")
     });
-    return h && (j.className = "".concat(j.className, " ").concat(e, "-loading")), delete j.spin, delete j.isIcon, c.createElement("svg", b({
+    if (spin) {
+        props.className = "".concat(props.className, " ").concat(prefixCls, "-loading");
+    }
+    delete props.spin;
+    delete props.isIcon;
+    return(/*#__PURE__*/ React.createElement("svg", _extends({
         fill: "none",
         stroke: "currentColor",
         strokeWidth: "4",
         viewBox: "0 0 48 48",
         width: "1em",
         height: "1em"
-    }, j), c.createElement("path", {
+    }, props), /*#__PURE__*/ React.createElement("path", {
         d: "M17.577 27.477C20.022 22.579 17.041 12.98 24.546 6c0 0-1.156 15.55 5.36 17.181 2.145.537 2.68-5.369 4.289-8.59 0 0 .536 4.832 2.68 8.59 3.217 7.517-1 14.117-5.896 17.182-4.289 2.684-14.587 2.807-19.835-5.37-4.824-7.516 0-15.57 0-15.57s4.289 12.35 6.433 8.054Z"
-    }));
-});
-f.defaultProps = {
-    isIcon: !0
-}, f.displayName = "IconFire";
-export default f;
+    })));
+}
+var IconFire = /*#__PURE__*/ React.forwardRef(IconFireComponent);
+IconFire.defaultProps = {
+    isIcon: true
+};
+IconFire.displayName = 'IconFire';
+export default IconFire;

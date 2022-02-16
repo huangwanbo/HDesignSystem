@@ -125,6 +125,28 @@
 /*=============================================
  =            Head font weights                =
  =============================================*/
+.ds-icon-block {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ds-icon-loading {
+  display: inline-block;
+  font-weight: var(--ds-body-font-weight, 400);
+  animation-name: ds-loading-circle;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes ds-loading-circle {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .ds-icon-size-sm {
   font-size: 1rem;
   display: inline-block;

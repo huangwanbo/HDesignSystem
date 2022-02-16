@@ -147,6 +147,23 @@
   background-color: #f1f2f3;
 }
 
+.ds-tag-icon {
+  display: inline-flex;
+  margin-right: 4px;
+}
+
+.ds-tag-close {
+  display: inline-flex;
+  margin-left: 4px;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.ds-tag-close:hover {
+  background-color: #a3a5ad;
+}
+
 .ds-tag-size-samll {
   height: 20px;
   line-height: 18px;

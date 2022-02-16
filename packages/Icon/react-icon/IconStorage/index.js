@@ -1,57 +1,81 @@
-function a(a, b, c) {
-    return b in a ? Object.defineProperty(a, b, {
-        value: c,
-        enumerable: !0,
-        configurable: !0,
-        writable: !0
-    }) : a[b] = c, a;
+function _defineProperty(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
 }
-function b() {
-    return (b = Object.assign || function(a) {
-        for(var c = 1; c < arguments.length; c++){
-            var d = arguments[c];
-            for(var b in d)Object.prototype.hasOwnProperty.call(d, b) && (a[b] = d[b]);
+function _extends() {
+    _extends = Object.assign || function(target) {
+        for(var i = 1; i < arguments.length; i++){
+            var source = arguments[i];
+            for(var key in source){
+                if (Object.prototype.hasOwnProperty.call(source, key)) {
+                    target[key] = source[key];
+                }
+            }
         }
-        return a;
-    }).apply(this, arguments);
+        return target;
+    };
+    return _extends.apply(this, arguments);
 }
-import c, { useContext as d } from "react";
-var e = "ds-icon", f = c.forwardRef(function(f, g) {
-    var h = f.spin, i = f.className, j = function(a) {
-        for(var c = 1; c < arguments.length; c++){
-            var d = null != arguments[c] ? arguments[c] : {}, h = Object.keys(d);
-            "function" == typeof Object.getOwnPropertySymbols && (h = h.concat(Object.getOwnPropertySymbols(d).filter(function(a) {
-                return Object.getOwnPropertyDescriptor(d, a).enumerable;
-            }))), h.forEach(function(b) {
-                a(a, b, d[b]);
-            });
+function _objectSpread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
         }
-        return a;
-    }({
-        ref: g
-    }, f, {
-        className: "".concat(i ? i + " " : "").concat(e, " ").concat(e, "-storage")
+        ownKeys.forEach(function(key) {
+            _defineProperty(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import React, { useContext } from 'react';
+var prefixCls = 'ds-icon';
+function IconStorageComponent(iconProps, ref) {
+    var spin = iconProps.spin, className = iconProps.className;
+    var props = _objectSpread({
+        ref: ref
+    }, iconProps, {
+        className: "".concat(className ? className + ' ' : '').concat(prefixCls, " ").concat(prefixCls, "-storage")
     });
-    return h && (j.className = "".concat(j.className, " ").concat(e, "-loading")), delete j.spin, delete j.isIcon, c.createElement("svg", b({
+    if (spin) {
+        props.className = "".concat(props.className, " ").concat(prefixCls, "-loading");
+    }
+    delete props.spin;
+    delete props.isIcon;
+    return(/*#__PURE__*/ React.createElement("svg", _extends({
         fill: "none",
         stroke: "currentColor",
         strokeWidth: "4",
         viewBox: "0 0 48 48",
         width: "1em",
         height: "1em"
-    }, j), c.createElement("path", {
+    }, props), /*#__PURE__*/ React.createElement("path", {
         d: "M7 18h34v12H7V18ZM40 6H8a1 1 0 0 0-1 1v11h34V7a1 1 0 0 0-1-1ZM7 30h34v11a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V30Z"
-    }), c.createElement("path", {
+    }), /*#__PURE__*/ React.createElement("path", {
         d: "M13.02 36H13v.02h.02V36Z"
-    }), c.createElement("path", {
+    }), /*#__PURE__*/ React.createElement("path", {
         fill: "currentColor",
         stroke: "none",
         d: "M13 12v-2h-2v2h2Zm.02 0h2v-2h-2v2Zm0 .02v2h2v-2h-2Zm-.02 0h-2v2h2v-2ZM13 14h.02v-4H13v4Zm-1.98-2v.02h4V12h-4Zm2-1.98H13v4h.02v-4Zm1.98 2V12h-4v.02h4Z"
-    }), c.createElement("path", {
+    }), /*#__PURE__*/ React.createElement("path", {
         d: "M13.02 24H13v.02h.02V24Z"
-    }));
-});
-f.defaultProps = {
-    isIcon: !0
-}, f.displayName = "IconStorage";
-export default f;
+    })));
+}
+var IconStorage = /*#__PURE__*/ React.forwardRef(IconStorageComponent);
+IconStorage.defaultProps = {
+    isIcon: true
+};
+IconStorage.displayName = 'IconStorage';
+export default IconStorage;
