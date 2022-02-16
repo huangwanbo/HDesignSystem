@@ -5,6 +5,7 @@ const cloneDeep = require('lodash/cloneDeep');
 const { flatData } = require('./getSvgData');
 const nunjucks = require('nunjucks');
 const path = require('path');
+const swc = require("@swc/core");
 const config = {
     plugins: [
       'removeUnknownsAndDefaults',
@@ -140,7 +141,23 @@ const config = {
               },
               (err, res) => {
                   if (err) return;
-                  const code = babel.transform(res, babelConfig).code;
+                 // const code = babel.transform(res, babelConfig).code;
+                 const code = swc.transformSync(res,{
+                   "jsc": {
+                     "parser": {
+                        "syntax": "ecmascript",
+                        "jsx": true,
+                     },
+                     minify: {
+                       compress: {
+                         unused: true
+                       },
+                       mangle: true
+                     },
+                     target: "es5"
+                     
+                   }
+                 }).code;
                   fs.outputFile(
                       `react-icon/${iconName}/index.js`,
                       code,
