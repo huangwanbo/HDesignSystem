@@ -1,8 +1,27 @@
 @import "foundation/all";
-@each $key,$val in $IconSize{
-    .ds-icon-size-#{$key}{
-        font-size: $val;
-        display: inline-block;
-        text-align: center;
-    }
+.ds-icon {
+  &-block {
+    @include inline-flex(column);
+  }
+  &-loading {
+    display: inline-block;
+    font-weight: $body-font-weight;
+    animation-name: ds-loading-circle;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+}
+
+@keyframes ds-loading-circle {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@each $key, $val in $IconSize {
+  .ds-icon-size-#{$key} {
+    font-size: $val;
+    display: inline-block;
+    text-align: center;
+  }
 }

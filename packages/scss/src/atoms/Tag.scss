@@ -20,6 +20,20 @@
   &-checkable:hover {
     background-color: $white-light;
   }
+  &-icon {
+    display: inline-flex;
+    margin-right: 4px;
+  }
+  &-close {
+    display: inline-flex;
+    margin-left: 4px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+  }
+  &-close:hover {
+    background-color: $gray;
+  }
   &-size {
     @each $key, $val in $fontSize {
       @if $key == xs {

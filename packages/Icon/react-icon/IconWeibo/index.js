@@ -1,51 +1,75 @@
-function a(a, b, c) {
-    return b in a ? Object.defineProperty(a, b, {
-        value: c,
-        enumerable: !0,
-        configurable: !0,
-        writable: !0
-    }) : a[b] = c, a;
+function _defineProperty(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
 }
-function b() {
-    return (b = Object.assign || function(a) {
-        for(var c = 1; c < arguments.length; c++){
-            var d = arguments[c];
-            for(var b in d)Object.prototype.hasOwnProperty.call(d, b) && (a[b] = d[b]);
+function _extends() {
+    _extends = Object.assign || function(target) {
+        for(var i = 1; i < arguments.length; i++){
+            var source = arguments[i];
+            for(var key in source){
+                if (Object.prototype.hasOwnProperty.call(source, key)) {
+                    target[key] = source[key];
+                }
+            }
         }
-        return a;
-    }).apply(this, arguments);
+        return target;
+    };
+    return _extends.apply(this, arguments);
 }
-import c, { useContext as d } from "react";
-var e = "ds-icon", f = c.forwardRef(function(f, g) {
-    var h = f.spin, i = f.className, j = function(a) {
-        for(var c = 1; c < arguments.length; c++){
-            var d = null != arguments[c] ? arguments[c] : {}, h = Object.keys(d);
-            "function" == typeof Object.getOwnPropertySymbols && (h = h.concat(Object.getOwnPropertySymbols(d).filter(function(a) {
-                return Object.getOwnPropertyDescriptor(d, a).enumerable;
-            }))), h.forEach(function(b) {
-                a(a, b, d[b]);
-            });
+function _objectSpread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
         }
-        return a;
-    }({
-        ref: g
-    }, f, {
-        className: "".concat(i ? i + " " : "").concat(e, " ").concat(e, "-weibo")
+        ownKeys.forEach(function(key) {
+            _defineProperty(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import React, { useContext } from 'react';
+var prefixCls = 'ds-icon';
+function IconWeiboComponent(iconProps, ref) {
+    var spin = iconProps.spin, className = iconProps.className;
+    var props = _objectSpread({
+        ref: ref
+    }, iconProps, {
+        className: "".concat(className ? className + ' ' : '').concat(prefixCls, " ").concat(prefixCls, "-weibo")
     });
-    return h && (j.className = "".concat(j.className, " ").concat(e, "-loading")), delete j.spin, delete j.isIcon, c.createElement("svg", b({
+    if (spin) {
+        props.className = "".concat(props.className, " ").concat(prefixCls, "-loading");
+    }
+    delete props.spin;
+    delete props.isIcon;
+    return(/*#__PURE__*/ React.createElement("svg", _extends({
         fill: "none",
         stroke: "currentColor",
         strokeWidth: "4",
         viewBox: "0 0 48 48",
         width: "1em",
         height: "1em"
-    }, j), c.createElement("path", {
+    }, props), /*#__PURE__*/ React.createElement("path", {
         fill: "currentColor",
         stroke: "none",
         d: "M31.82 5.6c-1.445.635-1.776 2.144-.727 3.192.515.516.993.608 3.11.608 2.952 0 4.94.781 6.448 2.53 1.84 2.079 2.052 2.714 2.052 6.513 0 3.377 0 3.441.782 3.892 1.812 1.021 3.017-.24 3.44-3.616.544-4.397-2.078-9.531-6.025-11.877-2.595-1.509-7.029-2.116-9.08-1.242Zm-14.831 5.612c-3.376 1.205-6.633 3.524-10.13 7.268-8.288 8.804-7.746 17.186 1.39 21.648 9.494 4.636 22.282 3.1 29.247-3.533 5.216-4.94 4.581-11.16-1.353-13.267-1.058-.358-1.389-.634-1.232-.966.542-1.324.726-2.86.423-3.772-.939-2.86-4.343-3.523-9.403-1.812l-2.024.69.184-2.024c.212-2.383-.303-3.68-1.72-4.398-1.187-.588-3.45-.524-5.382.166Zm8.381 11.666c4.49 1.232 7.231 3.946 7.231 7.176 0 3.588-3.192 6.817-8.38 8.528-2.77.902-7.931 1.086-10.461.396-4.793-1.353-7.507-4.012-7.507-7.416 0-1.867.81-3.496 2.594-5.152 1.656-1.564 2.926-2.318 5.364-3.137 3.689-1.242 7.636-1.389 11.16-.395Zm-9.494 2.925c-3.045 1.417-4.674 3.588-4.674 6.302 0 2.475 1.086 4.159 3.469 5.428 1.84.994 5.216.902 7.268-.147 2.622-1.39 4.342-3.947 4.342-6.45-.028-2.05-1.84-4.489-3.984-5.363-1.72-.736-4.609-.616-6.421.23Zm2.199 5.667c.211.212.358.727.358 1.178 0 1.509-2.53 2.742-3.56 1.72-.57-.57-.423-1.987.24-2.65.662-.662 2.391-.818 2.962-.248Zm14.26-19.688c-1.39 1.39-.451 3.046 1.748 3.046 1.895 0 2.741.966 2.741 3.137 0 1.352.12 1.748.663 2.107 1.628 1.15 2.953-.12 2.953-2.806 0-3.285-2.355-5.76-5.695-5.999-1.509-.12-1.868-.027-2.41.515Z"
-    }));
-});
-f.defaultProps = {
-    isIcon: !0
-}, f.displayName = "IconWeibo";
-export default f;
+    })));
+}
+var IconWeibo = /*#__PURE__*/ React.forwardRef(IconWeiboComponent);
+IconWeibo.defaultProps = {
+    isIcon: true
+};
+IconWeibo.displayName = 'IconWeibo';
+export default IconWeibo;
