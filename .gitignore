@@ -1,3 +1,4 @@
 node_modules
 playgrounds
-lib
+packages/**/lib
+packages/**/react-icon
