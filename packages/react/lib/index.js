@@ -9,4 +9,5 @@ export { default as PortalWrapper } from './atoms/Portal/PortalWrapper.js';
 export { default as Spin } from './atoms/Spin/Spin.js';
 export { default as Tooltip } from './atoms/Tooltip/Tooltip.js';
 export { default as Tag } from './atoms/Tag/Tag.js';
+export { default as Divider } from './atoms/Divider/Divider.js';
 //# sourceMappingURL=index.js.map

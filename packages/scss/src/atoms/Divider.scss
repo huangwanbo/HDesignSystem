@@ -1,0 +1,57 @@
+@import "foundation/all";
+.ds-divider {
+  &-horizontal {
+    position: relative;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    margin: 20px 0;
+    border-bottom: 1px solid var(--color-neutral-3);
+    clear: both;
+    .ds-divider-with-text {
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      border-bottom-width: 0;
+    }
+  }
+  &-vertical {
+    display: inline-block;
+    min-width: 1px;
+    max-width: 1px;
+    height: 1em;
+    margin: 0 12px;
+    border-left: 1px solid var(--color-neutral-3);
+    vertical-align: middle;
+  }
+  &-text {
+    box-sizing: border-box;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 2;
+    color: var(--color-text-1);
+  }
+  &-with-text {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    border-bottom-width: 0;
+  }
+  &-with-text:before,
+  &-with-text:after {
+    content: "";
+    height: 0;
+    flex: 1;
+    border-bottom: 1px solid;
+    border-bottom-color: inherit;
+  }
+  &-with-text-left:before {
+    flex-basis: 24px;
+    flex-grow: 0;
+  }
+  &-with-text-right:after {
+    flex-basis: 24px;
+    flex-grow: 0;
+  }
+}
