@@ -1,0 +1,36 @@
+@import "foundation/all";
+$align: (flex-start, center, flex-end, stretch);
+$justify: (flex-start, center, flex-end, space-around, space-between);
+$col: 24;
+.ds-row {
+  display: flex;
+  flex-flow: row wrap;
+}
+.ds-col- {
+  position: relative;
+  box-sizing: border-box;
+}
+.ds-row {
+  @each $key in $align {
+    &-align#{-#{$key}} {
+      align-items: $key;
+    }
+  }
+  @each $key in $justify {
+    &-justify#{-#{$key}} {
+      justify-content: $key;
+    }
+  }
+}
+@for $i from 1 through $col {
+  .ds-col-#{$i} {
+    width: $i/$col * 100 * 1%;
+    flex: 0 0 $i/$col * 100 * 1%;
+  }
+}
+
+@for $i from 1 through $col {
+  .ds-col-offset-#{$i} {
+    margin-left: $i/$col * 100 * 1%;
+  }
+}
