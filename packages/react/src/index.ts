@@ -9,6 +9,7 @@ import Spin from "./atoms/Spin";
 import Tooltip from "./atoms/Tooltip";
 import Tag from "./atoms/Tag";
 import Divider from "./atoms/Divider";
+import Grid from "./atoms/Grid";
 export {
     /** export */
     Button,
@@ -23,5 +24,6 @@ export {
     Spin,
     Tooltip,
     Tag,
-    Divider
+    Divider,
+    Grid
 };
