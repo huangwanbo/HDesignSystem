@@ -10,6 +10,7 @@ import Tooltip from "./atoms/Tooltip";
 import Tag from "./atoms/Tag";
 import Divider from "./atoms/Divider";
 import Grid from "./atoms/Grid";
+import Layout from "./atoms/Layout";
 export {
     /** export */
     Button,
@@ -25,5 +26,6 @@ export {
     Tooltip,
     Tag,
     Divider,
-    Grid
+    Grid,
+    Layout
 };

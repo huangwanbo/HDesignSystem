@@ -1,0 +1,43 @@
+@import "foundation/all";
+.ds-layout {
+  display: flex;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  &-header,
+  &-content,
+  &-sider,
+  &-footer {
+    color: var(--color-white);
+    text-align: center;
+    font-stretch: condensed;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &-header {
+    margin: 0;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+  }
+  &-footer {
+    margin: 0;
+    flex: 0 0 auto;
+  }
+  &-content {
+    flex: 1;
+  }
+  &-has-sider {
+    flex-direction: row;
+  }
+  &-sider {
+    position: relative;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    flex: none;
+    transition: width 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
+  }
+}
