@@ -7,16 +7,19 @@ import React, {
 import cls from "classNames";
 import { prefixCls } from "./constant";
 import { IconLeft, IconRight } from "@DS/Icon";
+import ResizeBox, { directionType } from "../ResizeBox";
 type ComponentProps = {
   style: CSSProperties;
   className: string;
   collapsed: boolean;
   collapsible: boolean;
   defaultCollapsed: boolean;
-  width: number | string;
+  width: number;
   collapsedWidth: number | string;
+  resizeDirections: Array<directionType>;
   onBreakpoint: (broken: boolean) => void;
   onCollapse: (collapsed: boolean) => void;
+  hasResize: boolean;
 } & HTMLAttributes<HTMLElement>;
 function componentRef(props: Partial<ComponentProps>, ref: any) {
   const {
@@ -27,6 +30,8 @@ function componentRef(props: Partial<ComponentProps>, ref: any) {
     collapsedWidth = 48,
     collapsible,
     onCollapse,
+    resizeDirections = ["right"],
+    hasResize = false,
   } = props;
   const [collapsed, setCollapsed] = useState(props.collapsed || false);
   const cs = cls(`${prefixCls}-sider`, className);
@@ -34,7 +39,7 @@ function componentRef(props: Partial<ComponentProps>, ref: any) {
   const siderWidth = Number.isInteger(rawWidth) ? `${rawWidth}px` : rawWidth;
   const renderTrigger = () => {
     const triggerIcon = collapsed ? <IconLeft /> : <IconRight />;
-    return collapsible ? (
+    return collapsible && !hasResize ? (
       <div
         style={{ width: siderWidth }}
         onClick={() => {
@@ -46,18 +51,47 @@ function componentRef(props: Partial<ComponentProps>, ref: any) {
       </div>
     ) : null;
   };
-  return (
-    <aside
-      ref={ref}
-      style={{
-        width: siderWidth,
-        ...style,
-      }}
-      className={cs}
-    >
-      <div>{children}</div>
+  //   const onMoving = (e: any, evnet: Record<string, number>) => {
+  //     console.log(e, evnet);
+  //   };
+  const collapsibleCss =
+    collapsible && collapsed
+      ? {
+          width: siderWidth,
+        }
+      : {};
+  const wrapperDom = (child: React.ReactElement) => {
+    return hasResize ? (
+      <ResizeBox
+        ref={ref}
+        style={{
+          ...style,
+          ...collapsibleCss,
+        }}
+        width={width}
+        className={cs}
+        directions={resizeDirections}
+      >
+        {child}
+      </ResizeBox>
+    ) : (
+      <div
+        ref={ref}
+        style={{
+          ...style,
+          ...collapsibleCss,
+        }}
+        className={cs}
+      >
+        {child}
+      </div>
+    );
+  };
+  return wrapperDom(
+    <>
+      <div className={`${prefixCls}-sider-children`}>{children}</div>
       {renderTrigger()}
-    </aside>
+    </>
   );
 }
 

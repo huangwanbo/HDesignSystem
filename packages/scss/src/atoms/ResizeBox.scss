@@ -1,0 +1,44 @@
+@import "foundation/all";
+.ds-resize-box {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.ds-resizebox-trigger-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: var(--color-neutral-3);
+  &-horizontal {
+    height: 6px;
+    width: 100%;
+    cursor: row-resize;
+  }
+  &-vertical {
+    width: 6px;
+    flex-direction: column;
+    height: 100%;
+    cursor: col-resize;
+  }
+}
+.ds-resizebox-direct {
+  &-bottom,
+  &-left,
+  &-right,
+  &-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+    user-select: none;
+    box-sizing: border-box;
+  }
+  &-right {
+    left: unset;
+    right: 0;
+  }
+  &-bottom {
+    top: unset;
+    bottom: 0;
+  }
+}
