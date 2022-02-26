@@ -82,7 +82,7 @@ $fontSize: (
   //16px
   lg: 1.125rem,
   //18px
-  xl: 1.5rem //24px,,,,,
+  xl: 1.5rem //24px,,,,,,
 );
 
 $fs-xs: 0.75rem; //12px
@@ -173,3 +173,11 @@ $border-radius: (
 );
 
 /*=====  End of border-radius          ======*/
+
+/*=============================================
+=            line-height            =
+=============================================*/
+
+$line-height-base: 1.5715;
+
+/*=====  End of line-height  ======*/

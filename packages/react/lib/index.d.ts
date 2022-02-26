@@ -11,8 +11,9 @@ import Tag from "./atoms/Tag";
 import Divider from "./atoms/Divider";
 import Grid from "./atoms/Grid";
 import Layout from "./atoms/Layout";
+import Statistic from "./atoms/Statistic";
 export { 
 /** export */
 Button, 
 /** component */
-Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout };
+Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic };
