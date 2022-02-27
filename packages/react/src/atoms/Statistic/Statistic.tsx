@@ -12,6 +12,8 @@ import cls from "classNames";
 import { padEnd } from "lodash";
 //@ts-ignore
 import BTween from "../../_util/b-tween";
+import CountDown from "./Countdown";
+import dayjs from "dayjs";
 const prefixCls = "ds-statistic";
 
 type StatisticType = {
@@ -26,6 +28,7 @@ type StatisticType = {
   prefix: ReactNode;
   suffix: ReactNode;
   countUp: boolean;
+  format: string;
 };
 
 function ComponentRef(props: Partial<StatisticType>, ref: any) {
@@ -37,13 +40,12 @@ function ComponentRef(props: Partial<StatisticType>, ref: any) {
     prefix,
     suffix,
     styleValue,
+    format,
   } = props;
   const tween = useRef<typeof BTween | null>();
   const [value, setValue] = useState<number>(props.value || 0);
   const cs = cls(prefixCls, className);
   const countUp = (from = props.countFrom, to = props.value) => {
-    console.log("countUp");
-
     if (from !== to) {
       //@ts-ignore
       tween.current = new BTween({
@@ -109,6 +111,11 @@ function ComponentRef(props: Partial<StatisticType>, ref: any) {
   function getSeparator(int: string): string {
     return Number(int).toLocaleString("en-US");
   }
+  function getDate(
+    date: string | number | Date | dayjs.Dayjs | null | undefined
+  ): string {
+    return dayjs(date).format(format);
+  }
   // function pipe() {
   //     //a,b,c -> c(b(a()))
   //     const fns = new Array(...arguments);
@@ -117,10 +124,16 @@ function ComponentRef(props: Partial<StatisticType>, ref: any) {
   //     })
   // }
   const { int, decimal } = useMemo(() => {
-    const int = getSeparator(getInt(value));
-    const decimal = getDecimal(value);
+    let int = null,
+      decimal = null;
+    if (format) {
+      int = getDate(value);
+      return { int, decimal };
+    }
+    int = getSeparator(getInt(value));
+    decimal = getDecimal(value);
     return { int, decimal };
-  }, [precision, value]);
+  }, [precision, value, format]);
   return (
     <div ref={ref} style={style} className={cs}>
       {title && <div className={cls(`${prefixCls}-title`)}>{title}</div>}
@@ -142,10 +155,14 @@ function ComponentRef(props: Partial<StatisticType>, ref: any) {
   );
 }
 
-const Statistic = forwardRef(ComponentRef);
+const Component = forwardRef(ComponentRef);
+const Statistic = Component as typeof Component & {
+  CountDown: typeof CountDown;
+};
 Statistic.defaultProps = {
   countFrom: 0,
   countDuration: 2000,
 };
 Statistic.displayName = "Statistic";
+Statistic.CountDown = CountDown;
 export default Statistic;
