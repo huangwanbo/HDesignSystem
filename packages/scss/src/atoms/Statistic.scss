@@ -1,0 +1,20 @@
+@import "foundation/all";
+.ds-statistic {
+  display: inline-block;
+  line-height: $line-height-base;
+  color: var(--color-text-2);
+  &-title {
+    font-size: $fs-sm;
+    margin-bottom: 8px;
+    color: var(--color-text-2);
+  }
+  &-value {
+    font-size: $fs-xl;
+    font-weight: $fw-semibold;
+    color: var(--color-text-1);
+    &-prefix,
+    &-suffix {
+      font-size: $fs-sm;
+    }
+  }
+}

@@ -11,4 +11,6 @@ export { default as Tooltip } from './atoms/Tooltip/Tooltip.js';
 export { default as Tag } from './atoms/Tag/Tag.js';
 export { default as Divider } from './atoms/Divider/Divider.js';
 export { default as Grid } from './atoms/Grid/Grid.js';
+export { default as Layout } from './atoms/Layout/Layoyt.js';
+export { default as Statistic } from './atoms/Statistic/Statistic.js';
 //# sourceMappingURL=index.js.map
