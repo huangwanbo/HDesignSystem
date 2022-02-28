@@ -69,7 +69,7 @@ const cpDir = (src, dest) => {
     })
 }
 
-cpDir('src/icon','lib/icon')
+// cpDir('src/icon','lib/icon')
 compile('src/global.scss', 'lib/global.css')
 getComponents().forEach(component => {
     compile(component.input, component.output)

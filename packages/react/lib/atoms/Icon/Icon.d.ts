@@ -1,5 +1,4 @@
 import React from "react";
-import "@DS/scss/lib/icon/style.css";
 declare const Icon: React.ForwardRefExoticComponent<{
     /**
      * user mobiriseIcons to

@@ -1,7 +1,7 @@
 import React from "react";
 import IconSize from "../../foundation/FontSize";
 import cls from "classNames";
-import "@DS/scss/lib/icon/style.css";
+//import "@DS/scss/lib/icon/style.css";
 
 type IconProps = {
   /**
