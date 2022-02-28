@@ -1,6 +1,5 @@
 import React from 'react';
 import cls from 'classNames';
-import '@DS/scss/lib/icon/style.css';
 
 const Icon = React.forwardRef((props, ref) => {
     const { name, size = "base", customStyle, customClass, ...rest } = props;

@@ -12,6 +12,7 @@ import Divider from "./atoms/Divider";
 import Grid from "./atoms/Grid";
 import Layout from "./atoms/Layout";
 import Statistic from "./atoms/Statistic";
+import BackTop from "./atoms/BackTop";
 export {
     /** export */
     Button,
@@ -29,5 +30,6 @@ export {
     Divider,
     Grid,
     Layout,
-    Statistic
+    Statistic,
+    BackTop
 };
