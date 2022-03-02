@@ -17,6 +17,10 @@ type BackTopType = {
   style: CSSProperties;
   className: string | string[];
   visibleHeight: number;
+  /**
+   * need to set maxHeight if set custom
+   *
+   */
   target: () => HTMLElement | Window;
   onClick: () => void;
   easing: string;

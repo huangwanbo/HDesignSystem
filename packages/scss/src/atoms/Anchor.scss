@@ -2,7 +2,7 @@
 .ds-anchor {
   position: relative;
   width: 150px;
-  overflow: auto;
+  overflow: scroll;
   &-line-slider {
     position: absolute;
     height: 12px;
@@ -28,6 +28,9 @@
   }
   &-link {
     margin-bottom: 2px;
+    &-lineless {
+      background-color: var(--ds-neutral-3);
+    }
     &-active > &-title {
       transition: all 0.1s linear;
       color: var(--color-text-1);
@@ -46,6 +49,9 @@
       display: block;
       white-space: nowrap;
       border-radius: 2px;
+      &-lineless {
+        color: var(--ds-primary-6) !important;
+      }
     }
     &-title:hover {
       background-color: var(--color-fill-2);

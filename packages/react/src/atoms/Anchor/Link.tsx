@@ -19,13 +19,15 @@ type LinkType = {
 function ComponentRef(props: LinkType, ref: any) {
   const { title, href, target, children } = props;
   const context = useContext(AnchorContext);
-  const { currentLink, addLink, removeLink, handleClick } = context;
+  const { currentLink, addLink, removeLink, handleClick, lineless } = context;
   const LinkRef = ref || useRef(null);
   const linkCls = cls(prefixCls, {
     [`${prefixCls}-active`]: currentLink === href,
   });
   const titleCls = cls(`${prefixCls}-title`, {
     [`${prefixCls}-title-active`]: currentLink === href,
+    [`${prefixCls}-lineless`]: currentLink === href && lineless,
+    [`${prefixCls}-title-lineless`]: currentLink === href && lineless,
   });
   function registerLink() {
     addLink && addLink(href, LinkRef.current);

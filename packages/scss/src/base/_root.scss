@@ -194,8 +194,7 @@ body {
     --ds-danger-#{$setp}: rgb(var(--red-#{$setp}));
     --ds-warning-#{$setp}: rgb(var(--orange-#{$setp}));
     --ds-link-#{$setp}: rgb(var(--arcoblue-#{$setp}));
-    --ds-success-#{$setp}: rgb(var(--green-#{$setp}));
-    --ds-neutral-#{$setp}: rgb(var(--green-#{$setp}));
+    --ds-neutral-#{$setp}: rgb(var(--gray-#{$setp}));
   }
   --color-white: #fff;
   --color-black: #000;

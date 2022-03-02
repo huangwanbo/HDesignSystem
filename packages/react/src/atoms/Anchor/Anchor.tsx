@@ -13,6 +13,8 @@ import AnchorContext from "./context";
 import Link from "./Link";
 import cls from "classNames";
 import { useStatePromise } from "../../_util/hook";
+import { off, on } from "../../_util/event";
+import { throttle } from "lodash";
 const prefixCls = "ds-anchor";
 
 type AnchorType = {
@@ -20,10 +22,13 @@ type AnchorType = {
   className: string | string[];
   style: CSSProperties;
   bounds: number;
+  /**
+   * need to set maxHeight if set custom
+   *
+   */
   getContainer: () => HTMLElement;
   getCurrentAnchor: () => string;
   offset: number;
-  showInkInFixed: boolean;
   targetOffset: number;
   onChange: (currentActiveLink: string) => void;
   onClick: (
@@ -31,12 +36,14 @@ type AnchorType = {
     link?: ReactInstance
   ) => void;
   children: ReactNode;
+  lineless: boolean;
 };
 
 function ComponentRef(props: Partial<AnchorType>, ref: any) {
-  const { onClick, onChange } = props;
+  const { onClick, onChange, className, style, lineless } = props;
   const anchorLinkMap = useRef(new Map<string, ReactInstance>());
   const anchorLinkSet = useRef(new Set<string>());
+  const containerRef = ref || useRef<Element>(null);
   //   const currentLinkRef = useRef<ReactNode | null>(null);
   const context = useContext(AnchorContext);
   const [currentLink, setCurrentLink] = useStatePromise("#");
@@ -64,11 +71,23 @@ function ComponentRef(props: Partial<AnchorType>, ref: any) {
     getOffsetTop(link);
   }
 
-  function getOffsetTop(dom: ReactInstance) {
-    const node = findDOMNode(dom) as Element;
-    const { top } = node.getBoundingClientRect();
-    setCurrentOffsetTop(top);
+  function currentLinkInView(offsetTop: number) {
+    containerRef.current.scrollTop = offsetTop;
   }
+
+  function getOffsetTop(dom: ReactInstance) {
+    const node = findDOMNode(dom) as Element & { offsetTop: number };
+    const { top } = node.getBoundingClientRect();
+    setCurrentOffsetTop(node.offsetTop);
+    currentLinkInView(
+      node.offsetTop == 0
+        ? 0
+        : node.offsetTop == top
+        ? node.offsetTop
+        : node.offsetTop - top
+    );
+  }
+
   function setOffset(value: string) {
     const link = anchorLinkMap.current.get(value);
     if (link) {
@@ -85,13 +104,23 @@ function ComponentRef(props: Partial<AnchorType>, ref: any) {
         setOffset(value);
       });
     }
+    const handleScroll = throttle(
+      (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        console.log(e);
+      },
+      100
+    );
+    on(containerRef.current, "scroll", handleScroll);
+    return () => {
+      off(containerRef.current, "scroll", handleScroll);
+    };
   }, []);
   useEffect(() => {
     handleChange();
   }, [currentLink]);
   return (
-    <div ref={ref} className={cls(prefixCls)}>
-      {anchorLinkSet.current.has(currentLink) && (
+    <div ref={containerRef} className={cls(prefixCls, className)} style={style}>
+      {anchorLinkSet.current.has(currentLink) && !lineless && (
         <div
           className={cls(`${prefixCls}-line-slider`)}
           style={{ top: `${currentOffsetTop}px` }}
@@ -99,6 +128,7 @@ function ComponentRef(props: Partial<AnchorType>, ref: any) {
       )}
       <AnchorContext.Provider
         value={{
+          lineless,
           currentLink,
           addLink,
           removeLink,

@@ -1,5 +1,6 @@
 import { createContext, ReactInstance } from "react";
 type AnchorContextType = {
+  lineless: boolean | undefined;
   currentLink: string;
   addLink: (linkName: string, target: ReactInstance) => void;
   removeLink: (linkName: string) => void;
@@ -10,6 +11,7 @@ type AnchorContextType = {
   //changeLink: (currentLink: string) => void;
 };
 const defaultContext = {
+  lineless: false,
   currentLink: "",
   addLink: () => {},
   removeLink: () => {},
