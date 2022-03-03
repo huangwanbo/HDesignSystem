@@ -13,6 +13,7 @@ import Grid from "./atoms/Grid";
 import Layout from "./atoms/Layout";
 import Statistic from "./atoms/Statistic";
 import BackTop from "./atoms/BackTop";
+import Anchor from "./atoms/Anchor";
 export {
     /** export */
     Button,
@@ -31,5 +32,6 @@ export {
     Grid,
     Layout,
     Statistic,
-    BackTop
+    BackTop,
+    Anchor
 };
