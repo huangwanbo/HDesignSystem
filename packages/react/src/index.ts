@@ -14,6 +14,7 @@ import Layout from "./atoms/Layout";
 import Statistic from "./atoms/Statistic";
 import BackTop from "./atoms/BackTop";
 import Anchor from "./atoms/Anchor";
+import Affix from "./atoms/Affix";
 export {
     /** export */
     Button,
@@ -33,5 +34,6 @@ export {
     Layout,
     Statistic,
     BackTop,
-    Anchor
+    Anchor,
+    Affix
 };
