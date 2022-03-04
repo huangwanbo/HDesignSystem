@@ -15,4 +15,5 @@ export { default as Layout } from './atoms/Layout/Layoyt.js';
 export { default as Statistic } from './atoms/Statistic/Statistic.js';
 export { default as BackTop } from './atoms/BackTop/BackTop.js';
 export { default as Anchor } from './atoms/Anchor/Anchor.js';
+export { default as Affix } from './atoms/Affix/Affix.js';
 //# sourceMappingURL=index.js.map
