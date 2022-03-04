@@ -15,10 +15,9 @@ import Statistic from "./atoms/Statistic";
 import BackTop from "./atoms/BackTop";
 import Anchor from "./atoms/Anchor";
 import Affix from "./atoms/Affix";
+import Breadcrumb from "./atoms/Breadcrumb";
 export {
-    /** export */
     Button,
-    /** component */
     Color,
     Text,
     Margin,
@@ -35,5 +34,6 @@ export {
     Statistic,
     BackTop,
     Anchor,
-    Affix
+    Affix,
+    Breadcrumb
 };

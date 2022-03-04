@@ -15,8 +15,5 @@ import Statistic from "./atoms/Statistic";
 import BackTop from "./atoms/BackTop";
 import Anchor from "./atoms/Anchor";
 import Affix from "./atoms/Affix";
-export { 
-/** export */
-Button, 
-/** component */
-Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic, BackTop, Anchor, Affix };
+import Breadcrumb from "./atoms/Breadcrumb";
+export { Button, Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic, BackTop, Anchor, Affix, Breadcrumb };
