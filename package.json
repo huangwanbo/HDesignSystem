@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
     "lerna": "^4.0.0"
   },
   "private": true,
@@ -21,5 +22,10 @@
     "dev": "yarn lerna run dev"
   },
   "repository": "git@github.com:huangwanbo/HDesignSystem.git",
-  "author": "未生 <weisheng.hwb@dtyunxi.com>"
+  "author": "huangwanbo <416860684@qq.com>",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
