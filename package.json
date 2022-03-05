@@ -5,7 +5,9 @@
   "license": "MIT",
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
-    "lerna": "^4.0.0"
+    "ghooks": "^2.0.4",
+    "lerna": "^4.0.0",
+    "validate-commit-msg": "^2.14.0"
   },
   "private": true,
   "workspaces": {
@@ -26,6 +28,9 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
+    },
+    "ghooks": {
+      "commit-msg": "./validate-commit-msg.js"
     }
   }
 }
