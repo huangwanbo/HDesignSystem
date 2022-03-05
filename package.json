@@ -1,6 +1,6 @@
 {
   "name": "@DS/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -21,7 +21,8 @@
   },
   "scripts": {
     "build": "yarn lerna run build",
-    "dev": "yarn lerna run dev"
+    "dev": "yarn lerna run dev",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "repository": "git@github.com:huangwanbo/HDesignSystem.git",
   "author": "huangwanbo <416860684@qq.com>",
@@ -30,7 +31,8 @@
       "path": "./node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-      "commit-msg": "./validate-commit-msg.js"
+      "pre-commit": "",
+      "commit-msg": "validate-commit-msg"
     }
   }
 }
