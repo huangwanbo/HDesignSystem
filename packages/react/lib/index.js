@@ -17,4 +17,5 @@ export { default as BackTop } from './atoms/BackTop/BackTop.js';
 export { default as Anchor } from './atoms/Anchor/Anchor.js';
 export { default as Affix } from './atoms/Affix/Affix.js';
 export { default as Breadcrumb } from './atoms/Breadcrumb/Breadcrumb.js';
+export { default as Menu } from './atoms/Menu/Menu.js';
 //# sourceMappingURL=index.js.map

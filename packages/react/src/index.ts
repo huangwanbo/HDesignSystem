@@ -16,6 +16,7 @@ import BackTop from "./atoms/BackTop";
 import Anchor from "./atoms/Anchor";
 import Affix from "./atoms/Affix";
 import Breadcrumb from "./atoms/Breadcrumb";
+import Menu from "./atoms/Menu";
 export {
     Button,
     Color,
@@ -35,5 +36,6 @@ export {
     BackTop,
     Anchor,
     Affix,
-    Breadcrumb
+    Breadcrumb,
+    Menu
 };
