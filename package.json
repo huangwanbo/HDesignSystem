@@ -1,10 +1,13 @@
 {
   "name": "@DS/core",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "cz-conventional-changelog": "^3.3.0",
+    "ghooks": "^2.0.4",
+    "lerna": "^4.0.0",
+    "validate-commit-msg": "^2.14.0"
   },
   "private": true,
   "workspaces": {
@@ -18,8 +21,18 @@
   },
   "scripts": {
     "build": "yarn lerna run build",
-    "dev": "yarn lerna run dev"
+    "dev": "yarn lerna run dev",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "repository": "git@github.com:huangwanbo/HDesignSystem.git",
-  "author": "未生 <weisheng.hwb@dtyunxi.com>"
+  "author": "huangwanbo <416860684@qq.com>",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "ghooks": {
+      "pre-commit": "",
+      "commit-msg": "validate-commit-msg"
+    }
+  }
 }
