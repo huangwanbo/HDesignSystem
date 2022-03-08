@@ -1,8 +1,13 @@
-import React, { forwardRef, useRef, useState, ReactElement } from "react";
-//import { findDOMNode } from "react-dom";
+import React, {
+  forwardRef,
+  useRef,
+  useState,
+  ReactElement,
+  useContext,
+} from "react";
 import ResizeObserver from "../../_util/resizeObserver";
-import { IconArrowDown } from "@DS/Icon";
-
+import Trigger from "../Trigger";
+import context from "./context";
 import cls from "classNames";
 const prefixCls = "ds-overflow-wrap";
 const overflowCls = prefixCls + "-hidden";
@@ -20,12 +25,13 @@ function getMargin(
 }
 function ComponentRef(props: OverFlowWrapType, ref: any) {
   const wrapRef = ref || useRef();
+  const triggerRef = useRef<Element>();
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number | null>(null);
+  const { currentSelectedKey } = useContext(context);
   const getCurrentItemRight = () => {
     const maxWidth = getNodeWidth(wrapRef.current) - 100;
     let innerWidth = 0;
     let lastIndex = 0;
-    // const childrenList: HTMLElement[] = [...childrenHTMLCollection.current];
     const childrenList: HTMLElement[] = [].slice.call(wrapRef.current.children);
     const len = childrenList.length;
 
@@ -42,14 +48,25 @@ function ComponentRef(props: OverFlowWrapType, ref: any) {
     setLastVisibleIndex(lastIndex);
   };
   const overflowRender = (overflowChild: ReactElement[] | null) => {
-    //todo : trigger popup
-    if (!overflowChild) return null;
+    if (!overflowChild || !overflowChild.length) return null;
+    const hasCheck = overflowChild.filter(
+      (child) => child.props._key == currentSelectedKey
+    );
+    const children = overflowChild.map((child) =>
+      React.cloneElement(child, {
+        ...child.props,
+        overflow: true,
+      })
+    );
     return (
-      <div className="ds-menu-item ds-menu-item-submenu">
-        <span>...</span>
-        <IconArrowDown />
-        <div className="ds-menu-item-submenu-block">{overflowChild}</div>
-      </div>
+      <Trigger popupChildren={children} ref={triggerRef}>
+        <div className="ds-menu-item ds-menu-item-submenu">
+          ...
+          {hasCheck.length > 0 && (
+            <div className={`ds-menu-item-selected-label`} />
+          )}
+        </div>
+      </Trigger>
     );
   };
   const renderChild = () => {

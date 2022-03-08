@@ -60,6 +60,16 @@
     display: block;
   }
 }
+.ds-trigger-container {
+  .ds-menu-item {
+    padding: 12px 0;
+    width: 100%;
+  }
+  .ds-menu-item:hover {
+    width: 100%;
+    color: var(--ds-primary-6);
+  }
+}
 
 @keyframes ds-menu-selected-item-label-enter {
   0% {

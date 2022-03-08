@@ -17,6 +17,10 @@ type MenuItemType = {
   _key?: string;
   disabled?: boolean;
   children: ReactNode;
+  /**
+   * 判断是否在overflow里面
+   */
+  overflow?: boolean;
 };
 
 function ComponentRef(props: MenuItemType, ref: any) {
@@ -47,7 +51,7 @@ function ComponentRef(props: MenuItemType, ref: any) {
       unRegisterItem();
     };
   }, [_key]);
-  const renderLabel = currentSelectedKey === _key && (
+  const renderLabel = currentSelectedKey === _key && !props.overflow && (
     <div className={`${prefixCls}-selected-label`} />
   );
   return (
