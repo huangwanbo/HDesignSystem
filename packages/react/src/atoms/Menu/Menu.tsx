@@ -10,14 +10,18 @@ import MenuItem from "./MenuItem";
 import Context from "./context";
 import cls from "classNames";
 import OverFlowWrap from "./overflow-wrap";
+import SubMenu from "./Submenu";
+import { themeType } from "./constant";
 const prefixCls = "ds-menu";
 
 type MenuType = {
   style?: CSSProperties;
   className?: string | string[];
   mode?: "horizontal" | "vertical";
-  defaultSelectedKeys?: string;
+  defaultSelectedKeys?: string[];
   children: ReactNode;
+  theme?: keyof typeof themeType;
+  collapsed?: boolean;
 };
 
 function ComponentRef(props: MenuType, ref: any) {
@@ -27,10 +31,12 @@ function ComponentRef(props: MenuType, ref: any) {
     mode = "horizontal",
     children,
     defaultSelectedKeys,
+    theme = themeType.light,
+    collapsed = false,
   } = props;
   const ItemMap = useRef(new Map<string, ReactInstance>());
   const [currentSelected, setCurrentSelected] = useState(
-    defaultSelectedKeys || ""
+    defaultSelectedKeys || []
   );
   const addItem = (key: string, Item: ReactInstance) => {
     if (!ItemMap.current.has(key)) {
@@ -44,7 +50,7 @@ function ComponentRef(props: MenuType, ref: any) {
   };
   const handleItemClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    key: string
+    key: string[]
   ) => {
     console.log(e, key);
     setCurrentSelected(key);
@@ -54,6 +60,8 @@ function ComponentRef(props: MenuType, ref: any) {
     prefixCls,
     {
       [`${prefixCls}-${mode}`]: true,
+      [`${prefixCls}-light`]: theme === themeType.light,
+      [`${prefixCls}-dark`]: theme === themeType.dark,
     },
     className
   );
@@ -68,11 +76,19 @@ function ComponentRef(props: MenuType, ref: any) {
       });
     });
   };
+  console.log(collapsed);
+
   return (
-    <div className={cs} style={style} ref={ref}>
+    <div
+      className={cs}
+      style={{ ...style, width: collapsed ? "54px" : "200px" }}
+      ref={ref}
+    >
       <Context.Provider
         value={{
+          mode,
           currentSelectedKey: currentSelected,
+          collapsed,
           addItem,
           deleteItem,
           handleItemClick,
@@ -85,7 +101,11 @@ function ComponentRef(props: MenuType, ref: any) {
 }
 
 const Component = forwardRef(ComponentRef);
-const Menu = Component as typeof Component & { MenuItem: typeof MenuItem };
+const Menu = Component as typeof Component & {
+  MenuItem: typeof MenuItem;
+  SubMenu: typeof SubMenu;
+};
 Menu.displayName = "Menu";
 Menu.MenuItem = MenuItem;
+Menu.SubMenu = SubMenu;
 export default Menu;

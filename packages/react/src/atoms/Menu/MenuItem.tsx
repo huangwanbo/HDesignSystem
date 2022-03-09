@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import cls from "classNames";
 import context from "./context";
+import { modeType } from "./constant";
 const prefixCls = "ds-menu-item";
 
 type MenuItemType = {
@@ -27,11 +28,13 @@ function ComponentRef(props: MenuItemType, ref: any) {
   const { style, className, children, disabled, _key = "defaultKey" } = props;
   const currentRef = ref || useRef();
   const Context = useContext(context);
-  const { currentSelectedKey, addItem, deleteItem, handleItemClick } = Context;
+  const { mode, currentSelectedKey, addItem, deleteItem, handleItemClick } =
+    Context;
   const cs = cls(
     prefixCls,
     {
-      [`${prefixCls}-selected`]: currentSelectedKey === _key,
+      [`${prefixCls}-selected`]: currentSelectedKey.includes(_key),
+      [`${prefixCls}-indented`]: mode === modeType.vertical,
     },
     className
   );
@@ -43,7 +46,8 @@ function ComponentRef(props: MenuItemType, ref: any) {
   };
   const onHandleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (disabled) return;
-    handleItemClick(e, _key);
+    if (currentSelectedKey.includes(_key)) return;
+    handleItemClick(e, [_key]);
   };
   useEffect(() => {
     registerItem();
@@ -51,13 +55,29 @@ function ComponentRef(props: MenuItemType, ref: any) {
       unRegisterItem();
     };
   }, [_key]);
-  const renderLabel = currentSelectedKey === _key && !props.overflow && (
+  const renderLabel = currentSelectedKey.includes(_key) && !props.overflow && (
     <div className={`${prefixCls}-selected-label`} />
+  );
+  const renderChild = (
+    <>
+      {mode === modeType.vertical && (
+        <>
+          <span className={`${prefixCls}-indent`}></span>
+          <span
+            className={`${prefixCls}-inner`}
+            style={{ display: "inline-block" }}
+          >
+            {children}
+          </span>
+        </>
+      )}
+      {mode === modeType.horizontal && children}
+      {mode === modeType.horizontal && renderLabel}
+    </>
   );
   return (
     <div className={cs} style={style} ref={currentRef} onClick={onHandleClick}>
-      {children}
-      {renderLabel}
+      {renderChild}
     </div>
   );
 }

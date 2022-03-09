@@ -1,17 +1,21 @@
 import { createContext, ReactInstance } from "react";
 type MenuContextType = {
-  currentSelectedKey: string;
+  mode: string;
+  collapsed: boolean;
+  currentSelectedKey: string[];
   addItem: (linkName: string, target: ReactInstance) => void;
   deleteItem: (linkName: string) => void;
   handleItemClick: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    link: string
+    keys: string[]
   ) => void;
 };
 const defaultContext = {
-  currentSelectedKey: "",
+  currentSelectedKey: [],
   addItem: () => {},
   deleteItem: () => {},
   handleItemClick: () => {},
+  mode: "",
+  collapsed: false,
 };
 export default createContext<MenuContextType>(defaultContext);

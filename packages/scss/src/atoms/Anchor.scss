@@ -2,7 +2,7 @@
 .ds-anchor {
   position: relative;
   width: 150px;
-  overflow: scroll;
+  overflow: auto;
   &-line-slider {
     position: absolute;
     height: 12px;

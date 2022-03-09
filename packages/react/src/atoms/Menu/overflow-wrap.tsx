@@ -59,7 +59,7 @@ function ComponentRef(props: OverFlowWrapType, ref: any) {
       })
     );
     return (
-      <Trigger popupChildren={children} ref={triggerRef}>
+      <Trigger popupChildren={children} ref={triggerRef} key="overflow">
         <div className="ds-menu-item ds-menu-item-submenu">
           ...
           {hasCheck.length > 0 && (
@@ -86,10 +86,11 @@ function ComponentRef(props: OverFlowWrapType, ref: any) {
       Array.isArray(props.children) &&
       lastVisibleIndex &&
       props.children.slice(lastVisibleIndex);
-    return [
+    const childList = [
       ...(childrenList as Array<ReactElement>),
       overflowRender(overflowChild as ReactElement[]),
     ];
+    return childList;
   };
   const onResize = () => {
     getCurrentItemRight();
