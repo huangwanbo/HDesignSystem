@@ -34,11 +34,16 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
   });
   const portalRef = useRef(null);
   const childRef = ref || React.createRef();
+  let timmer: NodeJS.Timeout | null;
   const show = () => {
+    if (timmer) clearTimeout(timmer);
     setVisible(true);
   };
   const hide = () => {
-    setVisible(false);
+    if (timmer) clearTimeout(timmer);
+    timmer = setTimeout(() => {
+      setVisible(false);
+    }, 100);
   };
   const popupStyle = {
     top: {
@@ -57,10 +62,29 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
       transformOrigin: `${transform.width}px 0px 0px`,
     },
     right: {
-      left: `${transform.left + transform.width + 15}px`,
-      top: `${transform.top - transform.height / 2}px`,
-      transformOrigin: `${transform.width}px 0px 0px`,
+      left: `${transform.right - 5}px`,
+      top: `${transform.top}px`,
+      transformOrigin: `${transform.right}px 0px 0px`,
     },
+  };
+  const onMouseEnter = (e: any) => {
+    const { left, top, bottom, right, height, width } = (
+      e.target as HTMLElement
+    ).getBoundingClientRect();
+    console.log(left, top, bottom, right, height, width);
+
+    setTransform({
+      left,
+      top,
+      bottom,
+      right,
+      height,
+      width,
+    });
+    show();
+  };
+  const onMouseLeave = () => {
+    hide();
   };
 
   const TriggerDom = (
@@ -94,28 +118,12 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
       </div>
     </PortalWrapper>
   );
-  const onMouseEnter = (e: MouseEvent) => {
-    const { left, top, bottom, right, height, width } = (
-      e.target as HTMLElement
-    ).getBoundingClientRect();
-    setTransform({
-      left,
-      top,
-      bottom,
-      right,
-      height,
-      width,
-    });
-    show();
-  };
-  const onMouseLeave = () => {
-    hide();
-  };
   const child = React.cloneElement(children as React.ReactElement, {
     onMouseEnter: onMouseEnter,
     onMouseLeave: onMouseLeave,
     ref: childRef,
   });
+
   return (
     <>
       {child}

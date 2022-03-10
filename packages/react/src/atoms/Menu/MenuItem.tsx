@@ -22,6 +22,10 @@ type MenuItemType = {
    * 判断是否在overflow里面
    */
   overflow?: boolean;
+  /**
+   * 层级标记
+   */
+  level: number;
 };
 
 function ComponentRef(props: MenuItemType, ref: any) {
@@ -35,6 +39,8 @@ function ComponentRef(props: MenuItemType, ref: any) {
     {
       [`${prefixCls}-selected`]: currentSelectedKey.includes(_key),
       [`${prefixCls}-indented`]: mode === modeType.vertical,
+
+      [`ds-menu-inline-header`]: props?.level == 0,
     },
     className
   );
@@ -60,14 +66,23 @@ function ComponentRef(props: MenuItemType, ref: any) {
   );
   const renderChild = (
     <>
-      {mode === modeType.vertical && (
+      {(mode === modeType.vertical || mode === modeType.pop) && (
         <>
-          <span className={`${prefixCls}-indent`}></span>
+          {props?.level > 0 && (
+            <span className={cls(`${prefixCls}-indent`)}></span>
+          )}
           <span
-            className={`${prefixCls}-inner`}
+            className={cls(`${prefixCls}-inner`)}
             style={{ display: "inline-block" }}
           >
-            {children}
+            {React.Children.map(children, (child, index) => {
+              if (!React.isValidElement(child)) return child;
+              return React.cloneElement(child, {
+                ...child.props,
+                _key: child.key || `menu${index}`,
+                level: props.level + 1,
+              });
+            })}
           </span>
         </>
       )}

@@ -11,33 +11,39 @@ import Context from "./context";
 import cls from "classNames";
 import OverFlowWrap from "./overflow-wrap";
 import SubMenu from "./Submenu";
-import { themeType } from "./constant";
+import { themeType, modeType } from "./constant";
+import { IconMenuUnfold, IconMenuFold } from "@DS/Icon";
 const prefixCls = "ds-menu";
 
 type MenuType = {
   style?: CSSProperties;
   className?: string | string[];
-  mode?: "horizontal" | "vertical";
+  mode?: keyof typeof modeType;
   defaultSelectedKeys?: string[];
   children: ReactNode;
   theme?: keyof typeof themeType;
   collapsed?: boolean;
+  onCollapseChange?: (collapsed: boolean) => void;
+  hasCollapseButton?: boolean;
 };
 
 function ComponentRef(props: MenuType, ref: any) {
   const {
     style,
     className,
-    mode = "horizontal",
+    mode = modeType.horizontal,
     children,
     defaultSelectedKeys,
     theme = themeType.light,
-    collapsed = false,
+    collapsed: propsCollapsed = false,
+    onCollapseChange,
+    hasCollapseButton = true,
   } = props;
   const ItemMap = useRef(new Map<string, ReactInstance>());
   const [currentSelected, setCurrentSelected] = useState(
     defaultSelectedKeys || []
   );
+  const [collapsed, setCollapsed] = useState(propsCollapsed);
   const addItem = (key: string, Item: ReactInstance) => {
     if (!ItemMap.current.has(key)) {
       ItemMap.current.set(key, Item);
@@ -59,29 +65,47 @@ function ComponentRef(props: MenuType, ref: any) {
   const cs = cls(
     prefixCls,
     {
-      [`${prefixCls}-${mode}`]: true,
+      [`${prefixCls}-vertical`]:
+        mode == modeType.vertical || mode == modeType.pop,
+      [`${prefixCls}-horizontal`]: mode == modeType.horizontal,
       [`${prefixCls}-light`]: theme === themeType.light,
       [`${prefixCls}-dark`]: theme === themeType.dark,
     },
     className
   );
   const renderChildren = (children: ReactNode) => {
-    return React.Children.map(children, (item, index) => {
+    const childrenList = React.Children.map(children, (item, index) => {
       if (!React.isValidElement(item) || typeof item.type === "string") {
-        throw TypeError("error: you must be use MenuItem !");
+        throw TypeError("error: you must be use MenuItem or SubMenu !");
       }
       return React.cloneElement(item, {
         ...item.props,
         _key: item.key || `menu-${index}`,
+        level: 0,
       });
     });
+    const Icon = collapsed ? <IconMenuFold /> : <IconMenuUnfold />;
+    const mergedHasCollapseButton =
+      mode != modeType.horizontal && hasCollapseButton;
+    const CollapseButton = (
+      <div
+        className={cls(`${prefixCls}-collapse-button`)}
+        key={"collapse-button"}
+        onClick={() => {
+          const newCollapse = !collapsed;
+          setCollapsed(newCollapse);
+          onCollapseChange && onCollapseChange(newCollapse);
+        }}
+      >
+        {Icon}
+      </div>
+    );
+    return [childrenList, mergedHasCollapseButton && CollapseButton];
   };
-  console.log(collapsed);
-
   return (
     <div
       className={cs}
-      style={{ ...style, width: collapsed ? "54px" : "200px" }}
+      style={{ ...style, width: collapsed ? "48px" : "200px" }}
       ref={ref}
     >
       <Context.Provider

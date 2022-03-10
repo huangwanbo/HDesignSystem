@@ -11,11 +11,13 @@
     @include flex();
   }
   &-vertical {
-    @include flex(column);
+    display: flex;
     padding: 8px;
     transition: all 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
+    padding-bottom: 40px;
   }
   &-vertical &-item {
+    width: 100%;
     padding: 0 12px;
     line-height: 40px;
     margin-bottom: 4px;
@@ -25,10 +27,13 @@
     &-suffix {
       position: absolute;
       right: 12px;
+      .ds-icon {
+        margin-right: 0px !important;
+      }
     }
   }
   &-vertical &-collapsed {
-    padding-right: 48px !important;
+    padding-right: 24px !important;
   }
   &-item {
     display: inline-block;
@@ -50,6 +55,7 @@
       font-weight: $fw-medium;
       background: none;
       transition: color 0.2s linear;
+      margin-right: 16px;
       &-label {
         position: absolute;
         left: 12px;
@@ -61,19 +67,38 @@
       }
     }
   }
+  &-collapse {
+    &-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      width: 24px;
+      height: 24px;
+      border-radius: var(--border-radius-small);
+      cursor: pointer;
+    }
+  }
   &-horizontal &-item {
     padding: 0 12px;
     line-height: 30px;
   }
   &-vertical &-inline {
+    width: 100%;
     &-header {
+      width: 100%;
       margin-bottom: 4px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      padding: 0 12px;
+      padding: 0 9px;
       line-height: 40px;
       cursor: pointer;
+      .ds-icon {
+        margin-right: 16px;
+      }
     }
     &-content {
       overflow: hidden;
@@ -95,6 +120,7 @@
 }
 .ds-overflow-wrap {
   width: 100%;
+  overflow: hidden;
   &-hidden {
     visibility: hidden;
     position: absolute !important;
@@ -118,10 +144,12 @@
   .ds-menu-item {
     padding: 12px 0;
     width: 100%;
+    font-size: map-get($fontSize, "sm");
   }
   .ds-menu-item:hover {
     width: 100%;
     color: var(--ds-primary-6);
+    background-color: var(--ds-neutral-2);
   }
 }
 

@@ -1,6 +1,7 @@
 export const modeType = Object.freeze({
     horizontal: "horizontal",
-    vertical: "vertical"
+    vertical: "vertical",
+    pop: "pop"
 })
 
 export const themeType = Object.freeze({
