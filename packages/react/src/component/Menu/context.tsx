@@ -2,12 +2,12 @@ import { createContext, ReactInstance } from "react";
 type MenuContextType = {
   mode: string;
   collapsed: boolean;
-  currentSelectedKey: string[];
-  addItem: (linkName: string, target: ReactInstance) => void;
-  deleteItem: (linkName: string) => void;
+  currentSelectedKey: (string | number)[];
+  addItem: (linkName: string | number, target: ReactInstance) => void;
+  deleteItem: (linkName: string | number) => void;
   handleItemClick: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    keys: string[]
+    keys: (string | number)[]
   ) => void;
 };
 const defaultContext = {

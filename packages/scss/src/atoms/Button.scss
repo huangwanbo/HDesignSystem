@@ -1,109 +1,110 @@
 @import "foundation/all";
-$btn-size:(
-    sm: 1.5rem,
-    base: 2rem,
-    lg: 2.5rem
+$btn-size: (
+  sm: 1.5rem,
+  base: 2rem,
+  lg: 2.5rem,
 );
 $btn-type: (
-    primary: 'primary',
-    success: 'success',
-    error: 'error',
-    warning: 'warning'
+  primary: "primary",
+  success: "success",
+  error: "error",
+  warning: "warning",
 );
 $btn-bg: (
-    primary: $btn-primary-bg,
-    success: $btn-success-bg,
-    error: $btn-error-bg,
-    warning: $btn-warning-bg
+  primary: $btn-primary-bg,
+  success: $btn-success-bg,
+  error: $btn-error-bg,
+  warning: $btn-warning-bg,
 );
 $btn-bg-light: (
-    primary: $btn-primary-bg-hover,
-    success: $btn-success-bg-hover,
-    error: $btn-error-bg-hover,
-    warning: $btn-warning-bg-hover
+  primary: $btn-primary-bg-hover,
+  success: $btn-success-bg-hover,
+  error: $btn-error-bg-hover,
+  warning: $btn-warning-bg-hover,
 );
 $btn-color: (
-    primary: $btn-primary-color,
-    success: $btn-success-color,
-    error: $btn-error-color,
-    warning: $btn-warning-color
+  primary: $btn-primary-color,
+  success: $btn-success-color,
+  error: $btn-error-color,
+  warning: $btn-warning-color,
 );
 .ds-button__container {
-    line-height: 1.5715;
-    position: relative;
-    display: inline-block;
-    font-weight: 400;
-    white-space: nowrap;
-    text-align: center;
-    background-image: none;
-    border: 1px solid transparent;
-    box-shadow: 0 2px #00000004;
-    cursor: pointer;
-    transition: all .3s cubic-bezier(.645,.045,.355,1);
-    user-select: none;
-    touch-action: manipulation;
-    height: 32px;
-    padding: 4px 15px;
-    font-size: 14px;
-    border-radius: 2px;
-    color: #000000d9;
-    border-color: #d9d9d9;
-    background: rgb(255, 253, 253);
+  line-height: 1.5715;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  border: 1px solid transparent;
+  box-shadow: 0 2px #00000004;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  user-select: none;
+  touch-action: manipulation;
+  height: 32px;
+  padding: 4px 15px;
+  font-size: 14px;
+  border-radius: 2px;
+  color: #000000d9;
+  border-color: #d9d9d9;
+  background: rgb(255, 253, 253);
 }
 @each $type, $value in $btn-type {
-    .ds-button__container-#{$type} {
-        background: map-get($btn-bg, $type);
-        color: map-get($btn-color, $type);
-        border: 1px solid map-get($btn-bg, $type);
-    }
-    .ds-button__container-#{$type}:hover {
-        background: map-get($btn-bg-light, $type);
-        color: map-get($btn-color, $type);
-        border: 1px solid map-get($btn-bg-light, $type);
-    }
-    .ds-button__container-#{$type}-tertiary {
-        background: $white;
-        color: map-get($btn-bg, $type);
-        border: 1px solid map-get($btn-bg, $type);
-    }
-    .ds-button__container-#{$type}-tertiary:hover {
-        background: map-get($btn-bg, $type);
-        color: map-get($btn-color, $type);
-        border: 1px solid map-get($btn-bg, $type);
-    }
-    .ds-button_container-ghost {
-        background: $white;
-        color: map-get($btn-bg, $type);
-        border: none;
-    }
-    .ds-button_container-#{$type}-ghost:hover {
-        background: $gray-light;
-        color: map-get($btn-bg, $type);
-        border: 1px solid $gray-light;
-    }
-    .ds-button_container-#{$type}-disabled {
-        background: $gray-light;
-        color: $gray;
-        border: 1px solid $gray-light;
-        cursor: not-allowed;
-    }
-};
+  .ds-button__container-#{$type} {
+    background: map-get($btn-bg, $type);
+    color: map-get($btn-color, $type);
+    border: 1px solid map-get($btn-bg, $type);
+  }
+  .ds-button__container-#{$type}:hover {
+    background: map-get($btn-bg-light, $type);
+    color: map-get($btn-color, $type);
+    border: 1px solid map-get($btn-bg-light, $type);
+  }
+  .ds-button__container-#{$type}-tertiary {
+    background: $white;
+    color: map-get($btn-bg, $type);
+    border: 1px solid map-get($btn-bg, $type);
+  }
+  .ds-button__container-#{$type}-tertiary:hover {
+    background: map-get($btn-bg, $type);
+    color: map-get($btn-color, $type);
+    border: 1px solid map-get($btn-bg, $type);
+  }
+  .ds-button_container-ghost {
+    background: $white;
+    color: map-get($btn-bg, $type);
+    border: none;
+  }
+  .ds-button_container-#{$type}-ghost:hover {
+    background: $gray-light;
+    color: map-get($btn-bg, $type);
+    border: 1px solid $gray-light;
+  }
+  .ds-button_container-#{$type}-disabled {
+    background: $gray-light;
+    color: $gray;
+    border: 1px solid $gray-light;
+    cursor: not-allowed;
+  }
+}
 @each $size, $value in $btn-size {
-    .ds-button__container-#{$size}{
-        height: $value;
-        @if $size == sm {
-            padding: map-get($spacing, 'xxs');
-            font-size: map-get($fontSize, 'sm');
-            line-height: 0.5rem;
-        } @else if $size == base {
-            padding: map-get($spacing, 'xs');
-            font-size: map-get($fontSize, 'sm');
-            line-height: 0.5rem;
-        } @else {
-            padding: map-get($spacing, 'sm');
-            font-size: map-get($fontSize, 'base');
-            line-height: 0.5rem;
-        }
-        
+  .ds-button__container-#{$size} {
+    height: $value;
+    @if $size == sm {
+      padding: map-get($spacing, "xxs");
+      font-size: map-get($fontSize, "sm");
+      line-height: 0.5rem;
+    } @else if $size == base {
+      padding: map-get($spacing, "xs");
+      font-size: map-get($fontSize, "sm");
+      line-height: 0.5rem;
+    } @else {
+      padding: map-get($spacing, "sm");
+      font-size: map-get($fontSize, "base");
+      line-height: 0.5rem;
     }
+  }
 }

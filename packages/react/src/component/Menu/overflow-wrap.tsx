@@ -29,10 +29,14 @@ function ComponentRef(props: OverFlowWrapType, ref: any) {
   const [lastVisibleIndex, setLastVisibleIndex] = useState<number | null>(null);
   const { currentSelectedKey } = useContext(context);
   const getCurrentItemRight = () => {
+    if (!wrapRef?.current) return;
     const maxWidth = getNodeWidth(wrapRef.current) - 100;
     let innerWidth = 0;
     let lastIndex = 0;
-    const childrenList: HTMLElement[] = [].slice.call(wrapRef.current.children);
+
+    const childrenList: HTMLElement[] = wrapRef?.current?.children
+      ? [].slice.call(wrapRef?.current?.children)
+      : [];
     const len = childrenList.length;
 
     for (let i = 0; i < len; i++) {
@@ -70,6 +74,7 @@ function ComponentRef(props: OverFlowWrapType, ref: any) {
     );
   };
   const renderChild = () => {
+    if (!props.children) return null;
     const childrenList = React.Children.map(props.children, (child, index) => {
       if (!lastVisibleIndex) return child;
       if (index <= lastVisibleIndex - 1) {

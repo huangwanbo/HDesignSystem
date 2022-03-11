@@ -14,8 +14,8 @@ const prefixCls = "ds-menu-item";
 type MenuItemType = {
   style?: CSSProperties;
   className?: string | string[];
-  key?: string;
-  _key?: string;
+  key?: string | number;
+  _key?: string | number;
   disabled?: boolean;
   children: ReactNode;
   /**
@@ -68,7 +68,7 @@ function ComponentRef(props: MenuItemType, ref: any) {
     <>
       {(mode === modeType.vertical || mode === modeType.pop) && (
         <>
-          {props?.level > 0 && (
+          {props?.level > 0 && mode !== modeType.pop && (
             <span className={cls(`${prefixCls}-indent`)}></span>
           )}
           <span

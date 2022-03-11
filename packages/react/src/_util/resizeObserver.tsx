@@ -26,7 +26,7 @@ const ResizeObserverComponent = (props: ResizeProps, ref: any) => {
       resizeObserver && resizeObserver.disconnect();
       resizeObserver = null;
     };
-  }, [childRef.current]);
+  }, []);
   const Dom = React.cloneElement(children as ReactElement, {
     ref: childRef,
   });

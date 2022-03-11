@@ -25,6 +25,10 @@ type MenuType = {
   collapsed?: boolean;
   onCollapseChange?: (collapsed: boolean) => void;
   hasCollapseButton?: boolean;
+  onClickItem?: (
+    key: (string | number)[],
+    item: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => void;
 };
 
 function ComponentRef(props: MenuType, ref: any) {
@@ -38,27 +42,28 @@ function ComponentRef(props: MenuType, ref: any) {
     collapsed: propsCollapsed = false,
     onCollapseChange,
     hasCollapseButton = true,
+    onClickItem,
   } = props;
-  const ItemMap = useRef(new Map<string, ReactInstance>());
-  const [currentSelected, setCurrentSelected] = useState(
+  const ItemMap = useRef(new Map<string | number, ReactInstance>());
+  const [currentSelected, setCurrentSelected] = useState<(string | number)[]>(
     defaultSelectedKeys || []
   );
   const [collapsed, setCollapsed] = useState(propsCollapsed);
-  const addItem = (key: string, Item: ReactInstance) => {
+  const addItem = (key: string | number, Item: ReactInstance) => {
     if (!ItemMap.current.has(key)) {
       ItemMap.current.set(key, Item);
     }
   };
-  const deleteItem = (key: string) => {
+  const deleteItem = (key: string | number) => {
     if (!ItemMap.current.has(key)) {
       ItemMap.current.delete(key);
     }
   };
   const handleItemClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    key: string[]
+    key: (string | number)[]
   ) => {
-    console.log(e, key);
+    onClickItem && onClickItem(key, e);
     setCurrentSelected(key);
     // todo
   };

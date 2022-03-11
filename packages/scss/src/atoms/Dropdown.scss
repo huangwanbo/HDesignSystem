@@ -1,0 +1,18 @@
+@import "foundation/all";
+
+.ds-dropdown {
+  &-menu {
+    .ds-menu {
+      font-size: map-get($fontSize, "sm");
+      width: auto !important;
+      &-inline-header {
+        span:first-child {
+          margin-right: 12px;
+        }
+      }
+      &-item-suffix {
+        right: 8px;
+      }
+    }
+  }
+}

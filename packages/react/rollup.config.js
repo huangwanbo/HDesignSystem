@@ -1,7 +1,7 @@
 import Ts from "rollup-plugin-typescript2";
 
 export default {
-  input: ["src/index.ts", "src/atoms/Button/index.ts"],
+  input: ["src/index.ts", "src/component/Button/index.ts"],
   output: {
     dir: "lib",
     format: "esm",
@@ -9,5 +9,5 @@ export default {
   },
   plugins: [Ts()],
   preserveModules: true,
-  external: ["react","react-dom"],
+  external: ["react", "react-dom"],
 };

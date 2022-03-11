@@ -39,7 +39,6 @@ function ComponentRef(props: SubmenuType, ref: any) {
     });
   });
   const { currentSelectedKey, collapsed, mode } = useContext(context);
-  console.log(keys, currentSelectedKey);
   const [isOpen, setIsOpen] = useState(
     findInTowArray(keys, currentSelectedKey)
   );
@@ -49,7 +48,9 @@ function ComponentRef(props: SubmenuType, ref: any) {
   const headCls = cls(
     `${prefixCls}-inline-header`,
     {
-      [`${prefixCls}-item-selected`]: findInTowArray(keys, currentSelectedKey),
+      [`${prefixCls}-item-selected`]:
+        currentSelectedKey.length > 0 &&
+        findInTowArray(keys, currentSelectedKey),
       [`${prefixCls}-collapsed`]: collapsed,
     },
     className

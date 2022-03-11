@@ -1,12 +1,12 @@
 import React, { useState, useRef, ReactNode } from "react";
 import { PortalWrapper } from "../Portal";
-//import cls from "classNames";
+import cls from "classNames";
 const prefixCls = "ds-trigger";
-type positionType = "top" | "left" | "right" | "bottom";
+export type positionType = "top" | "left" | "right" | "bottom";
 type TriggerProps = {
   position?: positionType;
   customStyle?: React.CSSProperties;
-  customClass?: string;
+  customClass?: string | string[];
   getContainer?: () => Element;
   children?: ReactNode;
   popupChildren?: ReactNode;
@@ -22,7 +22,14 @@ type rect = {
 };
 
 const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
-  const { children, position = "bottom", getContainer, popupChildren } = props;
+  const {
+    children,
+    position = "bottom",
+    getContainer,
+    popupChildren,
+    customStyle,
+    customClass,
+  } = props;
   const [visible, setVisible] = useState<boolean>(false);
   const [transform, setTransform] = useState<rect>({
     left: 0,
@@ -53,7 +60,7 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
     },
     bottom: {
       left: `${transform.left}px`,
-      top: `${transform.top + 25}px`,
+      top: `${transform.top + transform.height + 5}px`,
       transformOrigin: `${transform.width}px 0px 0px`,
     },
     left: {
@@ -62,7 +69,7 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
       transformOrigin: `${transform.width}px 0px 0px`,
     },
     right: {
-      left: `${transform.right - 5}px`,
+      left: `${transform.left + transform.width + 5}px`,
       top: `${transform.top}px`,
       transformOrigin: `${transform.right}px 0px 0px`,
     },
@@ -71,8 +78,6 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
     const { left, top, bottom, right, height, width } = (
       e.target as HTMLElement
     ).getBoundingClientRect();
-    console.log(left, top, bottom, right, height, width);
-
     setTransform({
       left,
       top,
@@ -96,12 +101,13 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
       <div
         ref={ref}
         role="trigger"
-        className={`${prefixCls}-container`}
+        className={cls(`${prefixCls}-container`, customClass)}
         style={{
-          width: "100%",
+          //width: "100%",
           position: "absolute",
           top: "0px",
           left: "0px",
+          ...customStyle,
         }}
       >
         <div
