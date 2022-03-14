@@ -1,0 +1,123 @@
+@import "foundation/all";
+$prefix: ".ds-pagination";
+$size: ("mini", "small", "default", "large");
+@each $value in $size {
+  #{#{$prefix}-size} {
+    @if $value == "mini" {
+      &-#{$value} {
+        #{#{$prefix}-total-text} {
+          font-size: map-get($fontSize, "xs");
+          line-height: 24px;
+        }
+        #{#{$prefix}-item} {
+          font-size: map-get($fontSize, "sm");
+          min-width: 24px;
+          height: 24px;
+          line-height: 24px;
+        }
+      }
+    } @else if $value == "small" {
+      &-#{$value} {
+        #{#{$prefix}-total-text} {
+          font-size: map-get($fontSize, "sm");
+          line-height: 28px;
+        }
+        #{#{$prefix}-item} {
+          font-size: map-get($fontSize, "sm");
+          min-width: 28px;
+          height: 28px;
+          line-height: 28px;
+        }
+      }
+    } @else if $value == "default" {
+      &-#{$value} {
+        #{#{$prefix}-total-text} {
+          font-size: map-get($fontSize, "sm");
+          line-height: 32px;
+        }
+      }
+    } @else if $value == "large" {
+      &-#{$value} {
+        #{#{$prefix}-total-text} {
+          font-size: map-get($fontSize, "sm");
+          line-height: 36px;
+        }
+        #{#{$prefix}-item} {
+          font-size: map-get($fontSize, "sm");
+          min-width: 36px;
+          height: 36px;
+          line-height: 36px;
+        }
+      }
+    }
+  }
+}
+.ds-pagination {
+  display: flex;
+  align-items: center;
+  font-size: map-get($fontSize, "sm");
+  &-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-flex;
+  }
+  &-item {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    list-style: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    outline: 0;
+    user-select: none;
+    border-radius: map-get($border-radius, "base");
+    color: var(--color-text-2);
+    border: 0 solid transparent;
+    background-color: transparent;
+    font-size: 14px;
+    min-width: 32px;
+    height: 32px;
+    line-height: 32px;
+    &-prev {
+      font-size: map-get($fontSize, "xs");
+      color: var(--color-text-2);
+      background-color: transparent;
+      @include flex();
+    }
+    &-after {
+      font-size: map-get($fontSize, "xs");
+      color: var(--color-text-2);
+      background-color: transparent;
+      @include flex();
+    }
+    &-disabled {
+      cursor: not-allowed;
+      background-color: transparent;
+      color: var(--color-text-4);
+      border-color: transparent;
+    }
+    &-active {
+      transition: color 0.2s linear, background-color 0.2s linear;
+      color: var(--ds-primary-6);
+      background-color: var(--ds-primary-1);
+      border-color: transparent;
+    }
+  }
+  &-item:not(.ds-pagination-item-disabled):not(.ds-pagination-item-active):hover {
+    background-color: var(--color-fill-1);
+    border-color: transparent;
+    color: var(--color-text-2);
+  }
+  &-item:not(:last-child) {
+    margin-right: 8px;
+  }
+  &-total-text {
+    display: inline-block;
+    height: 100%;
+    color: var(--color-text-1);
+    margin-right: 8px;
+    font-size: map-get($fontSize, "sm");
+    line-height: 32px;
+  }
+}

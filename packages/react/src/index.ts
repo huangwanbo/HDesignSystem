@@ -18,6 +18,7 @@ import Affix from "./component/Affix";
 import Breadcrumb from "./component/Breadcrumb";
 import Menu from "./component/Menu";
 import Dropdown from "./component/Dropdown";
+import Pagination from "./component/Pagination";
 export {
     Button,
     Color,
@@ -39,5 +40,6 @@ export {
     Affix,
     Breadcrumb,
     Menu,
-    Dropdown
+    Dropdown,
+    Pagination
 };
