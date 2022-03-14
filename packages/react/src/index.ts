@@ -1,21 +1,23 @@
-import Button from "./atoms/Button";
-import Color from "./atoms/Colors";
-import Text from "./atoms/Text";
-import Margin from "./atoms/Margin";
-import Image from "./atoms/Image";
-import Icon from "./atoms/Icon";
-import { Portal, PortalWrapper } from "./atoms/Portal";
-import Spin from "./atoms/Spin";
-import Tooltip from "./atoms/Tooltip";
-import Tag from "./atoms/Tag";
-import Divider from "./atoms/Divider";
-import Grid from "./atoms/Grid";
-import Layout from "./atoms/Layout";
-import Statistic from "./atoms/Statistic";
-import BackTop from "./atoms/BackTop";
-import Anchor from "./atoms/Anchor";
-import Affix from "./atoms/Affix";
-import Breadcrumb from "./atoms/Breadcrumb";
+import Button from "./component/Button";
+import Color from "./component/Colors";
+import Text from "./component/Text";
+import Margin from "./component/Margin";
+import Image from "./component/Image";
+import Icon from "./component/Icon";
+import { Portal, PortalWrapper } from "./component/Portal";
+import Spin from "./component/Spin";
+import Tooltip from "./component/Tooltip";
+import Tag from "./component/Tag";
+import Divider from "./component/Divider";
+import Grid from "./component/Grid";
+import Layout from "./component/Layout";
+import Statistic from "./component/Statistic";
+import BackTop from "./component/BackTop";
+import Anchor from "./component/Anchor";
+import Affix from "./component/Affix";
+import Breadcrumb from "./component/Breadcrumb";
+import Menu from "./component/Menu";
+import Dropdown from "./component/Dropdown";
 export {
     Button,
     Color,
@@ -35,5 +37,7 @@ export {
     BackTop,
     Anchor,
     Affix,
-    Breadcrumb
+    Breadcrumb,
+    Menu,
+    Dropdown
 };

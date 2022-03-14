@@ -1,0 +1,47 @@
+@import "foundation/all";
+.ds-trigger {
+  &-wrap {
+    flex-direction: column;
+    border: 1px solid var(--ds-neutral-2);
+    border-radius: map-get($border-radius, "base");
+    box-shadow: 2px 2px 8px var(--ds-neutral-3);
+    background-color: var(--color-white);
+  }
+  &-inner {
+    padding: 8px 12px;
+    background-color: $dark;
+    font-size: 14px;
+    border-radius: 4px;
+    color: #fff;
+    line-height: 1.5715;
+    //box-shadow: 0 4px 10px $dark-light;
+  }
+  &-arrow {
+    background-color: $dark;
+    content: "";
+    height: 8px;
+    width: 8px;
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    z-index: -1;
+    &-top {
+      margin-left: 50%;
+      transform: translateX(-81%) rotate(45deg) translateY(-67%);
+    }
+    &-bottom {
+      margin-left: 50%;
+      margin-top: -60%;
+      transform: translateX(-50%) rotate(45deg) translateY(0%);
+    }
+    &-right {
+      margin-top: -30%;
+      transform: translateX(-50%) rotate(45deg) translateY(-0%);
+    }
+    &-left {
+      margin-top: -30%;
+      margin-left: 100%;
+      transform: translateX(-50%) rotate(45deg) translateY(-0%);
+    }
+  }
+}
