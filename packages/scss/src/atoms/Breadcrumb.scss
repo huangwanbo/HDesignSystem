@@ -1,7 +1,9 @@
 @import "foundation/all";
 
 .ds-breadcrumb {
-  @include flex();
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   color: var(--color-text-2);
   font-size: map-get($fontSize, "sm");
   &-item {
