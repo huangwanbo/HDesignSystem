@@ -19,6 +19,7 @@ import Breadcrumb from "./component/Breadcrumb";
 import Menu from "./component/Menu";
 import Dropdown from "./component/Dropdown";
 import PageHeader from "./component/PageHeader";
+import Pagination from "./component/Pagination";
 export {
     Button,
     Color,
@@ -41,5 +42,6 @@ export {
     Breadcrumb,
     Menu,
     Dropdown,
-    PageHeader
+    PageHeader,
+    Pagination
 };
