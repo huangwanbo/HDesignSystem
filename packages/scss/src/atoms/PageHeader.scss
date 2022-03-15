@@ -1,0 +1,73 @@
+@import "foundation/all";
+.ds-page-head {
+  padding: 16px 0;
+  &-wrapper {
+    padding-left: 24px;
+    padding-right: 20px;
+  }
+  &-with-content &-wrapper {
+    padding-bottom: 12px;
+  }
+  &-with-breadcrumb {
+    padding: 12px 0;
+  }
+  &-main {
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+    overflow: hidden;
+    line-height: 28px;
+  }
+  &-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--color-text-1);
+    font-size: $h-2-font-size;
+    font-weight: $fw-semibold;
+  }
+  &-divider {
+    width: 1px;
+    margin-left: 12px;
+    margin-right: 12px;
+    height: 16px;
+    background-color: var(--color-fill-3);
+  }
+  &-sub-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--color-text-3);
+    font-size: $h-5-font-size;
+  }
+  &-back {
+    @include flex();
+    color: var(--color-text-2);
+    font-size: $h-5-font-size;
+    margin-right: 12px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    line-height: 0;
+    width: 30px;
+    text-align: left;
+    :hover {
+      color: var(--ds-primary-6);
+      border-radius: 50%;
+      padding: 8px;
+      margin-left: -8px;
+    }
+  }
+  &-extra {
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  &-footer {
+    margin-top: 16px;
+  }
+  &-content {
+    padding: 20px 32px;
+    border-top: 1px solid var(--color-neutral-3);
+  }
+}

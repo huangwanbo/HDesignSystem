@@ -13,7 +13,7 @@ type RouterType = {
   breadcrumbName: string;
   children?: RouterType[];
 };
-type BreadcrumbType = {
+export type BreadcrumbType = {
   style?: CSSProperties;
   className?: string | string[];
   children?: ReactNode[] | ReactNode;
