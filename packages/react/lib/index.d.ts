@@ -18,10 +18,7 @@ import Affix from "./component/Affix";
 import Breadcrumb from "./component/Breadcrumb";
 import Menu from "./component/Menu";
 import Dropdown from "./component/Dropdown";
-<<<<<<< HEAD
 import PageHeader from "./component/PageHeader";
-export { Button, Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic, BackTop, Anchor, Affix, Breadcrumb, Menu, Dropdown, PageHeader };
-=======
 import Pagination from "./component/Pagination";
-export { Button, Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic, BackTop, Anchor, Affix, Breadcrumb, Menu, Dropdown, Pagination };
->>>>>>> f6fc013e12971b4373a1f00e45962ffe46eae1ac
+import Steps from "./component/Steps";
+export { Button, Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic, BackTop, Anchor, Affix, Breadcrumb, Menu, Dropdown, PageHeader, Pagination, Steps };

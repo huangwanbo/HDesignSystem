@@ -1,0 +1,211 @@
+@import "foundation/all";
+$prefix: ".ds-steps";
+$status: ("errors", "finish", "process", "wait");
+$size: ("default", "small");
+$direction: ("horizontal", "vertical");
+@each $dir1 in $direction {
+  @each $stat in $status {
+    @if $stat == errors {
+      #{$prefix}-item-#{$stat} {
+        #{$prefix}-icon {
+          border: 1px solid transparent;
+          color: var(--color-white);
+          background-color: var(--ds-danger-6);
+        }
+        #{$prefix}-item-title {
+          color: var(--color-text-1);
+        }
+      }
+      #{$prefix} #{$prefix}-item-#{$stat}:not(:last-child) {
+        #{$prefix}-item-title:after,
+        #{$prefix}-item-tail:after {
+        }
+      }
+    } @else if $stat == finish {
+      #{$prefix}-item-#{$stat} {
+        #{$prefix}-icon {
+          border: 1px solid transparent;
+          color: var(--ds-primary-6);
+          background-color: var(--ds-primary-1);
+        }
+        #{$prefix}-item-title {
+          color: var(--color-text-1);
+        }
+      }
+      #{$prefix} #{$prefix}-item-#{$stat}:not(:last-child) {
+        #{$prefix}-item-title:after,
+        #{$prefix}-item-tail:after {
+          background-color: var(--ds-primary-6);
+        }
+      }
+    } @else if $stat == "wait" {
+      #{$prefix}-item-#{$stat} {
+        #{$prefix}-icon {
+          border: 1px solid transparent;
+          color: var(--color-text-2);
+          background-color: var(--color-fill-2);
+        }
+        #{$prefix}-item-title {
+          color: var(--color-text-1);
+        }
+      }
+      #{$prefix} #{$prefix}-item-#{$stat}:not(:last-child) {
+        #{$prefix}-item-title:after,
+        #{$prefix}-item-tail:after {
+        }
+      }
+    } @else if $stat == process {
+      #{$prefix}-item-#{$stat} {
+        #{$prefix}-icon {
+          border: 1px solid transparent;
+          color: var(--color-white);
+          background-color: var(--ds-primary-6);
+        }
+        #{$prefix}-item-title {
+          color: var(--color-text-1);
+        }
+      }
+      #{$prefix} #{$prefix}-item-#{$stat}:not(:last-child) {
+        #{$prefix}-item-title:after,
+        #{$prefix}-item-tail:after {
+        }
+      }
+    }
+  }
+}
+@each $val in $size {
+  @if $val == small {
+    #{$prefix}-size-small {
+      #{$prefix}-item-icon,
+      #{$prefix}-item-title {
+        font-size: map-get($fontSize, "sm");
+      }
+      #{$prefix}-item-title {
+        line-height: 24px;
+      }
+      #{$prefix}-icon {
+        width: 24px;
+        height: 24px;
+        line-height: 22px;
+        font-size: map-get($fontSize, "sm");
+      }
+    }
+  }
+}
+.ds-steps {
+  display: flex;
+  &-item {
+    display: flex;
+    flex: 1;
+    white-space: nowrap;
+    margin-right: 12px;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    &-icon {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 12px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    &-content {
+      display: inline-block;
+    }
+    &-title {
+      white-space: nowrap;
+      position: relative;
+      display: inline-block;
+      font-size: $h-4-font-size;
+      line-height: 28px;
+      padding-right: 12px;
+    }
+    &-dec {
+      white-space: normal;
+      color: var(--color-text-3);
+      font-size: map-get($fontSize, "xs");
+      margin-top: 2px;
+      max-width: 140px;
+    }
+    &-title,
+    &-wait,
+    &-title {
+      color: var(--color-text-2);
+    }
+    &-error &-title,
+    &-finish &-title,
+    &-process &-title {
+      color: var(--color-text-1);
+    }
+  }
+  &-item:not(:last-child) {
+    #{$prefix}-item-title:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 1000px;
+      height: 1px;
+      left: 100%;
+      top: 13.5px;
+      background-color: var(--color-neutral-3);
+      box-sizing: border-box;
+    }
+    #{$prefix}-item-tail {
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      top: 13.5px;
+      box-sizing: border-box;
+    }
+  }
+
+  &-icon {
+    width: 28px;
+    line-height: 26px;
+    height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    box-sizing: border-box;
+    @include flex();
+  }
+
+  &-label {
+    &-vertical {
+      #{$prefix}-item:not(:last-child) {
+        #{$prefix}-item-title:after {
+          display: none;
+        }
+      }
+      #{$prefix}-item-tail {
+        left: 96px;
+        padding-right: 40px;
+      }
+      #{$prefix}-item-tail:not(:last-child):after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-neutral-3);
+      }
+      #{$prefix}-item {
+        overflow: visible;
+        display: unset;
+        &-icon {
+          margin-left: 56px;
+        }
+        &-content {
+          display: block;
+          text-align: center;
+          width: 140px;
+        }
+      }
+    }
+  }
+}
+#{$prefix} #{$prefix}-item-next-error {
+  #{$prefix}-item-content {
+    #{$prefix}-item-title:after {
+      background-color: var(--ds-danger-6);
+    }
+  }
+}
