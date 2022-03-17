@@ -7,7 +7,12 @@ import React, {
   useRef,
 } from "react";
 import cls from "classNames";
-import { labelPlacementType, statusType } from "./constants";
+import {
+  labelPlacementType,
+  statusType,
+  type as modeType,
+  sizeType,
+} from "./constants";
 import Context from "./Context";
 import { IconCheck, IconClose } from "@DS/Icon";
 const prefixCls = "ds-steps";
@@ -30,9 +35,12 @@ function ComponentRef(props: Partial<StepsType>, ref: any) {
   const {
     current,
     status: currentStatus,
+    type,
+    size,
     addStep,
     deleteStep,
     labelPlacement,
+    handleChange,
   } = useContext(Context);
   const { style, className, id, title, description, status, icon } = props;
   const currentRef = ref || useRef();
@@ -60,8 +68,6 @@ function ComponentRef(props: Partial<StepsType>, ref: any) {
     },
     className
   );
-  console.log(cs);
-
   const renderIcon = () => {
     switch (status) {
       case statusType.wait:
@@ -75,19 +81,43 @@ function ComponentRef(props: Partial<StepsType>, ref: any) {
         return id;
     }
   };
+  const renderTypeIcon = () => {
+    switch (type) {
+      case modeType.default:
+        return renderIcon();
+      case modeType.arrow:
+      case modeType.dot:
+      case modeType.navigation:
+      default:
+        return null;
+    }
+  };
   return (
-    <div className={cs} style={style} ref={currentRef}>
-      <div className={cls(`${prefixCls}-item-icon`)}>
-        <div className={cls(`${prefixCls}-icon`)}>
-          {icon ? icon : renderIcon()}
+    <div
+      className={cs}
+      style={style}
+      ref={currentRef}
+      onClick={() => {
+        handleChange(id as number);
+      }}
+    >
+      {type !== modeType.arrow && (
+        <div className={cls(`${prefixCls}-item-icon`)}>
+          <div className={cls(`${prefixCls}-icon`)}>
+            {icon ? icon : renderTypeIcon()}
+          </div>
         </div>
-      </div>
-      {labelPlacement == labelPlacementType.vertical && (
-        <div className={cls(`${prefixCls}-item-tail`)}></div>
       )}
+      {labelPlacement == labelPlacementType.vertical ||
+        (type == modeType.dot && (
+          <div className={cls(`${prefixCls}-item-tail`)}></div>
+        ))}
       <div className={cls(`${prefixCls}-item-content`)}>
         <div className={cls(`${prefixCls}-item-title`)}>{title}</div>
-        <div className={cls(`${prefixCls}-item-dec`)}>{description}</div>
+
+        {type == modeType.arrow && size == sizeType.small && (
+          <div className={cls(`${prefixCls}-item-dec`)}>{description}</div>
+        )}
       </div>
     </div>
   );

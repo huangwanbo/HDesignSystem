@@ -2,14 +2,13 @@ import React, {
   forwardRef,
   CSSProperties,
   ReactNode,
-  useState,
   useRef,
   ReactElement,
 } from "react";
 import cls from "classNames";
 import Step from "./Step";
 import {
-  type,
+  type as modeType,
   sizeType,
   directionType,
   labelPlacementType,
@@ -22,7 +21,7 @@ type StepsType = {
   style: CSSProperties;
   className: string | string[];
   /* 节点类型 */
-  type: keyof typeof type;
+  type: keyof typeof modeType;
   /* 步骤条的尺寸 */
   size: keyof typeof sizeType;
   /* 标签描述文字放置的位置 */
@@ -38,18 +37,24 @@ type StepsType = {
   /* 无线连接模式 */
   lineless: boolean;
   children: ReactNode;
+  /* 箭头模式 */
+  arrow: boolean;
 };
 
 function ComponentRef(props: Partial<StepsType>, ref: any) {
   const {
-    current: PropCurrent = 0,
+    current = 0,
     children,
     size = "default",
     labelPlacement = labelPlacementType.horizontal,
     status = statusType.wait,
+    lineless,
+    direction = "horizontal",
+    onChange,
+    type = "default",
+    style,
   } = props;
   const currentRef = ref || useRef();
-  const [current, setCurrent] = useState(PropCurrent);
   const StepContainer = useRef(new Map<number, typeof Step>());
   const addStep = (id: number, step: typeof Step) => {
     StepContainer.current.set(id, step);
@@ -58,15 +63,15 @@ function ComponentRef(props: Partial<StepsType>, ref: any) {
     StepContainer.current.delete(id);
   };
   const handleChange = (id: number) => {
-    setCurrent(id);
+    onChange && onChange(id);
   };
   const createStatus = (id: number) => {
-    if (id == current && status) {
-      return statusType.errors;
-    }
     if (id < current) {
       return statusType.finish;
     } else if (id === current) {
+      if (status == statusType.errors) {
+        return statusType.errors;
+      }
       return statusType.process;
     } else {
       return statusType.wait;
@@ -85,20 +90,34 @@ function ComponentRef(props: Partial<StepsType>, ref: any) {
   };
   const cs = cls(prefixCls, {
     [`${prefixCls}-size-${size}`]: true,
-    [`${prefixCls}-label-${labelPlacement}`]: true,
+    [`${prefixCls}-label-${labelPlacement}`]: type != modeType.dot,
+    [`${prefixCls}-label-vertical`]:
+      type == modeType.dot && direction == directionType.horizontal,
+    [`${prefixCls}-label-horizontal`]:
+      type == modeType.dot && direction == directionType.vertical,
+    [`${prefixCls}-lineless`]: !!lineless,
+    [`${prefixCls}-${direction}`]: true,
+    [`${prefixCls}-onChange`]: !!onChange,
+    [`${prefixCls}-${type}`]: true,
   });
   return (
     <Context.Provider
       value={{
         current,
         status,
+        type,
         labelPlacement,
+        size,
         addStep,
         deleteStep,
         handleChange,
       }}
     >
-      <div className={cs} ref={currentRef}>
+      <div
+        className={cs}
+        ref={currentRef}
+        style={{ ...style, width: "780px", marginBottom: "60px" }}
+      >
         {renderChild()}
       </div>
     </Context.Provider>

@@ -22,7 +22,8 @@
   "scripts": {
     "build": "yarn lerna run build",
     "dev": "yarn lerna run dev",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "git": "git add . & git cz "
   },
   "repository": "git@github.com:huangwanbo/HDesignSystem.git",
   "author": "huangwanbo <416860684@qq.com>",
