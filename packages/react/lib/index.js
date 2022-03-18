@@ -19,9 +19,7 @@ export { default as Affix } from './component/Affix/Affix.js';
 export { default as Breadcrumb } from './component/Breadcrumb/Breadcrumb.js';
 export { default as Menu } from './component/Menu/Menu.js';
 export { default as Dropdown } from './component/Dropdown/Dropdown.js';
-<<<<<<< HEAD
 export { default as PageHeader } from './component/PageHeader/PageHeader.js';
-=======
 export { default as Pagination } from './component/Pagination/Pagination.js';
->>>>>>> f6fc013e12971b4373a1f00e45962ffe46eae1ac
+export { default as Steps } from './component/Steps/Steps.js';
 //# sourceMappingURL=index.js.map
