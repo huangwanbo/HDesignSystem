@@ -21,6 +21,7 @@ import Dropdown from "./component/Dropdown";
 import PageHeader from "./component/PageHeader";
 import Pagination from "./component/Pagination";
 import Steps from "./component/Steps";
+import Alert from "./component/Alert";
 export {
     Button,
     Color,
@@ -45,5 +46,6 @@ export {
     Dropdown,
     PageHeader,
     Pagination,
-    Steps
+    Steps,
+    Alert
 };
