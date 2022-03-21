@@ -23,4 +23,5 @@ export { default as PageHeader } from './component/PageHeader/PageHeader.js';
 export { default as Pagination } from './component/Pagination/Pagination.js';
 export { default as Steps } from './component/Steps/Steps.js';
 export { default as Alert } from './component/Alert/Alert.js';
+export { default as Message } from './component/Message/Message.js';
 //# sourceMappingURL=index.js.map
