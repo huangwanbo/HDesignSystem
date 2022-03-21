@@ -22,6 +22,7 @@ import PageHeader from "./component/PageHeader";
 import Pagination from "./component/Pagination";
 import Steps from "./component/Steps";
 import Alert from "./component/Alert";
+import Message from "./component/Message";
 export {
     Button,
     Color,
@@ -47,5 +48,6 @@ export {
     PageHeader,
     Pagination,
     Steps,
-    Alert
+    Alert,
+    Message
 };

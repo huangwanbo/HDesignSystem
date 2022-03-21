@@ -1,0 +1,15 @@
+@import "foundation/all";
+.ds-message {
+  &-wrapper {
+    width: 100%;
+    position: fixed;
+    z-index: 1003;
+    padding: 0 10px;
+    text-align: center;
+    pointer-events: none;
+    box-sizing: border-box;
+    &-top {
+      top: 40px;
+    }
+  }
+}
