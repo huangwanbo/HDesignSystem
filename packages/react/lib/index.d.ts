@@ -23,4 +23,5 @@ import Pagination from "./component/Pagination";
 import Steps from "./component/Steps";
 import Alert from "./component/Alert";
 import Message from "./component/Message";
-export { Button, Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic, BackTop, Anchor, Affix, Breadcrumb, Menu, Dropdown, PageHeader, Pagination, Steps, Alert, Message };
+import Notification from "./component/Notification";
+export { Button, Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic, BackTop, Anchor, Affix, Breadcrumb, Menu, Dropdown, PageHeader, Pagination, Steps, Alert, Message, Notification };

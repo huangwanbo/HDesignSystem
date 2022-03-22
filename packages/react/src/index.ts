@@ -23,6 +23,7 @@ import Pagination from "./component/Pagination";
 import Steps from "./component/Steps";
 import Alert from "./component/Alert";
 import Message from "./component/Message";
+import Notification from "./component/Notification";
 export {
     Button,
     Color,
@@ -49,5 +50,6 @@ export {
     Pagination,
     Steps,
     Alert,
-    Message
+    Message,
+    Notification
 };

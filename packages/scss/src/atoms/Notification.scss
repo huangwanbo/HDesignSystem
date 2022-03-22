@@ -1,0 +1,38 @@
+@import "foundation/all";
+.ds-notification {
+  &-wrapper {
+    position: fixed;
+    z-index: 1003;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+
+    &-topLeft {
+      top: 20px;
+      left: 20px;
+    }
+    &-topRight {
+      top: 20px;
+      right: 20px;
+    }
+    &-bottomLeft {
+      bottom: 20px;
+      left: 20px;
+    }
+    &-bottomRight {
+      bottom: 20px;
+      right: 20px;
+    }
+    .ds-notice {
+      width: 340px;
+      max-width: 340px;
+      padding: 20px;
+      &-icon {
+        font-size: map-get($fontSize, "xl");
+      }
+      &-content {
+        font-size: map-get($fontSize, "sm");
+      }
+    }
+  }
+}
