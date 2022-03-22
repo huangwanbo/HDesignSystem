@@ -5,6 +5,20 @@
   opacity: 1;
   transition: all 300ms;
 }
+.slideLeft-enter {
+  transform: translateX(-100%);
+}
+.slideLeft-enter--active {
+  opacity: translateX(0);
+  transition: transform 300ms;
+}
+.slideLeft-eixt {
+  transform: translateX(0);
+}
+.slideLeft-eixt-active {
+  transform: translateX(-100%);
+  transition: transform 300ms;
+}
 .fadeIn-exit {
   opacity: 1;
 }

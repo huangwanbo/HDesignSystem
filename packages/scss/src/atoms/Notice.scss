@@ -11,9 +11,7 @@ $prefix: ".ds-notice";
   line-height: 1.5715;
   margin-bottom: 16px;
   max-width: 250px;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--color-fill);
+  background-color: var(--color-bg-white);
   border: 1px solid #eee;
   box-shadow: 1px 1px 1px #eee;
   display: flex;
@@ -26,22 +24,22 @@ $prefix: ".ds-notice";
       margin-top: 4px;
     }
   }
-  &-info {
-    border: 1px solid transparent;
-    background-color: var(--ds-primary-2);
-  }
-  &-warning {
-    border: 1px solid transparent;
-    background-color: var(--ds-warning-2);
-  }
-  &-success {
-    border: 1px solid transparent;
-    background-color: var(--ds-success-2);
-  }
-  &-error {
-    border: 1px solid transparent;
-    background-color: var(--ds-danger-2);
-  }
+  //   &-info {
+  //     border: 1px solid transparent;
+  //     background-color: var(--ds-primary-2);
+  //   }
+  //   &-warning {
+  //     border: 1px solid transparent;
+  //     background-color: var(--ds-warning-2);
+  //   }
+  //   &-success {
+  //     border: 1px solid transparent;
+  //     background-color: var(--ds-success-2);
+  //   }
+  //   &-error {
+  //     border: 1px solid transparent;
+  //     background-color: var(--ds-danger-2);
+  //   }
   &-icon {
     margin-right: 8px;
     height: 22.001px;
@@ -60,6 +58,11 @@ $prefix: ".ds-notice";
     transition: color 0.1s linear;
     display: flex;
   }
+  &-btn {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 10px;
+  }
 
   &-content {
     &-wrapper {
@@ -75,15 +78,4 @@ $prefix: ".ds-notice";
     line-height: 1.5;
     margin-bottom: 4px;
   }
-  &-action {
-    margin-left: 8px;
-  }
-  &-banner {
-    border: none;
-    border-radius: 0;
-  }
-}
-$and: "+";
-#{$prefix}-action#{$and}#{$prefix}-close {
-  margin-left: 8px;
 }

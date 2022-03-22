@@ -31,6 +31,7 @@ export type NoticeType = {
   type: keyof typeof noticeType;
   title: string;
   closeElement: ReactNode;
+  btn: ReactNode;
 };
 
 function ComponentRef(props: Partial<NoticeType>, ref: any) {
@@ -44,6 +45,7 @@ function ComponentRef(props: Partial<NoticeType>, ref: any) {
     className,
     closeElement,
     closable,
+    btn,
   } = props;
   const handleClose = (e: any) => {
     console.log(e);
@@ -80,6 +82,7 @@ function ComponentRef(props: Partial<NoticeType>, ref: any) {
       <div className={`${prefixCls}-content-wrapper`}>
         <div className={`${prefixCls}-title`}>{title}</div>
         <div className={`${prefixCls}-content`}>{content}</div>
+        <div className={`${prefixCls}-btn`}>{btn}</div>
       </div>
       {closable && (
         <button className={`${prefixCls}-close`} onClick={handleClose}>
