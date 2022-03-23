@@ -25,4 +25,5 @@ export { default as Steps } from './component/Steps/Steps.js';
 export { default as Alert } from './component/Alert/Alert.js';
 export { default as Message } from './component/Message/Message.js';
 export { default as Notification } from './component/Notification/Notification.js';
+export { default as Modal } from './component/Modal/Modal.js';
 //# sourceMappingURL=index.js.map

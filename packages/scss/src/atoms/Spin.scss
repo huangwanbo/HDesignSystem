@@ -1,21 +1,21 @@
 @import "foundation/all";
-.ds-spin{
-    &-block{
-        @include inline-flex(column);
-    }
-    &-loading{
-        display: block;
-        font-weight: $body-font-weight;
-        animation-name: ds-loading-circle;
-        animation-duration: 1000ms;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-    }
+.ds-spin,
+.ds-icon {
+  &-block {
+    @include inline-flex(column);
+  }
+  &-loading {
+    display: block;
+    font-weight: $body-font-weight;
+    animation-name: ds-loading-circle;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
 }
 
 @keyframes ds-loading-circle {
-    100%{
-        transform: rotate(360deg);
-    }
-
+  100% {
+    transform: rotate(360deg);
+  }
 }
