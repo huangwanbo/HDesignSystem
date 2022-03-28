@@ -5,12 +5,16 @@ import React, {
   HTMLAttributes,
   useRef,
   useState,
+  ForwardRefExoticComponent,
+  PropsWithChildren,
 } from "react";
 import Button, { ButtonProps } from "../Button";
 import { PortalWrapper } from "../Portal";
 import { IconClose } from "@DS/Icon";
 import cls from "classNames";
 import { CSSTransition } from "react-transition-group";
+import confirm, { ConfirmProps, destoryList } from "./Comfirm";
+import useModal from "./useModal";
 const prefixCls = "ds-modal";
 
 type CursorPositionType = { left: number; top: number } | null;
@@ -28,7 +32,7 @@ document.documentElement.addEventListener(
   },
   true
 );
-type ModalType = {
+export type ModalType = {
   style: CSSProperties;
   className: string | string[];
   onCancel: () => void;
@@ -40,6 +44,7 @@ type ModalType = {
   simple: boolean;
   okText: string;
   cancelText: string;
+  hideCancel: boolean;
   okButtonProps: ButtonProps;
   cancelButtonProps: ButtonProps;
   /* if null nothing*/
@@ -50,12 +55,14 @@ type ModalType = {
   maskStyle: CSSProperties;
   afterOpen: () => void;
   afterClose: () => void;
-  confirmLoading: () => void;
+  confirmLoading: boolean;
   mountOnEnter: boolean;
   unmountOnExit: boolean;
   escToExit: boolean;
   children: ReactNode;
-} & HTMLAttributes<HTMLElement>;
+} & HTMLAttributes<HTMLElement> & {
+    confirm: (config: ConfirmProps) => void;
+  };
 
 function ComponentRef(props: Partial<ModalType>, ref: any) {
   const {
@@ -78,14 +85,16 @@ function ComponentRef(props: Partial<ModalType>, ref: any) {
     afterClose,
     maskClosable = true,
     simple,
+    hideCancel,
+    mountOnEnter = true,
+    unmountOnExit = true,
     ...rest
   } = props;
   const wrapperRef = ref || useRef();
   const cursorPositionRef = useRef<CursorPositionType>(null);
   const haveOriginTransformOrigin = useRef<boolean>(false);
-  const [wrapperVisible, setWrapperVisible] = useState(visible);
+  //const [wrapperVisible, setWrapperVisible] = useState(visible);
   const [loading, setLoading] = useState(false);
-  console.log(wrapperVisible);
   console.log(loading);
 
   const setTransformOrigin = (e: HTMLDivElement) => {
@@ -97,8 +106,6 @@ function ComponentRef(props: Partial<ModalType>, ref: any) {
       const { left, top } = cursorPositionRef.current;
       transformOrigin = `${left - eRect.left}px ${top - eRect.top}px`;
     }
-    console.log(transformOrigin);
-
     e.style.transformOrigin = transformOrigin;
   };
   const handleCancel = () => {
@@ -148,7 +155,7 @@ function ComponentRef(props: Partial<ModalType>, ref: any) {
           footer
         ) : (
           <>
-            {cancelButtonNode}
+            {!hideCancel && cancelButtonNode}
             {okButtonNode}
           </>
         )}
@@ -179,44 +186,25 @@ function ComponentRef(props: Partial<ModalType>, ref: any) {
     </div>
   );
   return (
-    <PortalWrapper visible={visible}>
+    <PortalWrapper visible={visible} forceRender={!mountOnEnter}>
       {/* {visible && ( */}
-      <CSSTransition
-        in={visible}
-        timeout={400}
-        classNames="fadeModal"
-        onEnter={(e: any) => {
-          e.style.display = "block";
-        }}
-        onExited={(e: any) => {
-          e.style.display = "none";
-        }}
-      >
-        {maskEle}
-      </CSSTransition>
-      <CSSTransition
-        in={visible}
-        timeout={400}
-        classNames="zoomModal"
-        unmountOnExit={true}
-        mountOnEnter={true}
-        onEnter={(e: any) => {
-          setWrapperVisible(true);
-          cursorPositionRef.current = cursorPosition;
-          haveOriginTransformOrigin.current = !!e.style.transformOrigin;
-          setTransformOrigin(e);
-        }}
-        onEntered={(e: any) => {
-          setTransformOrigin(e);
-          cursorPositionRef.current = null;
-          afterOpen && afterOpen();
-        }}
-        onExited={(e: any) => {
-          setWrapperVisible(false);
-          setTransformOrigin(e);
-          afterClose && afterClose();
-        }}
-      >
+      {mask ? (
+        <CSSTransition
+          in={visible}
+          timeout={400}
+          classNames="fadeModal"
+          unmountOnExit={unmountOnExit}
+          onEnter={(e: any) => {
+            e.style.display = "block";
+          }}
+          onExited={(e: any) => {
+            e.style.display = "none";
+          }}
+        >
+          {maskEle}
+        </CSSTransition>
+      ) : null}
+      {visible && (
         <div
           {...rest}
           className={cls(
@@ -226,14 +214,82 @@ function ComponentRef(props: Partial<ModalType>, ref: any) {
           ref={wrapperRef}
           onClick={handleMaskClick}
         >
-          {element}
+          <CSSTransition
+            in={visible}
+            timeout={400}
+            appear
+            classNames="zoomModal"
+            unmountOnExit={unmountOnExit}
+            mountOnEnter={mountOnEnter}
+            onEnter={(e: any) => {
+              console.log("onEnter");
+              //setWrapperVisible(true);
+              cursorPositionRef.current = cursorPosition;
+              haveOriginTransformOrigin.current = !!e.style.transformOrigin;
+              setTransformOrigin(e);
+            }}
+            onEntered={(e: any) => {
+              console.log("onEntered");
+              setTransformOrigin(e);
+              cursorPositionRef.current = null;
+              afterOpen && afterOpen();
+            }}
+            onExited={(e: any) => {
+              console.log("onExited");
+              //setWrapperVisible(false);
+              setTransformOrigin(e);
+              afterClose && afterClose();
+            }}
+          >
+            {element}
+          </CSSTransition>
         </div>
-      </CSSTransition>
+      )}
       {/* )} */}
     </PortalWrapper>
   );
 }
+type ModalReturnProps = {
+  update: (props: ConfirmProps) => void;
+  close: () => void;
+};
+interface ModalComponent
+  extends ForwardRefExoticComponent<PropsWithChildren<Partial<ModalType>>> {
+  confirm: (props: ConfirmProps) => ModalReturnProps;
+  info: (props: ConfirmProps) => ModalReturnProps;
+  success: (props: ConfirmProps) => ModalReturnProps;
+  warning: (props: ConfirmProps) => ModalReturnProps;
+  error: (props: ConfirmProps) => ModalReturnProps;
+  destroyAll: () => void;
+  useModal: typeof useModal;
+}
+const Modal = forwardRef(ComponentRef) as ModalComponent;
 
-const Modal = forwardRef(ComponentRef);
 Modal.displayName = "Modal";
+Modal.confirm = (config: ConfirmProps): ModalReturnProps => {
+  return confirm(config);
+};
+Modal.useModal = useModal;
+const megType = {
+  info: "info",
+  success: "success",
+  warning: "warning",
+  error: "error",
+};
+type noticeType = keyof typeof megType;
+(Object.keys(megType) as noticeType[]).forEach((type: noticeType) => {
+  Modal[type] = (props: ConfirmProps) => {
+    return confirm({
+      ...props,
+      isNotice: true,
+      type,
+    });
+  };
+});
+Modal.destroyAll = () => {
+  while (destoryList.length) {
+    const fn = destoryList.pop();
+    if (fn) fn();
+  }
+};
 export default Modal;

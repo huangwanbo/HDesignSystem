@@ -30,6 +30,13 @@ $prefix: ".ds-modal";
     &-align-center {
       text-align: center;
       white-space: nowrap;
+      ::after {
+        content: "";
+        vertical-align: middle;
+        display: inline-block;
+        height: 100%;
+        width: 0;
+      }
     }
   }
   &-header {
@@ -85,6 +92,11 @@ $prefix: ".ds-modal";
   }
   #{$prefix}-title {
     text-align: center;
+    #{$prefix}-title-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
   #{$prefix}-content {
     padding: 0;
