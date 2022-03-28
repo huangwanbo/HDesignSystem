@@ -25,6 +25,7 @@ import Alert from "./component/Alert";
 import Message from "./component/Message";
 import Notification from "./component/Notification";
 import Modal from "./component/Modal";
+import Progress from "./component/Progress";
 export {
     Button,
     Color,
@@ -53,5 +54,6 @@ export {
     Alert,
     Message,
     Notification,
-    Modal
+    Modal,
+    Progress
 };
