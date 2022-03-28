@@ -24,6 +24,7 @@ import Steps from "./component/Steps";
 import Alert from "./component/Alert";
 import Message from "./component/Message";
 import Notification from "./component/Notification";
+import Modal from "./component/Modal";
 export {
     Button,
     Color,
@@ -51,5 +52,6 @@ export {
     Steps,
     Alert,
     Message,
-    Notification
+    Notification,
+    Modal
 };

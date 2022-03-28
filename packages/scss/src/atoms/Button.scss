@@ -73,20 +73,20 @@ $btn-color: (
     color: map-get($btn-color, $type);
     border: 1px solid map-get($btn-bg, $type);
   }
-  .ds-button_container-ghost {
+  .ds-button__container-ghost {
     background: $white;
     color: map-get($btn-bg, $type);
     border: none;
   }
-  .ds-button_container-#{$type}-ghost:hover {
+  .ds-button__container-#{$type}-ghost:hover {
     background: $gray-light;
     color: map-get($btn-bg, $type);
     border: 1px solid $gray-light;
   }
-  .ds-button_container-#{$type}-disabled {
-    background: $gray-light;
-    color: $gray;
-    border: 1px solid $gray-light;
+  .ds-button__container-#{$type}-disabled {
+    background: map-get($btn-bg-light, $type);
+    color: $white;
+    border: 1px solid map-get($btn-bg-light, $type);
     cursor: not-allowed;
   }
 }
