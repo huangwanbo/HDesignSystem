@@ -1,0 +1,66 @@
+@import "foundation/all";
+$prefix: "ds-progress";
+.ds-progress {
+  position: relative;
+  line-height: 1;
+  font-size: map-get($fontSize, "xs");
+  &-line {
+    display: inline-block;
+    max-width: 100%;
+    width: 100%;
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+    }
+    &-outer {
+      background-color: var(--color-fill-3);
+      border-radius: 100px;
+      width: 100%;
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+    }
+    &-inner {
+      height: 100%;
+      border-radius: 100px;
+      background-color: var(--ds-primary-6);
+      position: relative;
+      transition: width 0.6s cubic-bezier(0.34, 0.69, 0.1, 1),
+        background 0.3s cubic-bezier(0.34, 0.69, 0.1, 1);
+      max-width: 100%;
+    }
+    &-text {
+      font-size: map-get($fontSize, "xs");
+      margin-left: 16px;
+      color: var(--color-text-2);
+      white-space: nowrap;
+      text-align: right;
+      flex-grow: 1;
+      flex-shrink: 0;
+      min-width: 32px;
+    }
+  }
+  &-circle {
+    display: inline-block;
+    &-wrapper {
+      position: relative;
+      text-align: center;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: text-bottom;
+    }
+    &-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      color: var(--color-text-3);
+      transform: translate(-50%, -50%);
+    }
+    &-text {
+      font-size: map-get($fontSize, "sm");
+    }
+  }
+}
