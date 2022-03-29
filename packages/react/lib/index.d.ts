@@ -26,4 +26,5 @@ import Message from "./component/Message";
 import Notification from "./component/Notification";
 import Modal from "./component/Modal";
 import Progress from "./component/Progress";
-export { Button, Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic, BackTop, Anchor, Affix, Breadcrumb, Menu, Dropdown, PageHeader, Pagination, Steps, Alert, Message, Notification, Modal, Progress };
+import Drawer from "./component/Drawer";
+export { Button, Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic, BackTop, Anchor, Affix, Breadcrumb, Menu, Dropdown, PageHeader, Pagination, Steps, Alert, Message, Notification, Modal, Progress, Drawer };
