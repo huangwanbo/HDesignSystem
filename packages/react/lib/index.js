@@ -27,4 +27,5 @@ export { default as Message } from './component/Message/Message.js';
 export { default as Notification } from './component/Notification/Notification.js';
 export { default as Modal } from './component/Modal/Modal.js';
 export { default as Progress } from './component/Progress/Progress.js';
+export { default as Drawer } from './component/Drawer/Drawer.js';
 //# sourceMappingURL=index.js.map
