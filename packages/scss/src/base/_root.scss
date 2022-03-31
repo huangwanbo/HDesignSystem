@@ -38,9 +38,10 @@
   --ds-h5-text-weight: #{$fw-extrabold};
   --ds-h6-text-weight: #{$fw-bold};
 
-  --ds-border-radius-sm: #{map-get($border-radius, "sm")};
+  --ds-border-radius-small: #{map-get($border-radius, "sm")};
   --ds-border-radius-base: #{map-get($border-radius, "sm")};
   --ds-border-radius-lg: #{map-get($border-radius, "lg")};
+  --ds-border-radius-circle: 50%;
 }
 #{body} {
   --red-1: 255, 236, 232;
@@ -196,6 +197,7 @@ body {
     --ds-link-#{$setp}: rgb(var(--arcoblue-#{$setp}));
     --ds-neutral-#{$setp}: rgb(var(--gray-#{$setp}));
   }
+  @include body();
   --color-white: #fff;
   --color-black: #000;
   --color-border: rgb(var(--gray-3));

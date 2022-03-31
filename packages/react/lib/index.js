@@ -28,4 +28,5 @@ export { default as Notification } from './component/Notification/Notification.j
 export { default as Modal } from './component/Modal/Modal.js';
 export { default as Progress } from './component/Progress/Progress.js';
 export { default as Drawer } from './component/Drawer/Drawer.js';
+export { default as Input } from './component/Input/Input.js';
 //# sourceMappingURL=index.js.map
