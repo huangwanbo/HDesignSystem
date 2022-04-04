@@ -1,5 +1,8 @@
 import React, { forwardRef, ReactNode, useRef, CSSProperties } from "react";
 import BaseInput, { BaseInputType } from "./BaseInput";
+import TextArea from "./TextArea";
+import Password from "./Password";
+import Search from "./Search";
 import { omit } from "lodash";
 import cls from "classNames";
 const prefixCls = "ds-input";
@@ -52,6 +55,14 @@ function ComponentRef(props: Partial<InputType>, ref: any) {
   );
 }
 
-const Input = forwardRef(ComponentRef);
+const Component = forwardRef(ComponentRef);
+const Input = Component as typeof Component & {
+  TextArea: typeof TextArea;
+  Password: typeof Password;
+  Search: typeof Search;
+};
+Input.TextArea = TextArea;
+Input.Password = Password;
+Input.Search = Search;
 Input.displayName = "Input";
 export default Input;

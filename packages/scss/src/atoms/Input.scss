@@ -185,11 +185,54 @@ $prefix: ".ds-input";
     height: 100%;
 
   }
-  &-prefix{
+
+  &-prefix {
     margin-right: 6px;
   }
+
   &-suffix {
     margin-left: 6px;
+  }
+}
+
+#{$prefix}-textarea {
+  #{$prefix}-inner-wrapper {
+    padding-right: 0px;
+
+    #{$prefix}-group-suffix {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+
+#{$prefix}-word-limit {
+  position: absolute;
+  font-size: map-get($fontSize, "xs");
+  bottom: 6px;
+  right: 10px;
+  color: var(--color-text-3);
+  user-select: none;
+}
+
+#{$prefix}-password,
+#{$prefix}-search {
+  .ds-icon {
+    cursor: pointer;
+  }
+}
+#{$prefix}-search-loading {
+  .ds-icon {
+    cursor: not-allowed;
+  }
+}
+
+#{$prefix}-search {
+  #{$prefix}-group-addafter {
+    border-left: unset;
+    padding: unset;
+    border: unset;
   }
 }
 

@@ -7,10 +7,12 @@ import React, {
   useImperativeHandle,
   useRef,
   ReactNode,
+  TextareaHTMLAttributes,
 } from "react";
 import { IconClose } from "@DS/Icon";
 import { on, off } from "../../_util/event";
 import cls from "classNames";
+import { useMergeValue } from "../../_util/hook";
 const prefixCls = "ds-input";
 const sizeType = Object.freeze({
   mini: "mini",
@@ -36,10 +38,16 @@ export type BaseInputType = {
   maxLength: number;
   prefix: ReactNode;
   suffix: ReactNode;
+  showWordLimit: boolean;
+  isTextArea: boolean;
 } & Omit<
   InputHTMLAttributes<HTMLInputElement>,
   "onChange" | "prefix" | "className" | "size" | "height" | "maxLength"
->;
+> &
+  Omit<
+    TextareaHTMLAttributes<HTMLAreaElement>,
+    "onChange" | "prefix" | "className" | "size" | "height" | "maxLength"
+  >;
 
 function ComponentRef(props: Partial<BaseInputType>, ref: any) {
   const {
@@ -56,9 +64,15 @@ function ComponentRef(props: Partial<BaseInputType>, ref: any) {
     disabled,
     prefix,
     suffix,
+    showWordLimit,
+    isTextArea,
     ...rest
   } = props;
-  const [value, setValue] = useState("");
+  const [value, setValue] = useMergeValue(
+    defaultValue || "",
+    props.value || ""
+  );
+
   const [showClose, setShowClose] = useState(false);
   const [focus, setFocus] = useState(false);
   const inputRef = useRef<any>();
@@ -132,26 +146,53 @@ function ComponentRef(props: Partial<BaseInputType>, ref: any) {
   const cs_wrap = cls(`${prefixCls}-inner-wrapper`, {
     [`${prefixCls}-inner-wrapper-focus`]: focus,
   });
+  const wordLength = () => {
+    if (value === undefined || value === null) return 0;
+    return String(value).length;
+  };
+  const limitDOM = (
+    <span className={cls(`${prefixCls}-word-limit`)}>{`${wordLength()}/${
+      props.maxLength
+    }`}</span>
+  );
   const prefixDOM = (
     <span className={cls(`${prefixCls}-group-prefix`)}>{prefix}</span>
   );
   const suffixDOM = (
-    <span className={cls(`${prefixCls}-group-suffix`)}>{suffix}</span>
+    <span className={cls(`${prefixCls}-group-suffix`)}>
+      {showWordLimit ? limitDOM : suffix}
+    </span>
   );
+  const hasSuffix = showWordLimit || !!suffix;
   const innerDOM = (
     <>
       {prefix && prefixDOM}
-      <input
-        ref={inputRef}
-        {...rest}
-        value={value}
-        onChange={handleChange}
-        defaultValue={defaultValue}
-        onFocus={handleFouces}
-        onBlur={handleBlur}
-        className={cs}
-        disabled={disabled}
-      />
+      {isTextArea ? (
+        //@ts-ignore
+        <textarea
+          ref={inputRef}
+          {...rest}
+          value={value}
+          onChange={handleChange}
+          //defaultValue={defaultValue}
+          onFocus={handleFouces}
+          onBlur={handleBlur}
+          className={cs}
+          disabled={disabled}
+        />
+      ) : (
+        <input
+          ref={inputRef}
+          {...rest}
+          value={value}
+          onChange={handleChange}
+          //defaultValue={defaultValue}
+          onFocus={handleFouces}
+          onBlur={handleBlur}
+          className={cs}
+          disabled={disabled}
+        />
+      )}
     </>
   );
   return allowClear && !error ? (
@@ -172,15 +213,18 @@ function ComponentRef(props: Partial<BaseInputType>, ref: any) {
           />
         </span>
       )}
-      {suffix && suffixDOM}
+      {hasSuffix && suffixDOM}
     </span>
   ) : (
     <span className={cs_wrap} style={style} ref={wrapperRef}>
       {innerDOM}
-      {suffix && suffixDOM}
+      {hasSuffix && suffixDOM}
     </span>
   );
 }
 const BaseInput = forwardRef(ComponentRef);
+BaseInput.defaultProps = {
+  maxLength: 50,
+};
 BaseInput.displayName = "BaseInput";
 export default BaseInput;
