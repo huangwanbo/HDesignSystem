@@ -28,8 +28,8 @@
     }
 }
 
-.body {
-    font-size: 12px;
+@mixin body() {
+    font-size: 14px;
     @include tablet {
         font-size: 14px;
     }

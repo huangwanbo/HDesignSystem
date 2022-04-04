@@ -27,6 +27,7 @@ import Notification from "./component/Notification";
 import Modal from "./component/Modal";
 import Progress from "./component/Progress";
 import Drawer from "./component/Drawer";
+import Input from "./component/Input";
 export {
     Button,
     Color,
@@ -57,5 +58,6 @@ export {
     Notification,
     Modal,
     Progress,
-    Drawer
+    Drawer,
+    Input
 };

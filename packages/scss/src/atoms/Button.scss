@@ -88,6 +88,9 @@ $btn-color: (
     color: $white;
     border: 1px solid map-get($btn-bg-light, $type);
     cursor: not-allowed;
+    .ds-icon-loading,.ds-icon{
+      cursor: not-allowed;
+    }
   }
 }
 @each $size, $value in $btn-size {
