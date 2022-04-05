@@ -29,4 +29,5 @@ export { default as Modal } from './component/Modal/Modal.js';
 export { default as Progress } from './component/Progress/Progress.js';
 export { default as Drawer } from './component/Drawer/Drawer.js';
 export { default as Input } from './component/Input/Input.js';
+export { default as Radio } from './component/Radio/index.js';
 //# sourceMappingURL=index.js.map
