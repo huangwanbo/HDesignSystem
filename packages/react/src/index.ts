@@ -28,6 +28,7 @@ import Modal from "./component/Modal";
 import Progress from "./component/Progress";
 import Drawer from "./component/Drawer";
 import Input from "./component/Input";
+import Radio from "./component/Radio";
 export {
     Button,
     Color,
@@ -59,5 +60,6 @@ export {
     Modal,
     Progress,
     Drawer,
-    Input
+    Input,
+    Radio
 };
