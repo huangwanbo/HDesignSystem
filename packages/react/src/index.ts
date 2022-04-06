@@ -29,6 +29,7 @@ import Progress from "./component/Progress";
 import Drawer from "./component/Drawer";
 import Input from "./component/Input";
 import Radio from "./component/Radio";
+import Checkbox from "./component/Checkbox";
 export {
     Button,
     Color,
@@ -61,5 +62,6 @@ export {
     Progress,
     Drawer,
     Input,
-    Radio
+    Radio,
+    Checkbox
 };
