@@ -38,7 +38,7 @@ function ComponentRef(props: Partial<CheckboxGroupType>, ref: any) {
     direction = "horizontal",
   } = props;
   const {} = useContext(Context);
-  const [value, setValue] = useMergeValue(defaultValue, propValue);
+  const [value, setValue] = useMergeValue(defaultValue || propValue, propValue);
 
   const handleChange = (v: any, e: any) => {
     //如果v存在，同时e=false，那就删除
@@ -50,11 +50,12 @@ function ComponentRef(props: Partial<CheckboxGroupType>, ref: any) {
       setValue(newValue);
     }
     if (!currentVal?.includes(v) && e) {
-      newValue = currentVal;
+      //从新new 一个数组，不让只是引用无法触发更新。
+      newValue = new Array(...currentVal);
       newValue.push(v);
       setValue(newValue);
     }
-    onChange && onChange(v);
+    onChange && onChange(newValue);
   };
   const contextProps = {
     onChange: handleChange,

@@ -43,7 +43,7 @@ function ComponentRef(props: CheckboxType, ref: any) {
     };
   });
   const [checked, setChecked] = useMergeValue(
-    defaultChecked || false,
+    defaultChecked || propChecked || false,
     propChecked
   );
   const CheckBoxContext = useContext(Context);
