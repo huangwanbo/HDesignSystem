@@ -30,4 +30,5 @@ export { default as Progress } from './component/Progress/Progress.js';
 export { default as Drawer } from './component/Drawer/Drawer.js';
 export { default as Input } from './component/Input/Input.js';
 export { default as Radio } from './component/Radio/index.js';
+export { default as Checkbox } from './component/Checkbox/index.js';
 //# sourceMappingURL=index.js.map
