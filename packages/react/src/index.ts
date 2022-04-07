@@ -31,6 +31,7 @@ import Input from "./component/Input";
 import Radio from "./component/Radio";
 import Checkbox from "./component/Checkbox";
 import Switch from "./component/Switch";
+import InputNumber from "./component/InputNumber";
 export {
     Button,
     Color,
@@ -65,5 +66,6 @@ export {
     Input,
     Radio,
     Checkbox,
-    Switch
+    Switch,
+    InputNumber
 };

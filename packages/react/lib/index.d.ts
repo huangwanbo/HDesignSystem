@@ -31,4 +31,5 @@ import Input from "./component/Input";
 import Radio from "./component/Radio";
 import Checkbox from "./component/Checkbox";
 import Switch from "./component/Switch";
-export { Button, Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic, BackTop, Anchor, Affix, Breadcrumb, Menu, Dropdown, PageHeader, Pagination, Steps, Alert, Message, Notification, Modal, Progress, Drawer, Input, Radio, Checkbox, Switch };
+import InputNumber from "./component/InputNumber";
+export { Button, Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic, BackTop, Anchor, Affix, Breadcrumb, Menu, Dropdown, PageHeader, Pagination, Steps, Alert, Message, Notification, Modal, Progress, Drawer, Input, Radio, Checkbox, Switch, InputNumber };

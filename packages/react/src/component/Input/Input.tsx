@@ -7,7 +7,7 @@ import { omit } from "lodash";
 import cls from "classNames";
 const prefixCls = "ds-input";
 
-type InputType = {
+export type InputType = {
   addBefore: ReactNode;
   addAfter: ReactNode;
   beforeStyle: CSSProperties;

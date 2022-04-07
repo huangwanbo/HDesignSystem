@@ -26,7 +26,7 @@ export type BaseInputType = {
   allowClear: boolean;
   disabled: boolean;
   readOnly: boolean;
-  defaultValue: string;
+  defaultValue: string | number;
   placeholder: string;
   error: boolean;
   onChange: (value: string, e: any) => void;
@@ -68,11 +68,7 @@ function ComponentRef(props: Partial<BaseInputType>, ref: any) {
     isTextArea,
     ...rest
   } = props;
-  const [value, setValue] = useMergeValue(
-    defaultValue || "",
-    props.value || ""
-  );
-
+  const [value, setValue] = useMergeValue(defaultValue || "", props.value);
   const [showClose, setShowClose] = useState(false);
   const [focus, setFocus] = useState(false);
   const inputRef = useRef<any>();
@@ -84,8 +80,11 @@ function ComponentRef(props: Partial<BaseInputType>, ref: any) {
     } else {
       setShowClose(false);
     }
-    onChange && onChange(val, e);
-    setValue(val);
+    if (onChange) {
+      setValue(onChange(val, e));
+    } else {
+      setValue(val);
+    }
   };
   const handleFouces = (e: any) => {
     setFocus(true);
@@ -103,7 +102,6 @@ function ComponentRef(props: Partial<BaseInputType>, ref: any) {
     setValue("");
     onClear && onClear();
     inputRef.current.focus();
-    console.log("handleClear");
   };
   useImperativeHandle(ref, () => {
     return {
@@ -174,7 +172,7 @@ function ComponentRef(props: Partial<BaseInputType>, ref: any) {
           {...rest}
           value={value}
           onChange={handleChange}
-          //defaultValue={defaultValue}
+          defaultValue={defaultValue}
           onFocus={handleFouces}
           onBlur={handleBlur}
           className={cs}
