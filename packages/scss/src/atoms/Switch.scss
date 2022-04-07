@@ -1,0 +1,191 @@
+@import "foundation/all";
+$prefix: ".ds-switch";
+
+#{$prefix} {
+    position: relative;
+    outline: none;
+    height: 24px;
+    line-height: 24px;
+    min-width: 40px;
+    background-color: var(--color-fill-4);
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background-color .2s cubic-bezier(.34, .69, .1, 1);
+    padding: 0;
+    box-sizing: border-box;
+    vertical-align: middle;
+    overflow: hidden;
+
+    &-type {
+        &-round {
+            border-radius: var(--ds-border-radius-small);
+            min-width: 40px;
+
+            #{$prefix}-dot {
+                border-radius: var(--ds-border-radius-small);
+            }
+        }
+
+        &-line {
+            min-width: 36px;
+            background-color: transparent;
+            overflow: unset;
+
+            #{$prefix}-dot {
+                top: 2px;
+                left: 0;
+                border-radius: 10px;
+                width: 20px;
+                height: 20px;
+                background-color: var(--color-bg-white);
+                box-shadow: 0 1px 3px var(--ds-neutral-6);
+            }
+        }
+    }
+
+    &-dot {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 4px;
+        left: 4px;
+        width: 16px;
+        height: 16px;
+        border-radius: var(--ds-border-radius-circle);
+        background-color: var(--color-bg-white);
+        color: var(--color-neutral-3);
+        font-size: 12px;
+        transition: all .2s cubic-bezier(.34, .69, .1, 1);
+    }
+
+    &-checked {
+        background-color: var(--ds-primary-6);
+
+        #{$prefix}-dot {
+            color: var(--ds-primary-6);
+            left: 100%;
+            transform: translateX(-100%);
+            margin-left: -4px;
+        }
+
+        #{$prefix}-text-holder {
+            margin: 0 26px 0 8px;
+        }
+
+        #{$prefix}-text {
+            left: 8px;
+        }
+
+    }
+
+    &-size {
+        &-small {
+            height: 16px;
+            line-height: 16px;
+            min-width: 28px;
+
+            #{$prefix}-dot {
+                top: 2px;
+                left: 2px;
+                width: 12px;
+                height: 12px;
+                border-radius: 8px;
+            }
+        }
+    }
+
+    &-text-holder {
+        opacity: 0;
+        font-size: 12px;
+        margin: 0 8px 0 26px;
+    }
+
+    &-text {
+        position: absolute;
+        color: var(--color-white);
+        font-size: 12px;
+        top: 0;
+        left: 26px;
+    }
+}
+
+#{$prefix}-type-line:after {
+    content: "";
+    display: block;
+    width: 100%;
+    border-radius: 3px;
+    height: 6px;
+    background-color: var(--color-fill-4);
+    transition: background-color .2s cubic-bezier(.34, .69, .1, 1);
+}
+
+#{$prefix}-type-line#{$prefix}-checked:after {
+    background-color: var(--ds-primary-6);
+}
+
+#{$prefix}-type-line#{$prefix}-checked {
+    background-color: transparent;
+
+    #{$prefix}-dot {
+        left: 100%;
+        margin-left: 0;
+    }
+}
+
+#{$prefix}-type-line#{$prefix}-dot {
+    background-color: transparent;
+}
+
+#{$prefix}[disabled] {
+    cursor: not-allowed;
+    background-color: var(--color-fill-2);
+
+    #{$prefix}-dot {
+        color: var(--color-fill-2);
+    }
+}
+
+#{$prefix}[disabled]#{$prefix}-checked {
+    background-color: var(--ds-primary-2);
+
+    #{$prefix}-dot {
+        color: var(--ds-primary-2);
+    }
+}
+
+#{$prefix}-type-line[disabled] {
+    background-color: transparent;
+
+    #{$prefix}-dot {
+        color: var(--color-fill-2);
+    }
+}
+
+#{$prefix}-type-line[disabled]:after {
+    background-color: var(--color-fill-2);
+}
+
+#{$prefix}-type-line[disabled]#{$prefix}-checked {
+    background-color: transparent;
+}
+
+#{$prefix}-type-line[disabled]#{$prefix}-checked:after {
+    background-color: var(--ds-primary-2);
+}
+
+.switchSlideText-enter-active,
+.switchSlideText-appear-active {
+    left: 8px !important;
+    transition: left .2s cubic-bezier(.34, .69, .1, 1);
+}
+
+.switchSlideText-exit {
+    left: 100% !important;
+}
+
+.switchSlideText-exit-active {
+    left: 26px !important;
+    transition: left .2s cubic-bezier(.34, .69, .1, 1);
+}

@@ -1,8 +1,18 @@
 @import "foundation/all";
+
 .ds-icon {
+  display: inline-block;
+  color: inherit;
+  font-style: normal;
+  width: 1em;
+  height: 1em;
+  vertical-align: -2px;
+  stroke: currentColor;
+
   &-block {
     @include inline-flex(column);
   }
+
   &-loading {
     display: inline-block;
     font-weight: $body-font-weight;
@@ -18,7 +28,9 @@
     transform: rotate(360deg);
   }
 }
-@each $key, $val in $IconSize {
+
+@each $key,
+$val in $IconSize {
   .ds-icon-size-#{$key} {
     font-size: $val;
     display: inline-block;
