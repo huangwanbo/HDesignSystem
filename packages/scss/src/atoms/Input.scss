@@ -73,6 +73,7 @@ $prefix: ".ds-input";
 
   &-disabled {
     cursor: not-allowed;
+    color: var(--color-text-4);
   }
 
   &-size {
@@ -222,6 +223,7 @@ $prefix: ".ds-input";
     cursor: pointer;
   }
 }
+
 #{$prefix}-search-loading {
   .ds-icon {
     cursor: not-allowed;

@@ -8807,6 +8807,11 @@ number-is-nan@^1.0.0:
   resolved "https://registry.npmmirror.com/number-is-nan/-/number-is-nan-1.0.1.tgz"
   integrity sha512-4jbtZXNAsfZbAHiiqjLPBiCl16dES1zI4Hpzzxw61Tk+loF+sBDBKx1ICKKKwIqQ7M0mFn1TmkN7euSncWgHiQ==
 
+number-precision@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.npmmirror.com/number-precision/-/number-precision-1.5.2.tgz#22abbde9e2402629199b511deafcdb614e125875"
+  integrity sha512-q7C1ZW3FyjsJ+IpGB6ykX8OWWa5+6M+hEY0zXBlzq1Sq1IPY9GeI3CQ9b2i6CMIYoeSuFhop2Av/OhCxClXqag==
+
 nunjucks@^3.2.3:
   version "3.2.3"
   resolved "https://registry.npmmirror.com/nunjucks/-/nunjucks-3.2.3.tgz"

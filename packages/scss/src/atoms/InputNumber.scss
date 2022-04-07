@@ -1,0 +1,106 @@
+@import "foundation/all";
+$prefix: ".ds-input-number";
+$before_after: '.ds-input-group-addbefore,.ds-input-group-addafter';
+
+#{$prefix} {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: var(--ds-border-radius-small);
+
+    &-mode {
+        &-embed {
+            #{$prefix}-step-layer {
+                opacity: 0;
+                position: absolute;
+                right: 4px;
+                top: 4px;
+                bottom: 4px;
+                width: 18px;
+                border-radius: 1px;
+                overflow: hidden;
+                transition: all .1s linear;
+
+                #{$prefix}-step-button {
+                    width: 100%;
+                    height: 50%;
+                    font-size: 10px;
+                }
+            }
+        }
+
+        &-button {
+            #{$prefix}-step-button:hover {
+                border-color: var(--ds-neutral-3);
+                background-color: var(--ds-fill-2);
+                color: var(--color-text-2);
+            }
+
+            .ds-input-group-addbefore:hover,
+            .ds-input-group-addafter:hover {
+                background-color: var(--ds-neutral-3);
+                cursor: pointer;
+            }
+
+            &-mini {
+                #{$before_after} {
+                    width: 24px;
+                    padding: 0 2px;
+                }
+            }
+
+            &-small {
+                #{$before_after} {
+                    width: 28px;
+                    padding: 0 4px;
+                }
+            }
+
+            &-default {
+                #{$before_after} {
+                    width: 32px;
+                    padding: 0 6px;
+                }
+            }
+
+            &-large {
+                #{$before_after} {
+                    width: 36px;
+                }
+            }
+        }
+    }
+}
+
+#{$prefix}-step-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-color: var(--ds-neutral-3);
+    background-color: var(--ds-fill-2);
+    color: var(--color-text-2);
+    cursor: pointer;
+    user-select: none;
+    transition: all .1s linear;
+}
+
+#{$prefix}-step-button:hover {
+    background-color: var(--ds-neutral-5);
+}
+
+#{$prefix}-step-disabled {
+    cursor: not-allowed;
+    color: var(--ds-neutral-4);
+    background-color: var(--ds-fill-2);
+}
+
+#{$prefix}-step-button#{$prefix}-step-disabled:hover {
+    color: var(--ds-neutral-4);
+    background-color: var(--ds-fill-2);
+}
+
+#{$prefix}:hover #{$prefix}-step-layer {
+    background-color: var(--ds-neutral-3);
+}
