@@ -33,4 +33,5 @@ export { default as Radio } from './component/Radio/index.js';
 export { default as Checkbox } from './component/Checkbox/index.js';
 export { default as Switch } from './component/Switch/Switch.js';
 export { default as InputNumber } from './component/InputNumber/InputNumber.js';
+export { default as Select } from './component/Select/Select.js';
 //# sourceMappingURL=index.js.map
