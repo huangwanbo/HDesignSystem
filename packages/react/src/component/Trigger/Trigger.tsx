@@ -1,15 +1,29 @@
-import React, { useState, useRef, ReactNode } from "react";
+import React, {
+  useState,
+  useRef,
+  ReactNode,
+  CSSProperties,
+  useImperativeHandle,
+} from "react";
 import { PortalWrapper } from "../Portal";
 import cls from "classNames";
 const prefixCls = "ds-trigger";
 export type positionType = "top" | "left" | "right" | "bottom";
+export type TriggerRefType = {
+  hide: () => void;
+  show: () => void;
+};
 type TriggerProps = {
   position?: positionType;
-  customStyle?: React.CSSProperties;
+  customStyle?: CSSProperties;
   customClass?: string | string[];
   getContainer?: () => Element;
   children?: ReactNode;
   popupChildren?: ReactNode;
+  autoAlignPopupWidth?: boolean;
+  type?: "hover" | "click";
+  hide?: () => void;
+  show?: () => void;
 };
 
 type rect = {
@@ -20,7 +34,7 @@ type rect = {
   height: number;
   width: number;
 };
-
+const noop = () => {};
 const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
   const {
     children,
@@ -29,6 +43,10 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
     popupChildren,
     customStyle,
     customClass,
+    autoAlignPopupWidth,
+    type = "hover",
+    hide: propHide,
+    show: propShow,
   } = props;
   const [visible, setVisible] = useState<boolean>(false);
   const [transform, setTransform] = useState<rect>({
@@ -40,15 +58,17 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
     width: 0,
   });
   const portalRef = useRef(null);
-  const childRef = ref || React.createRef();
+  const childRef = useRef();
   let timmer: NodeJS.Timeout | null;
   const show = () => {
     if (timmer) clearTimeout(timmer);
+    propShow && propShow();
     setVisible(true);
   };
   const hide = () => {
     if (timmer) clearTimeout(timmer);
     timmer = setTimeout(() => {
+      propHide && propHide();
       setVisible(false);
     }, 100);
   };
@@ -74,9 +94,13 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
       transformOrigin: `${transform.right}px 0px 0px`,
     },
   };
-  const onMouseEnter = (e: any) => {
+  const handleShow = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+    //if (e.target !== childRef.current) return;
+    if (!childRef.current) return;
     const { left, top, bottom, right, height, width } = (
-      e.target as HTMLElement
+      childRef.current as HTMLElement
     ).getBoundingClientRect();
     setTransform({
       left,
@@ -91,7 +115,26 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
   const onMouseLeave = () => {
     hide();
   };
-
+  useImperativeHandle(ref, () => {
+    return {
+      show,
+      hide,
+    };
+  });
+  // 获取trigger对象的rect
+  const getEventTargetSize = () => {
+    return (
+      childRef.current as HTMLElement | undefined
+    )?.getBoundingClientRect();
+  };
+  const generateEvent = () => {
+    const hasHover = type == "hover";
+    return {
+      onMouseEnter: hasHover ? handleShow : noop,
+      onMouseLeave: hasHover ? onMouseLeave : noop,
+      onClick: !hasHover ? handleShow : noop,
+    };
+  };
   const TriggerDom = (
     <PortalWrapper
       visible={visible}
@@ -99,11 +142,9 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
       getContainer={getContainer}
     >
       <div
-        ref={ref}
         role="trigger"
         className={cls(`${prefixCls}-container`, customClass)}
         style={{
-          //width: "100%",
           position: "absolute",
           top: "0px",
           left: "0px",
@@ -113,11 +154,14 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
         <div
           className={`${prefixCls}-wrap`}
           style={{
+            width:
+              autoAlignPopupWidth && customStyle?.width === undefined
+                ? getEventTargetSize()?.width
+                : "",
             position: "absolute",
             ...popupStyle[position],
           }}
-          onMouseEnter={show}
-          onMouseLeave={hide}
+          {...generateEvent()}
         >
           {popupChildren}
         </div>
@@ -125,8 +169,7 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
     </PortalWrapper>
   );
   const child = React.cloneElement(children as React.ReactElement, {
-    onMouseEnter: onMouseEnter,
-    onMouseLeave: onMouseLeave,
+    ...generateEvent(),
     ref: childRef,
   });
 
