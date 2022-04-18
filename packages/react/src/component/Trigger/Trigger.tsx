@@ -16,6 +16,7 @@ export type TriggerRefType = {
 type TriggerProps = {
   position?: positionType;
   customStyle?: CSSProperties;
+  wrapStyle?: CSSProperties;
   customClass?: string | string[];
   getContainer?: () => Element;
   children?: ReactNode;
@@ -47,6 +48,7 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
     type = "hover",
     hide: propHide,
     show: propShow,
+    wrapStyle,
   } = props;
   const [visible, setVisible] = useState<boolean>(false);
   const [transform, setTransform] = useState<rect>({
@@ -160,6 +162,7 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
                 : "",
             position: "absolute",
             ...popupStyle[position],
+            ...wrapStyle,
           }}
           {...generateEvent()}
         >

@@ -34,4 +34,5 @@ export { default as Checkbox } from './component/Checkbox/index.js';
 export { default as Switch } from './component/Switch/Switch.js';
 export { default as InputNumber } from './component/InputNumber/InputNumber.js';
 export { default as Select } from './component/Select/Select.js';
+export { default as Cascader } from './component/Cascader/Cascader.js';
 //# sourceMappingURL=index.js.map

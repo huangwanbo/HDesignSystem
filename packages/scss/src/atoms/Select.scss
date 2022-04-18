@@ -103,7 +103,7 @@ $prefix: '.ds-select';
     border: 1px solid var(--color-fill-3);
     border-radius: var(--border-radius-medium);
     background-color: var(--color-bg-popup);
-    box-shadow: 0 4px 10px var(--ds-neutral-6);
+    box-shadow: 0 1px 1px var(--ds-neutral-6);
     overflow: hidden;
 
     &-inner {
@@ -144,5 +144,14 @@ $prefix: '.ds-select';
             background-color: var(--color-bg-popup);
             cursor: not-allowed;
         }
+    }
+}
+
+.ds-cascader {
+    #{$prefix}-option {
+        padding: 0 6px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
     }
 }
