@@ -33,6 +33,7 @@ import Checkbox from "./component/Checkbox";
 import Switch from "./component/Switch";
 import InputNumber from "./component/InputNumber";
 import Select from "./component/Select";
+import Cascader from "./component/Cascader";
 export {
     Button,
     Color,
@@ -69,5 +70,6 @@ export {
     Checkbox,
     Switch,
     InputNumber,
-    Select
+    Select,
+    Cascader
 };
