@@ -1,19 +1,40 @@
-/*======================================
-
-    TABLE OF CONTENTS
-
-======================================*/
-
-/**
- * 
- * FOUNDATINS ...............................
- * BASE .....................................
-*/
-
 @import "foundation/all";
-
-/*=============================================
-=            Base                          =
-=============================================*/
-@import "base/reset";
-@import "base/root";
+  @import "base/reset";
+  @import "base/root";
+  @import "src/atoms/Alert.scss"; 
+@import "src/atoms/Anchor.scss"; 
+@import "src/atoms/BackTop.scss"; 
+@import "src/atoms/Breadcrumb.scss"; 
+@import "src/atoms/Button.scss"; 
+@import "src/atoms/Checkbox.scss"; 
+@import "src/atoms/Divider.scss"; 
+@import "src/atoms/Drawer.scss"; 
+@import "src/atoms/Dropdown.scss"; 
+@import "src/atoms/Grid.scss"; 
+@import "src/atoms/Icon.scss"; 
+@import "src/atoms/Image.scss"; 
+@import "src/atoms/ImagePreview.scss"; 
+@import "src/atoms/Input.scss"; 
+@import "src/atoms/InputNumber.scss"; 
+@import "src/atoms/Layout.scss"; 
+@import "src/atoms/Margin.scss"; 
+@import "src/atoms/Menu.scss"; 
+@import "src/atoms/Message.scss"; 
+@import "src/atoms/Modal.scss"; 
+@import "src/atoms/Notice.scss"; 
+@import "src/atoms/Notification.scss"; 
+@import "src/atoms/PageHeader.scss"; 
+@import "src/atoms/Pagination.scss"; 
+@import "src/atoms/Progress.scss"; 
+@import "src/atoms/Radio.scss"; 
+@import "src/atoms/ResizeBox.scss"; 
+@import "src/atoms/Select.scss"; 
+@import "src/atoms/Spin.scss"; 
+@import "src/atoms/Statistic.scss"; 
+@import "src/atoms/Steps.scss"; 
+@import "src/atoms/Switch.scss"; 
+@import "src/atoms/Tag.scss"; 
+@import "src/atoms/TimePicker.scss"; 
+@import "src/atoms/Tooltip.scss"; 
+@import "src/atoms/Trigger.scss"; 
+@import "src/atoms/Utilities.scss"; 
