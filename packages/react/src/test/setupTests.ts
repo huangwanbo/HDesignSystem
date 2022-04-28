@@ -22,6 +22,7 @@ beforeAll(() => {
     };
 })
 
+
 if (typeof window !== 'undefined') {
     Object.defineProperty(window, 'matchMedia', {
         writable: true,
