@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd packages/react && yarn install && yarn test
+      - run: cd packages/react && npm run install && npm run test
