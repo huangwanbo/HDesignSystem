@@ -35,4 +35,5 @@ export { default as Switch } from './component/Switch/Switch.js';
 export { default as InputNumber } from './component/InputNumber/InputNumber.js';
 export { default as Select } from './component/Select/Select.js';
 export { default as Cascader } from './component/Cascader/Cascader.js';
+export { default as TimePicker } from './component/TimePicker/TimePicker.js';
 //# sourceMappingURL=index.js.map

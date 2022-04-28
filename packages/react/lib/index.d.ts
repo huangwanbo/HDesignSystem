@@ -34,4 +34,5 @@ import Switch from "./component/Switch";
 import InputNumber from "./component/InputNumber";
 import Select from "./component/Select";
 import Cascader from "./component/Cascader";
-export { Button, Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic, BackTop, Anchor, Affix, Breadcrumb, Menu, Dropdown, PageHeader, Pagination, Steps, Alert, Message, Notification, Modal, Progress, Drawer, Input, Radio, Checkbox, Switch, InputNumber, Select, Cascader };
+import TimePicker from "./component/TimePicker";
+export { Button, Color, Text, Margin, Image, Icon, Portal, PortalWrapper, Spin, Tooltip, Tag, Divider, Grid, Layout, Statistic, BackTop, Anchor, Affix, Breadcrumb, Menu, Dropdown, PageHeader, Pagination, Steps, Alert, Message, Notification, Modal, Progress, Drawer, Input, Radio, Checkbox, Switch, InputNumber, Select, Cascader, TimePicker };

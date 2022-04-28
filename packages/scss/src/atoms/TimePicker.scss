@@ -1,0 +1,122 @@
+@import "foundation/all";
+$prefix: '.ds-time-picker';
+
+#{$prefix} {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 11px 4px 4px;
+    line-height: 1.5715;
+    border-radius: var(--ds-border-radius-small);
+    background-color: var(--color-fill-2);
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    transition: all .1s linear;
+
+    &-input {
+        display: inline-flex;
+        flex: 1;
+    }
+
+    &-focus,
+    &-focus:hover {
+        background-color: var(--color-bg-2);
+        border-color: var(--ds-primary-6);
+    }
+
+    &-focus {
+        box-shadow: 0 0 0 0 var(--ds-primary-3);
+
+        input:focus {
+            background-color: var(--color-bg-2);
+        }
+    }
+
+
+    input {
+        text-align: left;
+        padding: 0 0 0 8px;
+        border: none;
+        width: 100%;
+        color: var(--color-text-1);
+        background-color: transparent;
+        line-height: 1.5715;
+        transition: all .1s linear;
+        border: none;
+    }
+
+    input:focus-visible {
+        outline-offset: 0px;
+    }
+
+    &-container {
+        border-radius: var(--ds-border-radius-medium);
+        border: 1px solid var(--ds-neutral-3);
+        background-color: var(--ds-bg-white);
+        box-shadow: 0 2px 5px var(--ds-neutral-8);
+        overflow: hidden;
+    }
+
+    &-list {
+        width: 64px;
+        height: 224px;
+        overflow: hidden;
+        box-sizing: border-box;
+
+        &:hover {
+            overflow-y: auto;
+
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        ul {
+            margin: 0;
+            padding: 2px 0px;
+            list-style: none;
+            box-sizing: border-box;
+
+            &:after {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 192px;
+            }
+
+        }
+    }
+
+    &-cell {
+        padding: 4px 0;
+        text-align: center;
+        color: var(--ds-text-1);
+        font-weight: 500;
+        cursor: pointer;
+
+        #{$prefix}-inner {
+            height: 24px;
+            line-height: 24px;
+            font-size: 14px;
+        }
+
+        &-selected {
+            #{$prefix}-inner {
+                background-color: var(--ds-neutral-4);
+                font-weight: 500;
+            }
+        }
+    }
+
+    &-list:not(:last-child) {
+        border-right: 1px solid var(--ds-neutral-3);
+    }
+
+    &-footer-btn-wrapper {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid var(--ds-neutral-3);
+        padding: 8px;
+    }
+}

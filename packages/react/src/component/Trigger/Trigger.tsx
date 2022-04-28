@@ -73,6 +73,8 @@ const Trigger = React.forwardRef<any, TriggerProps>((props, ref) => {
       propHide && propHide();
       setVisible(false);
     }, 100);
+    setVisible(false);
+    console.log("关闭", timmer);
   };
   const popupStyle = {
     top: {
