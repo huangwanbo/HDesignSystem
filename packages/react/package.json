@@ -4,10 +4,20 @@
   "main": "lib/esm/index.js",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/enzyme": "^3.10.12",
+    "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.178",
     "@types/react": "^17.0.38",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
     "enzyme": "^3.11.0",
     "eslint-config-airbnb": "^19.0.4",
+    "jest": "^28.0.2",
+    "jest-enzyme": "^7.1.2",
+    "jsdom": "^19.0.0",
     "loadsh": "^0.0.4",
     "prettier": "2.5.1",
     "react": "^17.0.2",
@@ -15,11 +25,15 @@
     "rollup": "^2.66.1",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.31.1",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
     "typescript": "^4.5.5"
   },
   "scripts": {
     "build": "rollup -c",
-    "dev": "yarn build --watch"
+    "dev": "yarn build --watch",
+    "test": "jest",
+    "dev-test": "jest --watch"
   },
   "dependencies": {
     "@types/react-transition-group": "^4.4.4",

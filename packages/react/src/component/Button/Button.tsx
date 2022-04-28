@@ -4,7 +4,7 @@ import {
   buttonTypes,
   htmlType,
 } from "../../foundation/ButtonProps";
-import classNames from "classNames";
+import classNames from "classnames";
 const prefix = "ds-button__container";
 interface BaseButtonProps {
   children: string | React.ReactNode;
